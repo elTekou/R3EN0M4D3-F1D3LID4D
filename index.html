@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -612,9 +613,7 @@ button:disabled{opacity:.5;cursor:wait}
  margin-top:10px;
 }
 
-/* =========================================
-   TARJETA PÚBLICA DIGITAL
-   ========================================= */
+/* TARJETA PÚBLICA DIGITAL */
 
 .public-card{text-align:center}
 .public-card .detail-name{font-size:32px;letter-spacing:.5px}
@@ -1167,7 +1166,6 @@ button:disabled{opacity:.5;cursor:wait}
 <button id="signupButton" type="submit">SOLICITAR TARJETA</button>
 </form>
 <p id="signupStatus" class="status"></p>
-<button id="backLoginButton" type="button" class="secondary">VOLVER</button>
 </section>
 
 <!-- TARJETA PÚBLICA DE FIDELIDAD -->
@@ -1612,10 +1610,6 @@ $("publicCardPanel").classList.add("hidden");
 
 $("goSignupButton").addEventListener("click",()=>{
 location.href=urlRegistro();
-});
-
-$("backLoginButton").addEventListener("click",()=>{
-location.href=urlBase();
 });
 
 $("signupForm").addEventListener("submit",async event=>{
