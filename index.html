@@ -3,26 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#09090e">
-<title>ReeNomade | Club Nomade</title>
+<meta name="theme-color" content="#ffffff">
+<title>ReeNomade | Fidelidad</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box}
 
 :root{
- --fondo:#09090e;
- --panel:#141419;
- --borde:#303039;
- --texto:#f4f4f5;
- --suave:#9999a4;
- --violeta:#a77ae8;
- --cian:#55c8d5;
+ --fondo:#f7f7f8;
+ --panel:#fff;
+ --borde:#dedee5;
+ --texto:#17171d;
+ --suave:#777783;
+ --violeta:#8052b8;
+ --cian:#159eae;
+ --verde:#278b5c;
  --blanco:#fff;
- --oscuro:#07070b;
+ --oscuro:#17171d;
 }
 
 html{scroll-behavior:smooth}
@@ -32,12 +33,10 @@ body{
  padding:30px 15px;
  min-height:100vh;
  overflow-x:hidden;
- position:relative;
- isolation:isolate;
  background:
- radial-gradient(ellipse at 0% 15%,rgba(85,200,213,.055),transparent 38%),
- radial-gradient(ellipse at 100% 85%,rgba(167,122,232,.065),transparent 38%),
- #09090e;
+  radial-gradient(ellipse at 0% 10%,rgba(21,158,174,.07),transparent 38%),
+  radial-gradient(ellipse at 100% 90%,rgba(128,82,184,.07),transparent 38%),
+  #f7f7f8;
  color:var(--texto);
  font-family:"Space Grotesk",Arial,sans-serif;
 }
@@ -49,33 +48,19 @@ body{
  z-index:1;
 }
 
-/* IDENTIDAD REENOMADE */
-
 .logo{
- width:auto;
- height:auto;
- border:0;
- border-radius:0;
  display:flex;
  align-items:center;
  justify-content:center;
  margin:0 auto 5px;
  padding:0;
- background:none;
- box-shadow:none;
- color:var(--blanco);
- font-family:"Barlow Condensed",sans-serif;
- font-size:35px;
- font-weight:900;
- letter-spacing:-1.8px;
- line-height:.9;
- text-transform:uppercase;
- position:relative;
- animation:entrada .6s ease both;
+ color:#17171d;
+ font-family:"UnifrakturMaguntia",serif;
+ font-size:49px;
+ font-weight:400;
+ line-height:1.1;
+ text-align:center;
 }
-
-.logo:before,
-.logo:after{display:none}
 
 .brand{
  text-align:center;
@@ -85,18 +70,15 @@ body{
  font-size:9px;
  font-weight:700;
  text-transform:uppercase;
- margin-top:7px;
- animation:entrada .6s ease both;
+ margin-top:3px;
 }
 
 h1{
  text-align:center;
- font-family:"Barlow Condensed",sans-serif;
- font-size:30px;
- font-weight:800;
- letter-spacing:1.4px;
- text-transform:uppercase;
- color:var(--blanco);
+ font-family:"UnifrakturMaguntia",serif;
+ font-size:34px;
+ font-weight:400;
+ color:var(--violeta);
  margin:15px 0 4px;
 }
 
@@ -108,18 +90,15 @@ h1{
  margin:0 0 25px;
 }
 
-/* PANELES */
-
 .panel{
  position:relative;
  overflow:hidden;
- background:#141419;
+ background:#fff;
  border:1px solid var(--borde);
  border-radius:10px;
  padding:19px;
  margin-bottom:14px;
- box-shadow:0 12px 30px rgba(0,0,0,.24);
- animation:panelEntrada .45s ease both;
+ box-shadow:0 8px 24px rgba(20,20,35,.055);
 }
 
 .panel:before{
@@ -127,35 +106,33 @@ h1{
  position:absolute;
  top:0;
  left:0;
- width:34px;
- height:2px;
- background:var(--cian);
+ width:42px;
+ height:3px;
+ background:linear-gradient(90deg,var(--cian),var(--violeta),var(--verde));
  pointer-events:none;
 }
 
 .panel:after{display:none}
 
 h2{
- font-family:"Barlow Condensed",sans-serif;
- font-size:23px;
- font-weight:700;
- letter-spacing:.5px;
- text-transform:uppercase;
- color:var(--blanco);
+ font-family:"UnifrakturMaguntia",serif;
+ font-size:27px;
+ font-weight:400;
+ color:#24232b;
  margin:0 0 5px;
 }
 
 h3{
  font-family:"Barlow Condensed",sans-serif;
- font-size:20px;
- font-weight:700;
+ font-size:21px;
+ font-weight:800;
  text-transform:uppercase;
  margin:0 0 8px;
- color:var(--blanco);
+ color:#24232b;
 }
 
 .description{
- color:var(--suave);
+ color:#73737e;
  font-size:12px;
  line-height:1.6;
  margin:5px 0 0;
@@ -164,7 +141,7 @@ h3{
 label{
  display:block;
  margin:15px 0 7px;
- color:#c5c5cc;
+ color:#565661;
  font-size:10px;
  font-weight:700;
  letter-spacing:1px;
@@ -174,10 +151,10 @@ label{
 input,select,textarea{
  width:100%;
  padding:13px;
- border:1px solid #3b3b45;
- background:#0e0e12;
+ border:1px solid #d5d5de;
+ background:#fff;
  border-radius:6px;
- color:var(--texto);
+ color:#17171d;
  font-family:"Space Grotesk",sans-serif;
  font-size:14px;
  outline:none;
@@ -188,10 +165,10 @@ textarea{resize:vertical;min-height:85px}
 
 input:focus,select:focus,textarea:focus{
  border-color:var(--cian);
- box-shadow:0 0 0 2px rgba(85,200,213,.09);
+ box-shadow:0 0 0 3px rgba(21,158,174,.10);
 }
 
-input::placeholder,textarea::placeholder{color:#6e6e78}
+input::placeholder,textarea::placeholder{color:#a0a0aa}
 
 button{
  width:100%;
@@ -199,8 +176,8 @@ button{
  margin-top:11px;
  border:1px solid transparent;
  border-radius:6px;
- background:#f1f1f2;
- color:#101014;
+ background:#202027;
+ color:#fff;
  font-family:"Barlow Condensed",sans-serif;
  font-size:16px;
  font-weight:800;
@@ -213,39 +190,39 @@ button{
 
 button:hover:not(:disabled){
  background:var(--cian);
- color:#08090c;
+ color:#fff;
 }
 
 button:active:not(:disabled){transform:scale(.985)}
 button:disabled{opacity:.5;cursor:wait}
 
 .secondary{
- background:#1d1d24;
- border-color:#393943;
- color:#e8e8eb;
+ background:#fff;
+ border-color:#d8d8e0;
+ color:#393943;
 }
 
 .secondary:hover:not(:disabled){
- background:#292932;
+ background:#f1edf7;
  border-color:var(--violeta);
- color:#fff;
+ color:#59378b;
 }
 
 .danger{
- background:#3b2028;
- border-color:#653440;
- color:#fff;
+ background:#fff;
+ border-color:#d9aeb8;
+ color:#a43c55;
 }
 
-.danger:hover:not(:disabled){background:#542a36}
+.danger:hover:not(:disabled){background:#fae9ed;color:#922c45}
 
 .success{
- background:#183b39;
- border-color:#2b6862;
- color:#fff;
+ background:#eaf6ef;
+ border-color:#b5dec5;
+ color:#24784c;
 }
 
-.success:hover:not(:disabled){background:#22504c}
+.success:hover:not(:disabled){background:#d9f0e2;color:#185f3a}
 
 .hidden{display:none!important}
 
@@ -280,12 +257,12 @@ button:disabled{opacity:.5;cursor:wait}
 .welcome-row h2{margin:0}
 
 .welcome-tag{
- color:var(--cian);
+ color:var(--verde);
  font-size:9px;
  font-weight:700;
  letter-spacing:1px;
- border:1px solid rgba(85,200,213,.35);
- background:rgba(85,200,213,.045);
+ border:1px solid rgba(39,139,92,.3);
+ background:rgba(39,139,92,.06);
  padding:6px 9px;
  border-radius:3px;
  white-space:nowrap;
@@ -299,8 +276,8 @@ button:disabled{opacity:.5;cursor:wait}
 }
 
 .stat{
- background:#101015;
- border:1px solid #303039;
+ background:#fafafd;
+ border:1px solid #e2e2e9;
  border-radius:7px;
  padding:13px 7px;
  text-align:center;
@@ -309,7 +286,7 @@ button:disabled{opacity:.5;cursor:wait}
 
 .stat-number{
  display:block;
- color:var(--blanco);
+ color:var(--violeta);
  font-family:"Barlow Condensed",sans-serif;
  font-size:29px;
  font-weight:700;
@@ -335,8 +312,8 @@ button:disabled{opacity:.5;cursor:wait}
 
 .client-select{
  text-align:left;
- background:#101015;
- border:1px solid #33333c;
+ background:#fff;
+ border:1px solid #e0e0e7;
  margin-top:9px;
  padding:13px;
  border-radius:7px;
@@ -345,13 +322,13 @@ button:disabled{opacity:.5;cursor:wait}
 
 .client-select:hover{
  border-color:var(--cian);
- background:#17171e;
+ background:#f3fbfc;
 }
 
 .client-name{
  font-weight:700;
  font-size:13px;
- color:var(--blanco);
+ color:#22222a;
 }
 
 .client-date{
@@ -401,7 +378,7 @@ button:disabled{opacity:.5;cursor:wait}
  font-family:"Barlow Condensed",sans-serif;
  font-size:29px;
  font-weight:700;
- color:var(--blanco);
+ color:#24232b;
  margin:14px 0 3px;
  letter-spacing:.3px;
  text-transform:uppercase;
@@ -417,24 +394,22 @@ button:disabled{opacity:.5;cursor:wait}
 
 .stamp{
  aspect-ratio:1;
- border:1px solid #4b4b55;
+ border:1px solid #d2d2dc;
  border-radius:50%;
  display:grid;
  place-items:center;
- color:#777781;
+ color:#aaaab3;
  font-family:"Barlow Condensed",sans-serif;
  font-weight:700;
  font-size:20px;
- background:#101015;
+ background:#fff;
  transition:background .25s,border-color .25s,transform .25s;
 }
 
 .stamp.done{
- border:1px solid var(--cian);
- background:#17353a;
- color:#fff;
- box-shadow:0 0 10px rgba(85,200,213,.12);
- animation:selloEntrada .35s ease both;
+ border:1px solid var(--verde);
+ background:#e1f3e8;
+ color:var(--verde);
 }
 
 @keyframes selloEntrada{
@@ -444,7 +419,7 @@ button:disabled{opacity:.5;cursor:wait}
 
 .progress-line{
  height:6px;
- background:#303039;
+ background:#e4e4e9;
  border-radius:10px;
  overflow:hidden;
  margin:13px 0;
@@ -453,28 +428,28 @@ button:disabled{opacity:.5;cursor:wait}
 .progress-fill{
  height:100%;
  width:0;
- background:linear-gradient(90deg,var(--violeta),var(--cian));
+ background:linear-gradient(90deg,var(--violeta),var(--cian),var(--verde));
  border-radius:10px;
  transition:width .55s ease;
 }
 
 .reward{
- border:1px solid rgba(167,122,232,.55);
- background:#211a2b;
+ border:1px solid rgba(128,82,184,.35);
+ background:#f5effb;
  padding:16px;
  border-radius:8px;
  margin-top:14px;
 }
 
-.reward h3{color:#d1b8f5}
+.reward h3{color:var(--violeta)}
 .reward .description{margin-bottom:8px}
 
 .visit-details{
- border:1px solid #3c3c46;
+ border:1px solid #dedee5;
  border-radius:8px;
  padding:14px;
  margin-top:15px;
- background:#101015;
+ background:#fafafd;
 }
 
 .visit-details summary{
@@ -502,13 +477,13 @@ button:disabled{opacity:.5;cursor:wait}
 .visit-details[open] summary:after{content:"−"}
 .visit-details[open] summary{
  padding-bottom:12px;
- border-bottom:1px solid #34343d;
+ border-bottom:1px solid #e1e1e7;
 }
 
 .visit-details .description{font-size:11px}
 
 .history-item{
- border-bottom:1px solid #303039;
+ border-bottom:1px solid #e5e5eb;
  padding:12px 0;
  font-size:12px;
 }
@@ -519,16 +494,16 @@ button:disabled{opacity:.5;cursor:wait}
  display:inline-block;
  padding:4px 8px;
  border-radius:3px;
- background:#25202e;
- border:1px solid #57416e;
- color:#d1b8f5;
+ background:#f1edf7;
+ border:1px solid #d7c5eb;
+ color:#7045a1;
  font-size:9px;
  margin-top:7px;
 }
 
 .request-item{
- border:1px solid #34343d;
- background:#101015;
+ border:1px solid #e0e0e7;
+ background:#fff;
  border-radius:7px;
  padding:13px;
  margin-top:10px;
@@ -536,7 +511,7 @@ button:disabled{opacity:.5;cursor:wait}
 
 .request-name{
  font-weight:700;
- color:var(--blanco);
+ color:#24232b;
  font-size:13px;
 }
 
@@ -555,8 +530,8 @@ button:disabled{opacity:.5;cursor:wait}
 .request-actions button{margin-top:10px}
 
 .link-box{
- background:#101015;
- border:1px solid #45404a;
+ background:#f4fbfc;
+ border:1px solid #c8e8eb;
  border-radius:6px;
  padding:11px;
  color:var(--cian);
@@ -573,7 +548,7 @@ button:disabled{opacity:.5;cursor:wait}
 .public-card .progress-line{max-width:390px;margin:15px auto}
 .public-card .reward{text-align:left}
 
-/* VOUCHER URBANO */
+/* TARJETA DE FIDELIDAD · TEXTURA MATE */
 
 #publicCardPanel{
  background:transparent!important;
@@ -595,17 +570,15 @@ button:disabled{opacity:.5;cursor:wait}
  margin:20px auto;
  padding:25px;
  border-radius:12px;
- color:#f7f7f8;
+ color:#202027;
  background:
- linear-gradient(135deg,rgba(255,255,255,.035),transparent 30%),
- linear-gradient(145deg,#18181e 0%,#0c0c10 52%,#15151b 100%);
- border:1px solid #41414b;
+  linear-gradient(135deg,rgba(255,255,255,.8),transparent 35%),
+  linear-gradient(145deg,#fff 0%,#f7f7fa 55%,#fff 100%);
+ border:1px solid #d8d8e1;
  box-shadow:
- 0 18px 38px rgba(0,0,0,.42),
- inset 0 1px 0 rgba(255,255,255,.06);
+  0 15px 32px rgba(25,25,40,.10),
+  inset 0 1px 0 rgba(255,255,255,.95);
 }
-
-/* Textura mate, tipo tarjeta laminada */
 
 .membership-voucher:before{
  content:"";
@@ -613,22 +586,22 @@ button:disabled{opacity:.5;cursor:wait}
  inset:0;
  z-index:-1;
  pointer-events:none;
- opacity:.13;
+ opacity:.24;
  background:
- repeating-linear-gradient(
-  0deg,
-  transparent 0,
-  rgba(255,255,255,.035) 1px,
-  transparent 2px,
-  transparent 4px
- ),
- repeating-linear-gradient(
-  90deg,
-  transparent 0,
-  rgba(255,255,255,.015) 1px,
-  transparent 2px,
-  transparent 5px
- );
+  repeating-linear-gradient(
+   0deg,
+   transparent 0,
+   rgba(40,40,60,.025) 1px,
+   transparent 2px,
+   transparent 4px
+  ),
+  repeating-linear-gradient(
+   90deg,
+   transparent 0,
+   rgba(40,40,60,.018) 1px,
+   transparent 2px,
+   transparent 5px
+  );
 }
 
 .membership-voucher:after{
@@ -637,7 +610,7 @@ button:disabled{opacity:.5;cursor:wait}
  inset:8px;
  z-index:-1;
  pointer-events:none;
- border:1px solid rgba(255,255,255,.055);
+ border:1px solid rgba(70,70,90,.10);
  border-radius:7px;
 }
 
@@ -654,8 +627,6 @@ button:disabled{opacity:.5;cursor:wait}
  gap:12px;
 }
 
-/* Sin monograma: identidad basada en el nombre */
-
 .voucher-logo{
  width:43px;
  height:43px;
@@ -664,23 +635,21 @@ button:disabled{opacity:.5;cursor:wait}
  align-items:center;
  justify-content:center;
  border-radius:5px;
- font-family:"Barlow Condensed",sans-serif;
- font-size:24px;
- font-weight:900;
- letter-spacing:-2px;
- color:#fff;
- background:#202027;
- border:1px solid #51515c;
- box-shadow:inset 0 1px 0 rgba(255,255,255,.09);
+ font-family:"UnifrakturMaguntia",serif;
+ font-size:27px;
+ color:var(--violeta);
+ background:#fff;
+ border:1px solid #d9d4e2;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
 }
 
 .voucher-brand-name{
- font-family:"Barlow Condensed",sans-serif;
- font-size:23px;
- font-weight:900;
- letter-spacing:.5px;
+ font-family:"UnifrakturMaguntia",serif;
+ font-size:29px;
+ font-weight:400;
+ letter-spacing:0;
  line-height:.95;
- text-transform:uppercase;
+ color:#202027;
 }
 
 .voucher-brand-sub{
@@ -703,15 +672,15 @@ button:disabled{opacity:.5;cursor:wait}
  font-size:8px;
  font-weight:700;
  letter-spacing:2px;
- color:#92929c;
+ color:#888894;
 }
 
 .voucher-type strong{
- font-family:"Barlow Condensed",sans-serif;
- font-size:23px;
- font-weight:800;
- letter-spacing:2px;
- color:#fff;
+ font-family:"UnifrakturMaguntia",serif;
+ font-size:27px;
+ font-weight:400;
+ letter-spacing:0;
+ color:var(--violeta);
 }
 
 .voucher-divider{
@@ -720,30 +689,30 @@ button:disabled{opacity:.5;cursor:wait}
  background:linear-gradient(
   90deg,
   transparent,
-  rgba(255,255,255,.24),
-  rgba(85,200,213,.55),
+  rgba(128,82,184,.28),
+  rgba(21,158,174,.55),
+  rgba(39,139,92,.28),
   transparent
  );
 }
 
 .voucher-kicker{
- font-family:"Permanent Marker",cursive;
- font-size:11px;
- letter-spacing:.8px;
- color:var(--cian);
+ font-family:"UnifrakturMaguntia",serif;
+ font-size:19px;
+ letter-spacing:0;
+ color:var(--verde);
  margin-bottom:10px;
- transform:rotate(-1deg);
- transform-origin:left center;
+ text-align:left;
 }
 
 .membership-voucher .detail-name{
- font-family:"Barlow Condensed",sans-serif;
- font-size:34px;
- font-weight:800;
- letter-spacing:.4px;
- color:#fff;
+ font-family:"UnifrakturMaguntia",serif;
+ font-size:36px;
+ font-weight:400;
+ letter-spacing:0;
+ color:#202027;
  margin:0 0 25px;
- text-transform:uppercase;
+ text-transform:none;
  overflow-wrap:anywhere;
 }
 
@@ -758,14 +727,14 @@ button:disabled{opacity:.5;cursor:wait}
  font-size:9px;
  font-weight:700;
  letter-spacing:1.5px;
- color:#a5a5ae;
+ color:#777783;
 }
 
 .voucher-progress-heading strong{
  font-family:"Barlow Condensed",sans-serif;
  font-size:21px;
  font-weight:800;
- color:#fff;
+ color:var(--cian);
 }
 
 .membership-voucher .stamps{
@@ -789,18 +758,18 @@ button:disabled{opacity:.5;cursor:wait}
  font-family:"Barlow Condensed",sans-serif;
  font-size:14px;
  font-weight:700;
- color:#777781;
- background:#111116;
- border:1px solid #494952;
- box-shadow:inset 0 1px 4px rgba(0,0,0,.4);
+ color:#9999a3;
+ background:#fff;
+ border:1px solid #d5d5de;
+ box-shadow:inset 0 1px 3px rgba(30,30,50,.04);
 }
 
 .membership-voucher .stamp.done{
- color:#08090e;
+ color:#fff;
  font-size:18px;
  font-weight:900;
- border:1px solid rgba(255,255,255,.65);
- background:var(--cian);
+ border:1px solid var(--verde);
+ background:var(--verde);
  box-shadow:none;
 }
 
@@ -808,7 +777,7 @@ button:disabled{opacity:.5;cursor:wait}
  height:5px;
  overflow:hidden;
  border-radius:20px;
- background:#303039;
+ background:#e4e4e9;
  border:0;
  margin:0;
  max-width:none;
@@ -817,7 +786,7 @@ button:disabled{opacity:.5;cursor:wait}
 .membership-voucher .progress-fill{
  height:100%;
  border-radius:20px;
- background:linear-gradient(90deg,var(--violeta),var(--cian));
+ background:linear-gradient(90deg,var(--violeta),var(--cian),var(--verde));
  box-shadow:none;
  transition:width .4s ease;
 }
@@ -825,7 +794,7 @@ button:disabled{opacity:.5;cursor:wait}
 .membership-voucher .status{
  font-size:11px;
  line-height:1.6;
- color:#b5b5bf;
+ color:#73737e;
  margin:15px 0 0;
  min-height:0;
 }
@@ -834,40 +803,40 @@ button:disabled{opacity:.5;cursor:wait}
  margin-top:20px;
  padding:17px;
  border-radius:7px;
- background:#211a2b;
- border:1px solid rgba(167,122,232,.55);
+ background:#f5effb;
+ border:1px solid rgba(128,82,184,.35);
  box-shadow:none;
 }
 
 .voucher-reward-label{
  font-size:9px;
  letter-spacing:1.8px;
- color:#d1b8f5;
+ color:var(--violeta);
  font-weight:700;
  margin-bottom:7px;
 }
 
 .membership-voucher .voucher-reward h3{
- font-family:"Barlow Condensed",sans-serif;
- font-size:21px;
- letter-spacing:.7px;
- color:#fff;
+ font-family:"UnifrakturMaguntia",serif;
+ font-size:25px;
+ letter-spacing:0;
+ color:#59378b;
  margin:0 0 8px;
 }
 
 .membership-voucher .voucher-reward .description{
- color:#fff;
+ color:#393343;
  font-size:14px;
 }
 
 .membership-voucher .voucher-reward .muted{
- color:#b8b0c4;
+ color:#777080;
  font-size:11px;
 }
 
 .voucher-divider-bottom{
  margin:23px 0 15px;
- opacity:.65;
+ opacity:.8;
 }
 
 .voucher-footer{
@@ -883,17 +852,18 @@ button:disabled{opacity:.5;cursor:wait}
 }
 
 .voucher-footer strong{
- font-family:"Barlow Condensed",sans-serif;
- font-size:17px;
- font-weight:800;
- letter-spacing:1.5px;
+ font-family:"UnifrakturMaguntia",serif;
+ font-size:24px;
+ font-weight:400;
+ letter-spacing:0;
+ color:#25242c;
 }
 
 .voucher-footer span{
  font-size:8px;
  font-weight:700;
  letter-spacing:1.5px;
- color:#92929c;
+ color:#888894;
 }
 
 .voucher-seal{
@@ -902,12 +872,12 @@ button:disabled{opacity:.5;cursor:wait}
  display:flex;
  justify-content:center;
  align-items:center;
- border:1px solid rgba(85,200,213,.6);
+ border:1px solid rgba(21,158,174,.55);
  border-radius:50%;
  color:var(--cian);
- font-family:"Barlow Condensed",sans-serif;
- font-weight:800;
- font-size:16px;
+ font-family:"UnifrakturMaguntia",serif;
+ font-weight:400;
+ font-size:22px;
 }
 
 .voucher-legal{
@@ -916,29 +886,19 @@ button:disabled{opacity:.5;cursor:wait}
  line-height:1.5;
  letter-spacing:.8px;
  text-align:center;
- color:#777781;
+ color:#92929c;
 }
 
 .footer{
  text-align:center;
- color:#777781;
+ color:#92929c;
  font-family:"Barlow Condensed",sans-serif;
  font-size:12px;
  font-weight:700;
  letter-spacing:2px;
  margin-top:26px;
  padding-top:15px;
- border-top:1px solid #292930;
-}
-
-@keyframes entrada{
- from{opacity:0;transform:translateY(7px)}
- to{opacity:1;transform:translateY(0)}
-}
-
-@keyframes panelEntrada{
- from{opacity:0;transform:translateY(9px)}
- to{opacity:1;transform:translateY(0)}
+ border-top:1px solid #e1e1e7;
 }
 
 @media(min-width:700px){
@@ -950,7 +910,7 @@ button:disabled{opacity:.5;cursor:wait}
  body{padding:22px 12px}
  .container{margin:5px auto}
  .panel{padding:16px}
- h1{font-size:27px}
+ h1{font-size:30px}
  .detail-name{font-size:25px}
  .public-card .detail-name{font-size:28px}
  .stamps{gap:7px}
@@ -963,10 +923,10 @@ button:disabled{opacity:.5;cursor:wait}
  .voucher-logo{
   width:38px;
   height:38px;
-  font-size:21px;
+  font-size:24px;
  }
- .voucher-brand-name{font-size:20px}
- .membership-voucher .detail-name{font-size:29px}
+ .voucher-brand-name{font-size:25px}
+ .membership-voucher .detail-name{font-size:31px}
  .membership-voucher .stamps{gap:7px}
  .membership-voucher .stamp{
   width:35px;
@@ -978,7 +938,7 @@ button:disabled{opacity:.5;cursor:wait}
 @media(max-width:350px){
  body{padding:17px 9px}
  .panel{padding:13px}
- h1{font-size:24px}
+ h1{font-size:26px}
  .brand{letter-spacing:3px}
  .stats{gap:5px}
  .stat{padding:10px 4px}
@@ -989,8 +949,8 @@ button:disabled{opacity:.5;cursor:wait}
  .quick-actions{gap:6px}
  .quick-actions button{font-size:14px;padding:11px 6px}
  .membership-voucher{padding:15px}
- .voucher-brand-name{font-size:17px}
- .voucher-type strong{font-size:19px}
+ .voucher-brand-name{font-size:21px}
+ .voucher-type strong{font-size:23px}
  .membership-voucher .stamp{
   width:32px;
   height:32px;
@@ -1008,9 +968,9 @@ button:disabled{opacity:.5;cursor:wait}
 <body>
 <main class="container">
 
-<div class="logo">REE NOMADE</div>
+<div class="logo">ReeNomade</div>
 <div class="brand">BARBERÍA · TARTAGAL</div>
-<h1 id="mainTitle">TARJETA DE FIDELIDAD</h1>
+<h1 id="mainTitle">Fidelidad</h1>
 <p class="subtitle" id="mainSubtitle">Cada visita cuenta. El barrio primero.</p>
 
 <section id="loginPanel" class="panel">
@@ -1024,45 +984,45 @@ button:disabled{opacity:.5;cursor:wait}
 <button id="loginButton" type="submit">INGRESAR</button>
 </form>
 <button id="resetPasswordButton" type="button" class="secondary">RECUPERAR CONTRASEÑA</button>
-<button id="goSignupButton" type="button" class="secondary">INSCRIBIRME AL CLUB NOMADE</button>
+<button id="goSignupButton" type="button" class="secondary">SOLICITAR TARJETA DE FIDELIDAD</button>
 <p id="loginStatus" class="status">Conectando...</p>
 </section>
 
 <section id="signupPanel" class="panel hidden">
-<h2>Sumate al Club Nomade</h2>
-<p class="description">Dejanos tu nombre y apellido. Tu solicitud será revisada por ReeNomade. Cuando sea aprobada, recibirás tu tarjeta personal.</p>
+<h2>Sumate a la fidelidad</h2>
+<p class="description">Dejanos tu nombre y apellido. Tu solicitud será revisada por ReeNomade. Cuando sea aprobada, recibirás tu tarjeta personal de fidelidad.</p>
 <form id="signupForm">
 <label for="signupName">Nombre y apellido</label>
 <input id="signupName" type="text" maxlength="70" minlength="3" placeholder="Ej.: Juan Pérez" autocomplete="name" required>
-<button id="signupButton" type="submit">ACCEDER AL CLUB NOMADE</button>
+<button id="signupButton" type="submit">SOLICITAR TARJETA</button>
 </form>
 <p id="signupStatus" class="status"></p>
 <button id="backLoginButton" type="button" class="secondary">VOLVER</button>
 </section>
 
-<!-- TARJETA PÚBLICA CLUB NOMADE -->
+<!-- TARJETA PÚBLICA DE FIDELIDAD -->
 <section id="publicCardPanel" class="panel public-card hidden">
 
  <div class="membership-voucher">
 
   <div class="voucher-header">
    <div class="voucher-brand">
-    <div class="voucher-logo">//</div>
+    <div class="voucher-logo">R</div>
     <div>
-     <div class="voucher-brand-name">REE NOMADE</div>
+     <div class="voucher-brand-name">ReeNomade</div>
      <div class="voucher-brand-sub">BARBERÍA</div>
     </div>
    </div>
 
    <div class="voucher-type">
-    <span>MEMBRESÍA</span>
-    <strong>VIP</strong>
+    <span>PROGRAMA DE</span>
+    <strong>Fidelidad</strong>
    </div>
   </div>
 
   <div class="voucher-divider"></div>
 
-  <div class="voucher-kicker">CLUB NOMADE · SOCIO</div>
+  <div class="voucher-kicker">Cada visita cuenta</div>
 
   <div id="publicCardName" class="detail-name">Cargando...</div>
 
@@ -1090,10 +1050,10 @@ button:disabled{opacity:.5;cursor:wait}
 
   <div class="voucher-footer">
    <div>
-    <strong>CLUB NOMADE</strong>
+    <strong>Fidelidad</strong>
     <span>EL BARRIO PRIMERO.</span>
    </div>
-   <div class="voucher-seal">//</div>
+   <div class="voucher-seal">R</div>
   </div>
 
   <p class="voucher-legal">
@@ -1130,7 +1090,7 @@ button:disabled{opacity:.5;cursor:wait}
 </div>
 
 <div class="panel" id="settingsPanel">
-<h2>Configuración del Club</h2>
+<h2>Configuración de fidelidad</h2>
 <p class="description">Modificá las condiciones de fidelidad. Los premios que ya estén pendientes conservarán su descripción original.</p>
 
 <label for="configMaxSellos">Visitas necesarias para desbloquear el premio</label>
@@ -1224,7 +1184,7 @@ button:disabled{opacity:.5;cursor:wait}
 <button id="logoutButton" class="secondary">CERRAR SESIÓN</button>
 </section>
 
-<div class="footer">REE NOMADE BARBERÍA · TARTAGAL</div>
+<div class="footer">REENOMADE BARBERÍA · TARTAGAL</div>
 </main>
 
 <script type="module">
@@ -1368,7 +1328,7 @@ actualizadoEn:serverTimestamp()
 };
 }
 
-/* CARGAR CONFIGURACIÓN DEL CLUB */
+/* CARGAR CONFIGURACIÓN DE FIDELIDAD */
 
 async function cargarConfiguracion(){
 const resultado=await getDoc(CONFIG_REF);
@@ -1465,12 +1425,12 @@ boton.disabled=false;
 if(modoRegistro){
 $("loginPanel").classList.add("hidden");
 $("signupPanel").classList.remove("hidden");
-$("mainTitle").textContent="INSCRIPCIÓN AL CLUB";
-$("mainSubtitle").textContent="El barrio primero.";
+$("mainTitle").textContent="Fidelidad";
+$("mainSubtitle").textContent="Solicitá tu tarjeta personal.";
 }else if(tarjetaToken){
 $("loginPanel").classList.add("hidden");
 $("publicCardPanel").classList.remove("hidden");
-$("mainTitle").textContent="TU TARJETA NOMADE";
+$("mainTitle").textContent="Tu tarjeta de fidelidad";
 $("mainSubtitle").textContent="Cada visita cuenta.";
 }else{
 $("loginPanel").classList.remove("hidden");
@@ -1510,7 +1470,7 @@ creadoEn:serverTimestamp()
 });
 
 $("signupName").value="";
-$("signupStatus").textContent="¡Solicitud enviada! ReeNomade revisará tu ingreso al Club Nomade.";
+$("signupStatus").textContent="¡Solicitud enviada! ReeNomade revisará tu solicitud.";
 $("signupButton").textContent="SOLICITUD ENVIADA";
 
 }catch(error){
