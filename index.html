@@ -3,102 +3,154 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#050507">
 <title>ReeNomade | Fidelidad</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box}
 
 :root{
- --fondo:#f7f7f8;
- --panel:#fff;
- --borde:#dedee5;
- --texto:#17171d;
- --suave:#777783;
- --violeta:#8052b8;
- --cian:#159eae;
- --verde:#278b5c;
+ --fondo:#050507;
+ --panel:rgba(17,17,22,.94);
+ --borde:rgba(255,255,255,.12);
+ --texto:#f5f5f7;
+ --suave:#9999a5;
+ --violeta:#a855f7;
+ --cian:#20d9e8;
+ --verde:#42d995;
  --blanco:#fff;
- --oscuro:#17171d;
+ --oscuro:#08080b;
 }
 
-html{scroll-behavior:smooth}
+html{
+ scroll-behavior:smooth;
+ background:#050507;
+}
 
 body{
+ position:relative;
+ isolation:isolate;
  margin:0;
- padding:30px 15px;
+ padding:35px 15px;
  min-height:100vh;
  overflow-x:hidden;
+ color:#f5f5f7;
  background:
-  radial-gradient(ellipse at 0% 10%,rgba(21,158,174,.07),transparent 38%),
-  radial-gradient(ellipse at 100% 90%,rgba(128,82,184,.07),transparent 38%),
-  #f7f7f8;
- color:var(--texto);
+  radial-gradient(ellipse at 12% 12%,rgba(145,48,255,.19),transparent 35%),
+  radial-gradient(ellipse at 90% 35%,rgba(0,208,235,.13),transparent 35%),
+  radial-gradient(ellipse at 50% 100%,rgba(126,40,190,.13),transparent 45%),
+  #050507;
  font-family:"Space Grotesk",Arial,sans-serif;
 }
 
+/* LUCES AMBIENTALES */
+body:before,
+body:after{
+ content:"";
+ position:fixed;
+ z-index:-1;
+ pointer-events:none;
+ width:440px;
+ height:440px;
+ border-radius:50%;
+ filter:blur(100px);
+ opacity:.24;
+ animation:studioGlow 12s ease-in-out infinite alternate;
+}
+
+body:before{
+ top:-210px;
+ left:-180px;
+ background:#922cff;
+}
+
+body:after{
+ right:-220px;
+ bottom:-180px;
+ background:#00cfe5;
+ animation-delay:-6s;
+}
+
+@keyframes studioGlow{
+ 0%{transform:translate3d(0,0,0) scale(.85);opacity:.15}
+ 50%{transform:translate3d(55px,45px,0) scale(1.15);opacity:.3}
+ 100%{transform:translate3d(-20px,70px,0) scale(.95);opacity:.2}
+}
+
+/* ESTRUCTURA */
 .container{
- max-width:540px;
- margin:10px auto;
+ max-width:560px;
+ margin:12px auto;
  position:relative;
  z-index:1;
 }
 
+/* IDENTIDAD */
 .logo{
  display:flex;
  align-items:center;
  justify-content:center;
  margin:0 auto 5px;
- padding:0;
- color:#17171d;
- font-family:"UnifrakturMaguntia",serif;
- font-size:49px;
+ color:#fff;
+ font-family:"Permanent Marker",cursive;
+ font-size:clamp(43px,10vw,65px);
  font-weight:400;
- line-height:1.1;
+ line-height:1;
+ letter-spacing:-2px;
  text-align:center;
+ text-shadow:
+  0 0 18px rgba(168,85,247,.28),
+  0 0 35px rgba(32,217,232,.12);
 }
 
 .brand{
  text-align:center;
  color:var(--cian);
- letter-spacing:4px;
+ letter-spacing:5px;
  font-family:"Space Grotesk",sans-serif;
  font-size:9px;
  font-weight:700;
  text-transform:uppercase;
- margin-top:3px;
+ margin-top:9px;
 }
 
 h1{
  text-align:center;
- font-family:"UnifrakturMaguntia",serif;
- font-size:34px;
- font-weight:400;
- color:var(--violeta);
- margin:15px 0 4px;
+ font-family:"Barlow Condensed",sans-serif;
+ font-size:clamp(30px,7vw,42px);
+ font-weight:900;
+ color:#fff;
+ letter-spacing:2px;
+ text-transform:uppercase;
+ margin:25px 0 5px;
+ text-shadow:0 0 25px rgba(168,85,247,.2);
 }
 
 .subtitle{
  text-align:center;
- color:var(--suave);
+ color:#a5a5b0;
  font-size:11px;
- letter-spacing:.5px;
- margin:0 0 25px;
+ letter-spacing:1px;
+ margin:0 0 26px;
 }
 
+/* PANELES */
 .panel{
  position:relative;
  overflow:hidden;
- background:#fff;
- border:1px solid var(--borde);
- border-radius:10px;
- padding:19px;
+ background:linear-gradient(145deg,rgba(25,25,33,.96),rgba(11,11,16,.96));
+ border:1px solid rgba(255,255,255,.105);
+ border-radius:12px;
+ padding:20px;
  margin-bottom:14px;
- box-shadow:0 8px 24px rgba(20,20,35,.055);
+ box-shadow:
+  0 15px 45px rgba(0,0,0,.4),
+  inset 0 1px 0 rgba(255,255,255,.035);
+ backdrop-filter:blur(12px);
 }
 
 .panel:before{
@@ -106,55 +158,59 @@ h1{
  position:absolute;
  top:0;
  left:0;
- width:42px;
- height:3px;
- background:linear-gradient(90deg,var(--cian),var(--violeta),var(--verde));
+ width:75px;
+ height:2px;
+ background:linear-gradient(90deg,var(--violeta),var(--cian),transparent);
  pointer-events:none;
 }
 
 .panel:after{display:none}
 
 h2{
- font-family:"UnifrakturMaguntia",serif;
- font-size:27px;
- font-weight:400;
- color:#24232b;
+ font-family:"Barlow Condensed",sans-serif;
+ font-size:28px;
+ font-weight:900;
+ letter-spacing:1px;
+ text-transform:uppercase;
+ color:#fff;
  margin:0 0 5px;
 }
 
 h3{
  font-family:"Barlow Condensed",sans-serif;
  font-size:21px;
- font-weight:800;
+ font-weight:900;
+ letter-spacing:1px;
  text-transform:uppercase;
  margin:0 0 8px;
- color:#24232b;
+ color:#fff;
 }
 
 .description{
- color:#73737e;
+ color:#a7a7b2;
  font-size:12px;
- line-height:1.6;
+ line-height:1.7;
  margin:5px 0 0;
 }
 
 label{
  display:block;
  margin:15px 0 7px;
- color:#565661;
+ color:#bdbdc8;
  font-size:10px;
  font-weight:700;
- letter-spacing:1px;
+ letter-spacing:1.4px;
  text-transform:uppercase;
 }
 
+/* CAMPOS */
 input,select,textarea{
  width:100%;
  padding:13px;
- border:1px solid #d5d5de;
- background:#fff;
- border-radius:6px;
- color:#17171d;
+ border:1px solid #33333e;
+ background:#0b0b10;
+ border-radius:7px;
+ color:#fff;
  font-family:"Space Grotesk",sans-serif;
  font-size:14px;
  outline:none;
@@ -165,69 +221,78 @@ textarea{resize:vertical;min-height:85px}
 
 input:focus,select:focus,textarea:focus{
  border-color:var(--cian);
- box-shadow:0 0 0 3px rgba(21,158,174,.10);
+ box-shadow:0 0 0 3px rgba(32,217,232,.10);
 }
 
-input::placeholder,textarea::placeholder{color:#a0a0aa}
+input::placeholder,textarea::placeholder{color:#686875}
 
+/* BOTONES */
 button{
  width:100%;
  padding:13px;
  margin-top:11px;
- border:1px solid transparent;
- border-radius:6px;
- background:#202027;
+ border:1px solid rgba(185,133,255,.35);
+ border-radius:7px;
+ background:linear-gradient(100deg,#8140c9,#552a91);
  color:#fff;
  font-family:"Barlow Condensed",sans-serif;
- font-size:16px;
- font-weight:800;
- letter-spacing:1px;
+ font-size:17px;
+ font-weight:900;
+ letter-spacing:1.3px;
  text-transform:uppercase;
  cursor:pointer;
  transition:background .2s,transform .2s,border-color .2s;
- box-shadow:none;
+ box-shadow:0 5px 18px rgba(103,47,160,.15);
 }
 
 button:hover:not(:disabled){
- background:var(--cian);
+ background:linear-gradient(100deg,#19b9cc,#087e99);
  color:#fff;
+ border-color:rgba(32,217,232,.5);
 }
 
 button:active:not(:disabled){transform:scale(.985)}
 button:disabled{opacity:.5;cursor:wait}
 
 .secondary{
- background:#fff;
- border-color:#d8d8e0;
- color:#393943;
+ background:#15151c;
+ border:1px solid #393944;
+ color:#e7e7ed;
+ box-shadow:none;
 }
 
 .secondary:hover:not(:disabled){
- background:#f1edf7;
- border-color:var(--violeta);
- color:#59378b;
+ background:#252530;
+ border-color:var(--cian);
+ color:#fff;
 }
 
 .danger{
- background:#fff;
- border-color:#d9aeb8;
- color:#a43c55;
+ background:#251218;
+ border-color:#71303f;
+ color:#ff9baa;
 }
 
-.danger:hover:not(:disabled){background:#fae9ed;color:#922c45}
+.danger:hover:not(:disabled){
+ background:#4a1726;
+ color:#fff;
+}
 
 .success{
- background:#eaf6ef;
- border-color:#b5dec5;
- color:#24784c;
+ background:#10251b;
+ border-color:#286644;
+ color:#8df0ba;
 }
 
-.success:hover:not(:disabled){background:#d9f0e2;color:#185f3a}
+.success:hover:not(:disabled){
+ background:#17452c;
+ color:#fff;
+}
 
 .hidden{display:none!important}
 
 .status{
- color:var(--suave);
+ color:#a0a0ad;
  font-size:11px;
  line-height:1.6;
  text-align:center;
@@ -235,8 +300,9 @@ button:disabled{opacity:.5;cursor:wait}
  min-height:15px;
 }
 
-.muted{color:#92929c;font-size:11px}
+.muted{color:#858592;font-size:11px}
 
+/* ADMINISTRACIÓN */
 .count{
  color:var(--cian);
  font-family:"Barlow Condensed",sans-serif;
@@ -261,8 +327,8 @@ button:disabled{opacity:.5;cursor:wait}
  font-size:9px;
  font-weight:700;
  letter-spacing:1px;
- border:1px solid rgba(39,139,92,.3);
- background:rgba(39,139,92,.06);
+ border:1px solid rgba(66,217,149,.3);
+ background:rgba(66,217,149,.07);
  padding:6px 9px;
  border-radius:3px;
  white-space:nowrap;
@@ -276,8 +342,8 @@ button:disabled{opacity:.5;cursor:wait}
 }
 
 .stat{
- background:#fafafd;
- border:1px solid #e2e2e9;
+ background:#101017;
+ border:1px solid #292934;
  border-radius:7px;
  padding:13px 7px;
  text-align:center;
@@ -286,7 +352,7 @@ button:disabled{opacity:.5;cursor:wait}
 
 .stat-number{
  display:block;
- color:var(--violeta);
+ color:var(--cian);
  font-family:"Barlow Condensed",sans-serif;
  font-size:29px;
  font-weight:700;
@@ -295,7 +361,7 @@ button:disabled{opacity:.5;cursor:wait}
 
 .stat-label{
  display:block;
- color:var(--suave);
+ color:#92929e;
  font-size:9px;
  letter-spacing:.7px;
  margin-top:5px;
@@ -312,8 +378,8 @@ button:disabled{opacity:.5;cursor:wait}
 
 .client-select{
  text-align:left;
- background:#fff;
- border:1px solid #e0e0e7;
+ background:#111118;
+ border:1px solid #30303b;
  margin-top:9px;
  padding:13px;
  border-radius:7px;
@@ -322,17 +388,17 @@ button:disabled{opacity:.5;cursor:wait}
 
 .client-select:hover{
  border-color:var(--cian);
- background:#f3fbfc;
+ background:#191923;
 }
 
 .client-name{
  font-weight:700;
  font-size:13px;
- color:#22222a;
+ color:#fff;
 }
 
 .client-date{
- color:#888891;
+ color:#858591;
  font-size:10px;
  margin-top:4px;
 }
@@ -378,13 +444,14 @@ button:disabled{opacity:.5;cursor:wait}
  font-family:"Barlow Condensed",sans-serif;
  font-size:29px;
  font-weight:700;
- color:#24232b;
+ color:#fff;
  margin:14px 0 3px;
  letter-spacing:.3px;
  text-transform:uppercase;
  overflow-wrap:anywhere;
 }
 
+/* SELLOS */
 .stamps{
  display:grid;
  grid-template-columns:repeat(auto-fit,minmax(43px,1fr));
@@ -394,22 +461,23 @@ button:disabled{opacity:.5;cursor:wait}
 
 .stamp{
  aspect-ratio:1;
- border:1px solid #d2d2dc;
+ border:1px solid #55515e;
  border-radius:50%;
  display:grid;
  place-items:center;
- color:#aaaab3;
+ color:#747480;
  font-family:"Barlow Condensed",sans-serif;
  font-weight:700;
  font-size:20px;
- background:#fff;
+ background:#14141b;
  transition:background .25s,border-color .25s,transform .25s;
 }
 
 .stamp.done{
- border:1px solid var(--verde);
- background:#e1f3e8;
- color:var(--verde);
+ border:1px solid #bd8aff;
+ background:linear-gradient(145deg,#8e43d5,#54228d);
+ color:#fff;
+ box-shadow:0 0 13px rgba(168,85,247,.35);
 }
 
 @keyframes selloEntrada{
@@ -419,7 +487,7 @@ button:disabled{opacity:.5;cursor:wait}
 
 .progress-line{
  height:6px;
- background:#e4e4e9;
+ background:#292832;
  border-radius:10px;
  overflow:hidden;
  margin:13px 0;
@@ -433,23 +501,25 @@ button:disabled{opacity:.5;cursor:wait}
  transition:width .55s ease;
 }
 
+/* PREMIOS */
 .reward{
- border:1px solid rgba(128,82,184,.35);
- background:#f5effb;
+ border:1px solid rgba(168,85,247,.4);
+ background:linear-gradient(120deg,rgba(168,85,247,.16),rgba(32,217,232,.07));
  padding:16px;
  border-radius:8px;
  margin-top:14px;
 }
 
-.reward h3{color:var(--violeta)}
+.reward h3{color:#fff}
 .reward .description{margin-bottom:8px}
 
+/* DETALLES E HISTORIAL */
 .visit-details{
- border:1px solid #dedee5;
+ border:1px solid #30303b;
  border-radius:8px;
  padding:14px;
  margin-top:15px;
- background:#fafafd;
+ background:#101017;
 }
 
 .visit-details summary{
@@ -467,6 +537,7 @@ button:disabled{opacity:.5;cursor:wait}
 }
 
 .visit-details summary::-webkit-details-marker{display:none}
+
 .visit-details summary:after{
  content:"+";
  font-family:"Space Grotesk",sans-serif;
@@ -475,15 +546,16 @@ button:disabled{opacity:.5;cursor:wait}
 }
 
 .visit-details[open] summary:after{content:"−"}
+
 .visit-details[open] summary{
  padding-bottom:12px;
- border-bottom:1px solid #e1e1e7;
+ border-bottom:1px solid #30303b;
 }
 
 .visit-details .description{font-size:11px}
 
 .history-item{
- border-bottom:1px solid #e5e5eb;
+ border-bottom:1px solid #30303b;
  padding:12px 0;
  font-size:12px;
 }
@@ -494,16 +566,16 @@ button:disabled{opacity:.5;cursor:wait}
  display:inline-block;
  padding:4px 8px;
  border-radius:3px;
- background:#f1edf7;
- border:1px solid #d7c5eb;
- color:#7045a1;
+ background:rgba(168,85,247,.12);
+ border:1px solid rgba(168,85,247,.35);
+ color:#d0a8ff;
  font-size:9px;
  margin-top:7px;
 }
 
 .request-item{
- border:1px solid #e0e0e7;
- background:#fff;
+ border:1px solid #30303b;
+ background:#111118;
  border-radius:7px;
  padding:13px;
  margin-top:10px;
@@ -511,13 +583,13 @@ button:disabled{opacity:.5;cursor:wait}
 
 .request-name{
  font-weight:700;
- color:#24232b;
+ color:#fff;
  font-size:13px;
 }
 
 .request-date{
  font-size:10px;
- color:var(--suave);
+ color:#9999a5;
  margin-top:4px;
 }
 
@@ -530,8 +602,8 @@ button:disabled{opacity:.5;cursor:wait}
 .request-actions button{margin-top:10px}
 
 .link-box{
- background:#f4fbfc;
- border:1px solid #c8e8eb;
+ background:rgba(32,217,232,.07);
+ border:1px solid rgba(32,217,232,.24);
  border-radius:6px;
  padding:11px;
  color:var(--cian);
@@ -540,15 +612,15 @@ button:disabled{opacity:.5;cursor:wait}
  margin-top:10px;
 }
 
-/* TARJETA PÚBLICA */
+/* =========================================
+   TARJETA PÚBLICA DIGITAL
+   ========================================= */
 
 .public-card{text-align:center}
 .public-card .detail-name{font-size:32px;letter-spacing:.5px}
 .public-card .stamps{max-width:390px;margin:22px auto}
 .public-card .progress-line{max-width:390px;margin:15px auto}
 .public-card .reward{text-align:left}
-
-/* TARJETA DE FIDELIDAD · TEXTURA MATE */
 
 #publicCardPanel{
  background:transparent!important;
@@ -562,22 +634,37 @@ button:disabled{opacity:.5;cursor:wait}
 #publicCardPanel:after{display:none!important}
 
 .membership-voucher{
+ display:grid;
+ grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);
+ grid-template-areas:
+  "header header"
+  "divider divider"
+  "kicker progresshead"
+  "name stamps"
+  "name progress"
+  "status status"
+  "reward reward"
+  "bottom bottom"
+  "footer footer"
+  "legal legal";
+ gap:0 24px;
  position:relative;
  isolation:isolate;
  overflow:hidden;
  width:100%;
- max-width:520px;
- margin:20px auto;
+ max-width:560px;
+ margin:18px auto;
  padding:25px;
- border-radius:12px;
- color:#202027;
+ border-radius:13px;
+ color:#fff;
  background:
-  linear-gradient(135deg,rgba(255,255,255,.8),transparent 35%),
-  linear-gradient(145deg,#fff 0%,#f7f7fa 55%,#fff 100%);
- border:1px solid #d8d8e1;
+  radial-gradient(ellipse at 0% 0%,rgba(168,85,247,.18),transparent 43%),
+  radial-gradient(ellipse at 100% 100%,rgba(32,217,232,.12),transparent 40%),
+  linear-gradient(145deg,#17151e,#09090d 65%,#111018);
+ border:1px solid rgba(255,255,255,.19);
  box-shadow:
-  0 15px 32px rgba(25,25,40,.10),
-  inset 0 1px 0 rgba(255,255,255,.95);
+  0 20px 55px rgba(0,0,0,.55),
+  inset 0 1px 0 rgba(255,255,255,.08);
 }
 
 .membership-voucher:before{
@@ -585,22 +672,15 @@ button:disabled{opacity:.5;cursor:wait}
  position:absolute;
  inset:0;
  z-index:-1;
+ opacity:.3;
  pointer-events:none;
- opacity:.24;
  background:
   repeating-linear-gradient(
    0deg,
-   transparent 0,
-   rgba(40,40,60,.025) 1px,
+   transparent,
+   rgba(255,255,255,.025) 1px,
    transparent 2px,
    transparent 4px
-  ),
-  repeating-linear-gradient(
-   90deg,
-   transparent 0,
-   rgba(40,40,60,.018) 1px,
-   transparent 2px,
-   transparent 5px
   );
 }
 
@@ -610,11 +690,12 @@ button:disabled{opacity:.5;cursor:wait}
  inset:8px;
  z-index:-1;
  pointer-events:none;
- border:1px solid rgba(70,70,90,.10);
- border-radius:7px;
+ border:1px solid rgba(255,255,255,.09);
+ border-radius:8px;
 }
 
 .voucher-header{
+ grid-area:header;
  display:flex;
  justify-content:space-between;
  align-items:center;
@@ -624,39 +705,39 @@ button:disabled{opacity:.5;cursor:wait}
 .voucher-brand{
  display:flex;
  align-items:center;
- gap:12px;
+ gap:13px;
 }
 
 .voucher-logo{
- width:43px;
- height:43px;
+ width:52px;
+ height:52px;
  flex-shrink:0;
  display:flex;
  align-items:center;
  justify-content:center;
- border-radius:5px;
- font-family:"UnifrakturMaguntia",serif;
- font-size:27px;
- color:var(--violeta);
- background:#fff;
- border:1px solid #d9d4e2;
- box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
+ border-radius:50%;
+ color:#fff;
+ font-family:"Permanent Marker",cursive;
+ font-size:29px;
+ background:linear-gradient(145deg,#24202e,#111117);
+ border:1px solid rgba(168,85,247,.7);
+ box-shadow:0 0 20px rgba(168,85,247,.15);
 }
 
 .voucher-brand-name{
- font-family:"UnifrakturMaguntia",serif;
+ font-family:"Permanent Marker",cursive;
  font-size:29px;
  font-weight:400;
  letter-spacing:0;
- line-height:.95;
- color:#202027;
+ line-height:1;
+ color:#fff;
 }
 
 .voucher-brand-sub{
  font-family:"Space Grotesk",sans-serif;
  font-size:8px;
  font-weight:700;
- letter-spacing:3px;
+ letter-spacing:4px;
  color:var(--cian);
  margin-top:5px;
 }
@@ -672,114 +753,119 @@ button:disabled{opacity:.5;cursor:wait}
  font-size:8px;
  font-weight:700;
  letter-spacing:2px;
- color:#888894;
+ color:#aaaab6;
 }
 
 .voucher-type strong{
- font-family:"UnifrakturMaguntia",serif;
- font-size:27px;
- font-weight:400;
- letter-spacing:0;
- color:var(--violeta);
+ font-family:"Barlow Condensed",sans-serif;
+ font-size:24px;
+ font-weight:900;
+ letter-spacing:1px;
+ color:#fff;
+ text-transform:uppercase;
 }
 
 .voucher-divider{
+ grid-area:divider;
  height:1px;
- margin:20px 0;
- background:linear-gradient(
-  90deg,
-  transparent,
-  rgba(128,82,184,.28),
-  rgba(21,158,174,.55),
-  rgba(39,139,92,.28),
-  transparent
- );
+ margin:19px 0;
+ background:linear-gradient(90deg,transparent,var(--violeta),var(--cian),transparent);
+ opacity:.8;
 }
 
 .voucher-kicker{
- font-family:"UnifrakturMaguntia",serif;
- font-size:19px;
- letter-spacing:0;
- color:var(--verde);
- margin-bottom:10px;
+ grid-area:kicker;
+ font-family:"Barlow Condensed",sans-serif;
+ font-size:17px;
+ font-weight:800;
+ letter-spacing:1.5px;
+ color:var(--cian);
+ margin:0 0 10px;
  text-align:left;
+ text-transform:uppercase;
 }
 
 .membership-voucher .detail-name{
- font-family:"UnifrakturMaguntia",serif;
- font-size:36px;
+ grid-area:name;
+ align-self:center;
+ font-family:"Permanent Marker",cursive;
+ font-size:clamp(25px,5vw,36px);
  font-weight:400;
+ line-height:1.2;
  letter-spacing:0;
- color:#202027;
- margin:0 0 25px;
+ color:#fff;
+ margin:0;
  text-transform:none;
  overflow-wrap:anywhere;
 }
 
 .voucher-progress-heading{
+ grid-area:progresshead;
+ align-self:end;
  display:flex;
  justify-content:space-between;
  align-items:center;
- margin-bottom:13px;
+ margin-bottom:12px;
 }
 
 .voucher-progress-heading span{
  font-size:9px;
  font-weight:700;
- letter-spacing:1.5px;
- color:#777783;
+ letter-spacing:1.2px;
+ color:#aaaab6;
 }
 
 .voucher-progress-heading strong{
  font-family:"Barlow Condensed",sans-serif;
- font-size:21px;
- font-weight:800;
+ font-size:22px;
+ font-weight:900;
  color:var(--cian);
 }
 
 .membership-voucher .stamps{
- display:flex;
- flex-wrap:wrap;
- justify-content:flex-start;
- gap:9px;
- margin:0 0 18px;
- max-width:none;
+ grid-area:stamps;
+ display:grid;
+ grid-template-columns:repeat(3,minmax(34px,1fr));
+ justify-content:stretch;
+ gap:10px;
+ margin:0 0 14px;
+ max-width:220px;
 }
 
 .membership-voucher .stamp{
- width:39px;
- height:39px;
- min-width:39px;
+ width:100%;
+ height:auto;
+ min-width:0;
  aspect-ratio:1;
  border-radius:50%;
- display:flex;
- align-items:center;
- justify-content:center;
+ display:grid;
+ place-items:center;
+ color:#747480;
+ background:#14141b;
+ border:1px solid #55515e;
  font-family:"Barlow Condensed",sans-serif;
- font-size:14px;
- font-weight:700;
- color:#9999a3;
- background:#fff;
- border:1px solid #d5d5de;
- box-shadow:inset 0 1px 3px rgba(30,30,50,.04);
+ font-size:19px;
+ font-weight:900;
+ box-shadow:inset 0 0 12px rgba(0,0,0,.5);
 }
 
 .membership-voucher .stamp.done{
  color:#fff;
- font-size:18px;
- font-weight:900;
- border:1px solid var(--verde);
- background:var(--verde);
- box-shadow:none;
+ background:linear-gradient(145deg,#8e43d5,#54228d);
+ border:1px solid #bd8aff;
+ box-shadow:
+  0 0 13px rgba(168,85,247,.35),
+  inset 0 1px 0 rgba(255,255,255,.2);
 }
 
 .membership-voucher .progress-line{
+ grid-area:progress;
  height:5px;
  overflow:hidden;
  border-radius:20px;
- background:#e4e4e9;
+ background:#292832;
  border:0;
- margin:0;
+ margin:0 0 12px;
  max-width:none;
 }
 
@@ -787,59 +873,64 @@ button:disabled{opacity:.5;cursor:wait}
  height:100%;
  border-radius:20px;
  background:linear-gradient(90deg,var(--violeta),var(--cian),var(--verde));
- box-shadow:none;
+ box-shadow:0 0 12px rgba(32,217,232,.3);
  transition:width .4s ease;
 }
 
 .membership-voucher .status{
+ grid-area:status;
  font-size:11px;
  line-height:1.6;
- color:#73737e;
- margin:15px 0 0;
+ color:#a8a8b4;
+ margin:10px 0 0;
  min-height:0;
 }
 
 .membership-voucher .voucher-reward{
- margin-top:20px;
- padding:17px;
- border-radius:7px;
- background:#f5effb;
- border:1px solid rgba(128,82,184,.35);
+ grid-area:reward;
+ margin-top:19px;
+ padding:16px;
+ border-radius:8px;
+ background:linear-gradient(120deg,rgba(168,85,247,.16),rgba(32,217,232,.07));
+ border:1px solid rgba(168,85,247,.45);
  box-shadow:none;
 }
 
 .voucher-reward-label{
  font-size:9px;
  letter-spacing:1.8px;
- color:var(--violeta);
+ color:#c59aff;
  font-weight:700;
  margin-bottom:7px;
 }
 
 .membership-voucher .voucher-reward h3{
- font-family:"UnifrakturMaguntia",serif;
+ font-family:"Barlow Condensed",sans-serif;
  font-size:25px;
- letter-spacing:0;
- color:#59378b;
+ font-weight:900;
+ letter-spacing:1px;
+ color:#fff;
  margin:0 0 8px;
 }
 
 .membership-voucher .voucher-reward .description{
- color:#393343;
+ color:#e1dce9;
  font-size:14px;
 }
 
 .membership-voucher .voucher-reward .muted{
- color:#777080;
+ color:#a7a2af;
  font-size:11px;
 }
 
 .voucher-divider-bottom{
- margin:23px 0 15px;
+ grid-area:bottom;
+ margin:20px 0 13px;
  opacity:.8;
 }
 
 .voucher-footer{
+ grid-area:footer;
  display:flex;
  align-items:center;
  justify-content:space-between;
@@ -852,18 +943,18 @@ button:disabled{opacity:.5;cursor:wait}
 }
 
 .voucher-footer strong{
- font-family:"UnifrakturMaguntia",serif;
- font-size:24px;
+ font-family:"Permanent Marker",cursive;
+ font-size:23px;
  font-weight:400;
  letter-spacing:0;
- color:#25242c;
+ color:#fff;
 }
 
 .voucher-footer span{
  font-size:8px;
  font-weight:700;
  letter-spacing:1.5px;
- color:#888894;
+ color:#aaaab6;
 }
 
 .voucher-seal{
@@ -872,95 +963,174 @@ button:disabled{opacity:.5;cursor:wait}
  display:flex;
  justify-content:center;
  align-items:center;
- border:1px solid rgba(21,158,174,.55);
+ border:1px solid rgba(32,217,232,.65);
  border-radius:50%;
  color:var(--cian);
- font-family:"UnifrakturMaguntia",serif;
+ font-family:"Permanent Marker",cursive;
  font-weight:400;
  font-size:22px;
 }
 
 .voucher-legal{
+ grid-area:legal;
  margin:15px 0 0;
  font-size:8px;
  line-height:1.5;
- letter-spacing:.8px;
+ letter-spacing:.7px;
  text-align:center;
- color:#92929c;
+ color:#777783;
 }
 
+/* PIE */
 .footer{
  text-align:center;
- color:#92929c;
+ color:#777783;
  font-family:"Barlow Condensed",sans-serif;
  font-size:12px;
  font-weight:700;
  letter-spacing:2px;
  margin-top:26px;
  padding-top:15px;
- border-top:1px solid #e1e1e7;
+ border-top:1px solid rgba(255,255,255,.1);
 }
 
+/* ANIMACIÓN DE ENTRADA */
+@keyframes cardArrival{
+ from{opacity:0;transform:translateY(12px)}
+ to{opacity:1;transform:translateY(0)}
+}
+
+@media(prefers-reduced-motion:no-preference){
+ .membership-voucher{
+  animation:cardArrival .7s ease both;
+ }
+}
+
+/* RESPONSIVE */
 @media(min-width:700px){
  body{padding-top:38px;padding-bottom:38px}
  .container{max-width:560px}
 }
 
 @media(max-width:480px){
- body{padding:22px 12px}
+ body{padding:23px 12px}
  .container{margin:5px auto}
+
+ .logo{font-size:49px}
+
  .panel{padding:16px}
+
  h1{font-size:30px}
+
  .detail-name{font-size:25px}
  .public-card .detail-name{font-size:28px}
+
  .stamps{gap:7px}
+
  .stamp{font-size:18px}
+
  .membership-voucher{
   padding:19px;
   border-radius:10px;
   margin:12px auto;
+  gap:0 14px;
  }
+
  .voucher-logo{
-  width:38px;
-  height:38px;
+  width:43px;
+  height:43px;
   font-size:24px;
  }
- .voucher-brand-name{font-size:25px}
- .membership-voucher .detail-name{font-size:31px}
+
+ .voucher-brand-name{font-size:24px}
+
+ .membership-voucher .detail-name{font-size:25px}
+
  .membership-voucher .stamps{gap:7px}
+
  .membership-voucher .stamp{
-  width:35px;
-  height:35px;
-  min-width:35px;
+  font-size:16px;
  }
 }
 
-@media(max-width:350px){
+@media(max-width:360px){
  body{padding:17px 9px}
+
  .panel{padding:13px}
+
  h1{font-size:26px}
+
  .brand{letter-spacing:3px}
+
  .stats{gap:5px}
+
  .stat{padding:10px 4px}
+
  .stat-number{font-size:22px}
+
  .stat-label{font-size:8px}
+
  .stamps{gap:5px}
+
  .stamp{font-size:16px}
+
  .quick-actions{gap:6px}
+
  .quick-actions button{font-size:14px;padding:11px 6px}
- .membership-voucher{padding:15px}
- .voucher-brand-name{font-size:21px}
- .voucher-type strong{font-size:23px}
- .membership-voucher .stamp{
-  width:32px;
-  height:32px;
-  min-width:32px;
+
+ .membership-voucher{
+  padding:15px;
+  grid-template-columns:1fr;
+  grid-template-areas:
+   "header"
+   "divider"
+   "kicker"
+   "name"
+   "progresshead"
+   "stamps"
+   "progress"
+   "status"
+   "reward"
+   "bottom"
+   "footer"
+   "legal";
  }
+
+ .voucher-brand-name{font-size:21px}
+
+ .voucher-type strong{font-size:20px}
+
+ .membership-voucher .detail-name{
+  font-size:25px;
+  margin:0 0 18px;
+ }
+
+ .membership-voucher .stamps{
+  max-width:100%;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+ }
+
+ .membership-voucher .stamp{
+  width:100%;
+  height:auto;
+  min-width:0;
+  font-size:15px;
+ }
+
+ .voucher-progress-heading{margin-bottom:10px}
 }
 
 @media(prefers-reduced-motion:reduce){
  html{scroll-behavior:auto!important}
- *,*:before,*:after{animation:none!important;transition:none!important}
+ *,
+ *:before,
+ *:after{
+  animation:none!important;
+  transition:none!important;
+ }
+
+ body:before,
+ body:after{animation:none!important}
 }
 </style>
 </head>
@@ -1015,7 +1185,7 @@ button:disabled{opacity:.5;cursor:wait}
    </div>
 
    <div class="voucher-type">
-    <span>PROGRAMA DE</span>
+    <span>TARJETA DE</span>
     <strong>Fidelidad</strong>
    </div>
   </div>
