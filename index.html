@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -345,12 +345,10 @@ button:disabled{opacity:.5;cursor:wait}
 </section>
 
 <div class="footer">REE NOMADE BARBERÍA · TARTAGAL</div>
-
-<script type="module">
+</main><script type="module">
 
 // FIREBASE APP
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 
 // FIREBASE APP CHECK
 import {
@@ -358,7 +356,7 @@ import {
   ReCaptchaEnterpriseProvider
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app-check.js";
 
-// FIREBASE AUTHENTICATION
+// FIREBASE AUTH
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -384,31 +382,6 @@ import {
   setDoc,
   writeBatch
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-const firebaseConfig={
-apiKey:"AIzaSyC2bIdlKQ0GR0h0t89GllNM5aau46AY2Co",
-authDomain:"reenomade-fidelidad.firebaseapp.com",
-projectId:"reenomade-fidelidad",
-storageBucket:"reenomade-fidelidad.firebasestorage.app",
-messagingSenderId:"1032497285090",
-appId:"1:1032497285090:web:d11c4db30a43a7db5d5bbb"
-};
-
-const ADMIN_UID="K0LaJmqd3RWM8GXzwSyfKD9atwq1";
-
-const app=initializeApp(firebaseConfig);
-
-// SEGURIDAD: FIREBASE APP CHECK
-const appCheck=initializeAppCheck(app,{
-provider:new ReCaptchaEnterpriseProvider(
-"6LdoLg0uAAAAADLBfScMh5yaZOdrolmVcOvw6eI7"
-),
-isTokenAutoRefreshEnabled:true
-});
-
-// SERVICIOS FIREBASE
-const auth=getAuth(app);
-const db=getFirestore(app);
-const $=id=>document.getElementById(id);
 const firebaseConfig={
 apiKey:"AIzaSyC2bIdlKQ0GR0h0t89GllNM5aau46AY2Co",
 authDomain:"reenomade-fidelidad.firebaseapp.com",
