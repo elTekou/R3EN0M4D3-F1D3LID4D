@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -31,18 +32,8 @@ body{
  linear-gradient(145deg,#09090e,#111018 48%,#09090e);
  color:var(--texto);font-family:"DM Sans",Arial,sans-serif;
 }
-body:before{
- content:"";position:fixed;inset:-15%;z-index:-1;pointer-events:none;opacity:.75;
- background:
- radial-gradient(circle,rgba(209,184,245,.9) 1px,transparent 2px),
- radial-gradient(circle,rgba(85,200,213,.85) 1.2px,transparent 2.2px),
- radial-gradient(circle,rgba(167,122,232,.75) 1px,transparent 2px),
- radial-gradient(circle,rgba(85,200,213,.55) 1px,transparent 2px),
- radial-gradient(circle,rgba(238,229,212,.45) 1px,transparent 2px);
- background-size:145px 165px,195px 185px,230px 205px,175px 225px,265px 245px;
- background-position:0 0,55px 80px,110px 35px,25px 125px,160px 100px;
- animation:particulas 17s ease-in-out infinite alternate;
-}
+
+/* Fondo sin partículas: se conservan las luces ambientales */
 body:after{
  content:"";position:fixed;inset:-20%;z-index:-1;pointer-events:none;opacity:.8;
  background:
@@ -50,10 +41,13 @@ body:after{
  radial-gradient(ellipse at 82% 35%,rgba(167,122,232,.17),transparent 32%),
  radial-gradient(ellipse at 50% 85%,rgba(85,200,213,.08),transparent 38%),
  linear-gradient(120deg,transparent 35%,rgba(255,255,255,.018) 50%,transparent 65%);
- background-size:140% 140%;animation:luces 19s ease-in-out infinite alternate;
+ background-size:140% 140%;
+ animation:luces 19s ease-in-out infinite alternate;
 }
-@keyframes particulas{from{transform:translate3d(-8px,10px,0)}to{transform:translate3d(12px,-24px,0)}}
-@keyframes luces{from{transform:translate3d(-2%,0,0) scale(1);opacity:.55}to{transform:translate3d(2%,-1%,0) scale(1.06);opacity:.95}}
+@keyframes luces{
+ from{transform:translate3d(-2%,0,0) scale(1);opacity:.55}
+ to{transform:translate3d(2%,-1%,0) scale(1.06);opacity:.95}
+}
 
 .container{max-width:540px;margin:10px auto;position:relative;z-index:1}
 .logo{
@@ -164,10 +158,418 @@ button:disabled{opacity:.5;cursor:wait}
 .footer{text-align:center;color:#817987;font-family:"Oswald",sans-serif;font-size:10px;letter-spacing:2.2px;margin-top:26px;padding-top:15px;border-top:1px solid #302b35;text-shadow:0 0 12px rgba(167,122,232,.15)}
 @keyframes entrada{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
 @keyframes panelEntrada{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
-@media(min-width:700px){body{padding-top:38px;padding-bottom:38px}.container{max-width:560px}}
-@media(max-width:480px){body{padding:22px 12px}.container{margin:5px auto}.panel{padding:16px}h1{font-size:24px}.detail-name{font-size:24px}.public-card .detail-name{font-size:27px}.stamps{gap:7px}.stamp{font-size:18px}}
-@media(max-width:350px){body{padding:17px 9px}.panel{padding:13px}h1{font-size:22px}.brand{letter-spacing:3px}.stats{gap:5px}.stat{padding:10px 4px}.stat-number{font-size:22px}.stat-label{font-size:8px}.stamps{gap:5px}.stamp{font-size:16px}.quick-actions{gap:6px}.quick-actions button{font-size:12px;padding:11px 6px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*:before,*:after{animation:none!important;transition:none!important}}
+
+/* =====================================
+   CLUB NOMADE · TARJETA VIP
+===================================== */
+
+#publicCardPanel{
+ background:transparent!important;
+ border:0!important;
+ box-shadow:none!important;
+ padding:0!important;
+ overflow:visible!important;
+}
+
+#publicCardPanel:before,
+#publicCardPanel:after{
+ display:none!important;
+}
+
+.membership-voucher{
+ position:relative;
+ isolation:isolate;
+ overflow:hidden;
+ width:100%;
+ max-width:520px;
+ margin:20px auto;
+ padding:25px;
+ border-radius:19px;
+ color:#f7f5fb;
+ background:
+ radial-gradient(ellipse at 0% 0%,rgba(167,122,232,.25),transparent 48%),
+ radial-gradient(ellipse at 100% 100%,rgba(85,200,213,.19),transparent 48%),
+ linear-gradient(135deg,#17131f 0%,#09090e 48%,#111923 100%);
+ border:1px solid rgba(209,184,245,.38);
+ box-shadow:
+ 0 20px 50px rgba(0,0,0,.48),
+ inset 0 1px 0 rgba(255,255,255,.13),
+ inset 0 -1px 0 rgba(0,0,0,.6);
+}
+
+/* Textura sutil de cartón plastificado */
+.membership-voucher:before{
+ content:"";
+ position:absolute;
+ inset:0;
+ z-index:-1;
+ pointer-events:none;
+ opacity:.2;
+ background:
+ repeating-linear-gradient(
+  0deg,
+  transparent 0,
+  rgba(255,255,255,.035) 1px,
+  transparent 2px,
+  transparent 4px
+ ),
+ repeating-linear-gradient(
+  90deg,
+  transparent 0,
+  rgba(255,255,255,.018) 1px,
+  transparent 2px,
+  transparent 5px
+ );
+}
+
+.membership-voucher:after{
+ content:"";
+ position:absolute;
+ inset:0;
+ z-index:-1;
+ pointer-events:none;
+ border-radius:19px;
+ background:
+ linear-gradient(
+  125deg,
+  rgba(255,255,255,.12) 0%,
+  transparent 23%,
+  transparent 70%,
+  rgba(85,200,213,.06) 100%
+ );
+}
+
+.voucher-header{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:12px;
+}
+
+.voucher-brand{
+ display:flex;
+ align-items:center;
+ gap:12px;
+}
+
+.voucher-logo{
+ width:49px;
+ height:49px;
+ flex-shrink:0;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ border-radius:12px;
+ font-family:"Oswald",sans-serif;
+ font-size:23px;
+ font-weight:700;
+ letter-spacing:-1px;
+ color:#fff;
+ background:linear-gradient(135deg,#a77ae8,#55c8d5);
+ box-shadow:0 4px 18px rgba(85,200,213,.18);
+}
+
+.voucher-brand-name{
+ font-family:"Oswald",sans-serif;
+ font-size:17px;
+ font-weight:700;
+ letter-spacing:2px;
+}
+
+.voucher-brand-sub{
+ font-size:9px;
+ letter-spacing:3px;
+ color:#aaa3b5;
+ margin-top:2px;
+}
+
+.voucher-type{
+ text-align:right;
+ display:flex;
+ flex-direction:column;
+ gap:1px;
+}
+
+.voucher-type span{
+ font-size:9px;
+ letter-spacing:2px;
+ color:#aaa3b5;
+}
+
+.voucher-type strong{
+ font-family:"Oswald",sans-serif;
+ font-size:23px;
+ letter-spacing:3px;
+ background:linear-gradient(90deg,#d1b8f5,#55c8d5);
+ -webkit-background-clip:text;
+ background-clip:text;
+ color:transparent;
+}
+
+.voucher-divider{
+ height:1px;
+ margin:20px 0;
+ background:linear-gradient(
+  90deg,
+  transparent,
+  rgba(167,122,232,.8),
+  rgba(85,200,213,.8),
+  transparent
+ );
+}
+
+.voucher-kicker{
+ font-size:9px;
+ font-weight:700;
+ letter-spacing:3px;
+ color:#55c8d5;
+ margin-bottom:8px;
+}
+
+.membership-voucher .detail-name{
+ font-family:"Oswald",sans-serif;
+ font-size:29px;
+ font-weight:600;
+ letter-spacing:1px;
+ color:#fff;
+ margin:0 0 25px;
+ overflow-wrap:anywhere;
+ text-shadow:0 0 18px rgba(167,122,232,.2);
+}
+
+.voucher-progress-heading{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:13px;
+}
+
+.voucher-progress-heading span{
+ font-size:10px;
+ letter-spacing:1.8px;
+ color:#aaa3b5;
+}
+
+.voucher-progress-heading strong{
+ font-family:"Oswald",sans-serif;
+ font-size:19px;
+ color:#d1b8f5;
+}
+
+.membership-voucher .stamps{
+ display:flex;
+ flex-wrap:wrap;
+ justify-content:flex-start;
+ gap:9px;
+ margin:0 0 18px;
+ max-width:none;
+}
+
+.membership-voucher .stamp{
+ width:39px;
+ height:39px;
+ min-width:39px;
+ aspect-ratio:1;
+ border-radius:50%;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-family:"Oswald",sans-serif;
+ font-size:13px;
+ color:#aaa3b5;
+ background:rgba(255,255,255,.035);
+ border:1px dashed rgba(209,184,245,.38);
+ box-shadow:inset 0 1px 4px rgba(0,0,0,.5);
+}
+
+.membership-voucher .stamp.done{
+ color:#08090e;
+ font-size:17px;
+ font-weight:900;
+ border:1px solid rgba(255,255,255,.5);
+ background:linear-gradient(135deg,#d1b8f5,#55c8d5);
+ box-shadow:0 0 13px rgba(85,200,213,.2);
+}
+
+.membership-voucher .progress-line{
+ height:7px;
+ overflow:hidden;
+ border-radius:20px;
+ background:rgba(255,255,255,.09);
+ border:1px solid rgba(255,255,255,.06);
+ margin:0;
+ max-width:none;
+}
+
+.membership-voucher .progress-fill{
+ height:100%;
+ border-radius:20px;
+ background:linear-gradient(90deg,#a77ae8,#d1b8f5,#55c8d5);
+ box-shadow:0 0 12px rgba(85,200,213,.3);
+ transition:width .4s ease;
+}
+
+.membership-voucher .status{
+ font-size:12px;
+ line-height:1.6;
+ color:#c9c2d4;
+ margin:15px 0 0;
+ min-height:0;
+}
+
+.membership-voucher .voucher-reward{
+ margin-top:20px;
+ padding:17px;
+ border-radius:14px;
+ background:linear-gradient(
+  135deg,
+  rgba(167,122,232,.16),
+  rgba(85,200,213,.10)
+ );
+ border:1px solid rgba(209,184,245,.38);
+ box-shadow:inset 0 0 20px rgba(167,122,232,.055);
+}
+
+.voucher-reward-label{
+ font-size:9px;
+ letter-spacing:2px;
+ color:#55c8d5;
+ font-weight:700;
+ margin-bottom:7px;
+}
+
+.membership-voucher .voucher-reward h3{
+ font-family:"Oswald",sans-serif;
+ font-size:19px;
+ letter-spacing:1px;
+ color:#fff;
+ margin:0 0 8px;
+}
+
+.membership-voucher .voucher-reward .description{
+ color:#fff;
+ font-size:14px;
+}
+
+.membership-voucher .voucher-reward .muted{
+ color:#b8b0c4;
+ font-size:11px;
+}
+
+.voucher-divider-bottom{
+ margin:23px 0 15px;
+ opacity:.65;
+}
+
+.voucher-footer{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+}
+
+.voucher-footer div:first-child{
+ display:flex;
+ flex-direction:column;
+ gap:4px;
+}
+
+.voucher-footer strong{
+ font-family:"Oswald",sans-serif;
+ font-size:13px;
+ letter-spacing:2px;
+}
+
+.voucher-footer span{
+ font-size:9px;
+ letter-spacing:2px;
+ color:#aaa3b5;
+}
+
+.voucher-seal{
+ width:35px;
+ height:35px;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ border:1px solid rgba(85,200,213,.5);
+ border-radius:50%;
+ color:#55c8d5;
+ font-family:"Oswald",sans-serif;
+ font-weight:700;
+ font-size:13px;
+}
+
+.voucher-legal{
+ margin:15px 0 0;
+ font-size:8px;
+ line-height:1.5;
+ letter-spacing:1px;
+ text-align:center;
+ color:#777181;
+}
+
+@media(min-width:700px){
+ body{padding-top:38px;padding-bottom:38px}
+ .container{max-width:560px}
+}
+
+@media(max-width:480px){
+ body{padding:22px 12px}
+ .container{margin:5px auto}
+ .panel{padding:16px}
+ h1{font-size:24px}
+ .detail-name{font-size:24px}
+ .public-card .detail-name{font-size:27px}
+ .stamps{gap:7px}
+ .stamp{font-size:18px}
+
+ .membership-voucher{
+  padding:19px;
+  border-radius:17px;
+  margin:12px auto;
+ }
+ .voucher-logo{
+  width:43px;
+  height:43px;
+  font-size:20px;
+ }
+ .voucher-brand-name{font-size:15px}
+ .membership-voucher .detail-name{font-size:25px}
+ .membership-voucher .stamps{gap:7px}
+ .membership-voucher .stamp{
+  width:35px;
+  height:35px;
+  min-width:35px;
+ }
+}
+
+@media(max-width:350px){
+ body{padding:17px 9px}
+ .panel{padding:13px}
+ h1{font-size:22px}
+ .brand{letter-spacing:3px}
+ .stats{gap:5px}
+ .stat{padding:10px 4px}
+ .stat-number{font-size:22px}
+ .stat-label{font-size:8px}
+ .stamps{gap:5px}
+ .stamp{font-size:16px}
+ .quick-actions{gap:6px}
+ .quick-actions button{font-size:12px;padding:11px 6px}
+ .membership-voucher{padding:15px}
+ .voucher-brand-name{font-size:13px}
+ .voucher-type strong{font-size:19px}
+ .membership-voucher .stamp{
+  width:32px;
+  height:32px;
+  min-width:32px;
+ }
+}
+
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto!important}
+ *,*:before,*:after{animation:none!important;transition:none!important}
+}
 </style>
 </head>
 
@@ -206,20 +608,67 @@ button:disabled{opacity:.5;cursor:wait}
 <button id="backLoginButton" type="button" class="secondary">VOLVER</button>
 </section>
 
+<!-- TARJETA PÚBLICA CLUB NOMADE -->
 <section id="publicCardPanel" class="panel public-card hidden">
-<h2>CLUB NOMADE</h2>
-<p class="description">Tu tarjeta personal de ReeNomade.</p>
-<div id="publicCardName" class="detail-name">Cargando...</div>
-<div class="count">TU PROGRESO · <span id="publicProgressText">0/5</span></div>
-<div id="publicStampContainer" class="stamps"></div>
-<div class="progress-line"><div id="publicProgressFill" class="progress-fill"></div></div>
-<p id="publicCardStatus" class="status"></p>
-<div id="publicRewardBox" class="reward hidden">
-<h3>¡TENÉS UN PREMIO!</h3>
-<p id="publicRewardText" class="description"></p>
-<p class="muted">Consultá con ReeNomade para coordinar la entrega.</p>
-</div>
-<p class="description" style="margin-top:18px">Esta tarjeta es personal. Los sellos son registrados únicamente por ReeNomade.</p>
+
+ <div class="membership-voucher">
+
+  <div class="voucher-header">
+   <div class="voucher-brand">
+    <div class="voucher-logo">RN</div>
+    <div>
+     <div class="voucher-brand-name">REE NOMADE</div>
+     <div class="voucher-brand-sub">BARBERÍA</div>
+    </div>
+   </div>
+
+   <div class="voucher-type">
+    <span>MEMBRESÍA</span>
+    <strong>VIP</strong>
+   </div>
+  </div>
+
+  <div class="voucher-divider"></div>
+
+  <div class="voucher-kicker">CLUB NOMADE · SOCIO</div>
+
+  <div id="publicCardName" class="detail-name">Cargando...</div>
+
+  <div class="voucher-progress-heading">
+   <span>PROGRESO DE VISITAS</span>
+   <strong id="publicProgressText">0/5</strong>
+  </div>
+
+  <div id="publicStampContainer" class="stamps"></div>
+
+  <div class="progress-line">
+   <div id="publicProgressFill" class="progress-fill"></div>
+  </div>
+
+  <p id="publicCardStatus" class="status"></p>
+
+  <div id="publicRewardBox" class="reward hidden voucher-reward">
+   <div class="voucher-reward-label">RECOMPENSA DESBLOQUEADA</div>
+   <h3>¡TENÉS UN PREMIO!</h3>
+   <p id="publicRewardText" class="description"></p>
+   <p class="muted">Consultá con ReeNomade para coordinar la entrega.</p>
+  </div>
+
+  <div class="voucher-divider voucher-divider-bottom"></div>
+
+  <div class="voucher-footer">
+   <div>
+    <strong>CLUB NOMADE</strong>
+    <span>EL BARRIO PRIMERO.</span>
+   </div>
+   <div class="voucher-seal">RN</div>
+  </div>
+
+  <p class="voucher-legal">
+   TARJETA PERSONAL · LOS SELLOS SON REGISTRADOS ÚNICAMENTE POR REE NOMADE
+  </p>
+
+ </div>
 </section>
 
 <section id="adminPanel" class="hidden">
@@ -248,7 +697,6 @@ button:disabled{opacity:.5;cursor:wait}
 <p id="signupLinkStatus" class="status"></p>
 </div>
 
-<!-- NUEVA CONFIGURACIÓN DEL CLUB -->
 <div class="panel" id="settingsPanel">
 <h2>Configuración del Club</h2>
 <p class="description">Modificá las condiciones de fidelidad. Los premios que ya estén pendientes conservarán su descripción original.</p>
@@ -345,7 +793,9 @@ button:disabled{opacity:.5;cursor:wait}
 </section>
 
 <div class="footer">REE NOMADE BARBERÍA · TARTAGAL</div>
-</main><script type="module">
+</main>
+
+<script type="module">
 
 // FIREBASE APP
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
@@ -382,6 +832,7 @@ import {
   setDoc,
   writeBatch
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
 const firebaseConfig={
 apiKey:"AIzaSyC2bIdlKQ0GR0h0t89GllNM5aau46AY2Co",
 authDomain:"reenomade-fidelidad.firebaseapp.com",
@@ -541,7 +992,6 @@ maxSellos:nuevoMax,
 actualizadoEn:serverTimestamp()
 };
 
-/* Los premios pendientes conservan su descripción original. */
 if(!datos.premioPendiente){
 actualizacion.premioTexto=nuevoPremio;
 }
@@ -989,7 +1439,9 @@ lista.appendChild(item);
 console.error(error);
 $("historyStatus").textContent="No se pudo cargar el historial.";
 }
-}/* REGISTRAR VISITA */
+}
+
+/* REGISTRAR VISITA */
 
 async function registrarVisita(){
 if(!clienteSeleccionado)return;
@@ -1218,7 +1670,6 @@ if(tarjetaRef){
 await transaction.get(tarjetaRef);
 }
 
-/* El registro del premio se conserva, pero se marca cancelado. */
 if(premioRef&&premioDoc&&premioDoc.exists()&&datos.premioPendiente){
 transaction.update(premioRef,{
 estado:"cancelado",
