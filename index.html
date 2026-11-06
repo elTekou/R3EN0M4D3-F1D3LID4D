@@ -9,265 +9,967 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}
-:root{--bg:#09090d;--panel:#15151b;--field:#202027;--line:#35353e;--text:#f4f4f6;--muted:#a1a1ac;--cyan:#20d9e8;--purple:#a855f7;--green:#42d995;--red:#f07889}
-body{margin:0;padding:24px 13px;background:var(--bg);color:var(--text);font-family:"Space Grotesk",Arial,sans-serif}
-.container{max-width:620px;margin:auto}
-.logo{text-align:center;font-size:clamp(38px,9vw,58px);font-weight:800;letter-spacing:-3px}
-.brand{text-align:center;color:var(--cyan);font-size:9px;letter-spacing:4px;font-weight:700;margin:3px 0 24px}
-h1,h2,h3{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:1px;margin:0 0 8px}
-h1{text-align:center;font-size:36px}
-h2{font-size:27px}h3{font-size:21px}
-.subtitle{text-align:center;color:var(--muted);font-size:12px;margin:0 0 22px}
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;margin:0 0 13px}
-.description{font-size:12px;color:var(--muted);line-height:1.65;margin:5px 0 12px}
-label{display:block;font-size:10px;letter-spacing:1px;font-weight:700;color:#c4c4cc;margin:14px 0 7px;text-transform:uppercase}
-input,select,textarea{width:100%;padding:12px;background:var(--field);border:1px solid var(--line);border-radius:6px;color:white;font:14px "Space Grotesk",sans-serif;outline:none}
-input:focus,select:focus,textarea:focus{border-color:var(--cyan)}
-textarea{resize:vertical;min-height:75px}
-button{width:100%;padding:12px;margin-top:10px;background:#63359a;border:1px solid #8051b4;border-radius:6px;color:white;font:800 16px "Barlow Condensed",sans-serif;letter-spacing:1px;cursor:pointer}
-button:disabled{opacity:.5;cursor:wait}
-button.secondary{background:#24242c;border-color:#44444e}
-button.success{background:#173c2a;border-color:#32734d}
-button.danger{background:#401c25;border-color:#7b3948}
-.hidden{display:none!important}
-.status,.muted{font-size:11px;color:var(--muted);line-height:1.6}
-.status{text-align:center;min-height:14px;margin:10px 0 0}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
-.stat{background:#202027;border:1px solid var(--line);border-radius:7px;text-align:center;padding:12px 4px}
-.stat-number{display:block;color:var(--cyan);font:800 28px "Barlow Condensed",sans-serif}
-.stat-label{font-size:9px;color:var(--muted);letter-spacing:.7px}
-.quick,.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.quick button,.two button{margin:0}
-.section-heading,.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.small{font-size:10px;color:var(--muted)}
-.client-select,.request-item,.history-item{background:#202027;border:1px solid var(--line);border-radius:7px;padding:12px;margin-top:9px}
-.client-select{text-align:left}
-.client-name,.request-name{font-size:13px;font-weight:700}
-.client-date,.request-date{font-size:10px;color:var(--muted);margin-top:4px}
-.client-progress{font:700 14px "Barlow Condensed",sans-serif;color:var(--cyan);margin-top:6px}
-.detail-name{font:800 30px "Barlow Condensed",sans-serif;text-transform:uppercase;overflow-wrap:anywhere}
-.count{color:var(--cyan);font:700 15px "Barlow Condensed",sans-serif;margin:12px 0}
-.stamps{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:15px 0}
-.stamp{aspect-ratio:1;border-radius:50%;border:1px solid #555560;background:#202027;display:grid;place-items:center;color:#888;font:700 18px "Barlow Condensed",sans-serif}
-.stamp.done{background:#65349a;border-color:#b17be4;color:white}
-.progress-line{height:6px;background:#33333b;border-radius:8px;overflow:hidden;margin:10px 0}
-.progress-fill{height:100%;background:var(--cyan);width:0}
-.reward{background:#24202d;border:1px solid #64458b;border-radius:7px;padding:14px;margin-top:12px}
-.visit-details{border:1px solid var(--line);border-radius:7px;padding:12px;margin-top:13px}
-.visit-details summary{cursor:pointer;color:var(--cyan);font:700 17px "Barlow Condensed",sans-serif}
-.request-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.request-actions button{margin-top:9px}
-.link-box{padding:10px;background:#202a2c;border:1px solid #31565a;border-radius:6px;font-size:11px;overflow-wrap:anywhere}
-.voucher{background:#17171e;border:1px solid #55515f;border-radius:12px;padding:20px;margin:12px auto;max-width:560px}
-.voucher-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #49434f;padding-bottom:14px;margin-bottom:15px}
-.voucher-brand{font-size:25px;font-weight:700}
-.voucher-brand small{display:block;color:var(--cyan);font-size:8px;letter-spacing:3px}
-.voucher-type{text-align:right;color:var(--muted);font-size:9px;letter-spacing:1px}
-.voucher-type strong{display:block;color:white;font:800 22px "Barlow Condensed",sans-serif}
-.voucher .detail-name{margin:8px 0 14px}
-.xp-line{height:9px;background:#303039;border-radius:8px;overflow:hidden;margin:9px 0}
-.xp-fill{height:100%;background:var(--cyan);width:0}
-.avatar-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:10px}
-.avatar-option{background:#202027;border:1px solid var(--line);border-radius:7px;padding:8px 3px;text-align:center;cursor:pointer}
-.avatar-option.selected{border-color:var(--cyan);background:#183035}
-.avatar-face{font-size:27px;display:block}
-.avatar-option small{font-size:8px;color:var(--muted);display:block;margin-top:4px}
-.avatar-display{font-size:34px;margin:5px 0}
-.badge{display:inline-block;background:#2b2434;color:#d5b5f4;border:1px solid #64458b;padding:4px 7px;border-radius:4px;font-size:9px;margin-top:5px}
-.footer{text-align:center;color:#777;font:700 11px "Barlow Condensed",sans-serif;letter-spacing:2px;margin:24px 0 8px}
-@media(max-width:400px){body{padding:17px 9px}.panel{padding:14px}.avatar-grid{gap:4px}.avatar-face{font-size:23px}.avatar-option small{font-size:7px}}
+*{box-sizing:border-box} :root{--bg:#09090d;--panel:#15151b;--field:#202027;--line:#35353e;--text:#f4f4f6;--muted:#a1a1ac;--cyan:#20d9e8;--purple:#a855f7;--green:#42d995;--red:#f07889}
+body{margin:0;padding:24px 13px;background:var(--bg);color:var(--text);font-family:"Space Grotesk",Arial,sans-serif}.container{max-width:650px;margin:auto}.logo{text-align:center;font-size:clamp(38px,9vw,58px);font-weight:800;letter-spacing:-3px}.brand{text-align:center;color:var(--cyan);font-size:9px;letter-spacing:4px;font-weight:700;margin:3px 0 24px}h1,h2,h3{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:1px;margin:0 0 8px}h1{text-align:center;font-size:36px}h2{font-size:27px}h3{font-size:21px}.subtitle{text-align:center;color:var(--muted);font-size:12px;margin:0 0 22px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;margin:0 0 13px}.description{font-size:12px;color:var(--muted);line-height:1.65;margin:5px 0 12px}label{display:block;font-size:10px;letter-spacing:1px;font-weight:700;color:#c4c4cc;margin:14px 0 7px;text-transform:uppercase}input,select,textarea{width:100%;padding:12px;background:var(--field);border:1px solid var(--line);border-radius:6px;color:white;font:14px "Space Grotesk",sans-serif;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--cyan)}textarea{resize:vertical;min-height:75px}button{width:100%;padding:12px;margin-top:10px;background:#63359a;border:1px solid #8051b4;border-radius:6px;color:white;font:800 16px "Barlow Condensed",sans-serif;letter-spacing:1px;cursor:pointer}button:disabled{opacity:.5;cursor:wait}button.secondary{background:#24242c;border-color:#44444e}button.success{background:#173c2a;border-color:#32734d}button.danger{background:#401c25;border-color:#7b3948}.hidden{display:none!important}.status,.muted{font-size:11px;color:var(--muted);line-height:1.6}.status{text-align:center;min-height:14px;margin:10px 0 0}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.stat{background:#202027;border:1px solid var(--line);border-radius:7px;text-align:center;padding:12px 4px}.stat-number{display:block;color:var(--cyan);font:800 28px "Barlow Condensed",sans-serif}.stat-label{font-size:9px;color:var(--muted);letter-spacing:.7px}.quick,.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}.quick button,.two button{margin:0}.section-heading,.row{display:flex;justify-content:space-between;align-items:center;gap:10px}.small{font-size:10px;color:var(--muted)}.client-select,.request-item,.history-item,.catalog-item{background:#202027;border:1px solid var(--line);border-radius:7px;padding:12px;margin-top:9px}.client-select{text-align:left}.client-name,.request-name{font-size:13px;font-weight:700}.client-date,.request-date{font-size:10px;color:var(--muted);margin-top:4px}.client-progress{font:700 14px "Barlow Condensed",sans-serif;color:var(--cyan);margin-top:6px}.detail-name{font:800 30px "Barlow Condensed",sans-serif;text-transform:uppercase;overflow-wrap:anywhere}.count{color:var(--cyan);font:700 15px "Barlow Condensed",sans-serif;margin:12px 0}.stamps{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:15px 0}.stamp{aspect-ratio:1;border-radius:50%;border:1px solid #555560;background:#202027;display:grid;place-items:center;color:#888;font:700 18px "Barlow Condensed",sans-serif}.stamp.done{background:#65349a;border-color:#b17be4;color:white}.progress-line{height:6px;background:#33333b;border-radius:8px;overflow:hidden;margin:10px 0}.progress-fill{height:100%;background:var(--cyan);width:0}.reward{background:#24202d;border:1px solid #64458b;border-radius:7px;padding:14px;margin-top:12px}.visit-details{border:1px solid var(--line);border-radius:7px;padding:12px;margin-top:13px}.visit-details summary{cursor:pointer;color:var(--cyan);font:700 17px "Barlow Condensed",sans-serif}.request-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.request-actions button{margin-top:9px}.link-box{padding:10px;background:#202a2c;border:1px solid #31565a;border-radius:6px;font-size:11px;overflow-wrap:anywhere}.voucher{background:linear-gradient(145deg,#181820,#101016);border:1px solid #55515f;border-radius:13px;padding:20px;margin:12px auto;max-width:560px;box-shadow:0 14px 35px #0005}.voucher-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #49434f;padding-bottom:14px;margin-bottom:15px}.voucher-brand{font-size:25px;font-weight:700}.voucher-brand small{display:block;color:var(--cyan);font-size:8px;letter-spacing:3px}.membership-badge{display:flex;align-items:center;gap:8px;border:1px solid #4b4b58;border-radius:30px;padding:6px 10px;font-size:9px;letter-spacing:1px;color:#e8e8ed}.membership-badge.vip{border-color:#8e5cc5;background:linear-gradient(100deg,#261b35,#182a35);color:#f4eaff;box-shadow:0 0 15px #a855f733;position:relative;overflow:hidden}.membership-badge.vip:after{content:"";position:absolute;inset:-50% auto -50% -40%;width:30%;transform:rotate(20deg);background:#ffffff33;animation:shine 4s infinite}@keyframes shine{0%,60%{left:-40%}100%{left:140%}}.pole{width:25px;height:34px;flex:none;filter:drop-shadow(0 0 5px #b78aff)}.voucher .detail-name{margin:8px 0 14px}.voucher-tagline{font-size:10px;color:#c8c3d2;margin-top:14px}.xp-line{height:9px;background:#303039;border-radius:8px;overflow:hidden;margin:9px 0}.xp-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--cyan));width:0}.profile-history{display:grid;gap:7px;margin-top:10px}.history-chip{border:1px solid var(--line);background:#202027;padding:9px;border-radius:6px;font-size:11px}.benefit-option{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:7px;background:#202027;margin-top:8px;font-size:11px}.benefit-option small{color:var(--muted)}.badge{display:inline-block;background:#2b2434;color:#d5b5f4;border:1px solid #64458b;padding:4px 7px;border-radius:4px;font-size:9px;margin-top:5px}.catalog-item{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}.catalog-actions{display:flex;gap:6px}.catalog-actions button{width:auto;margin:0;padding:7px 9px;font-size:12px}.inline-check{display:flex;align-items:center;gap:8px;font-size:10px;color:var(--muted)}.inline-check input{width:auto}.habit-voucher{background:linear-gradient(145deg,#171522,#101018 58%,#17252a);border:1px solid #5b4b78;border-radius:13px;padding:20px;margin:12px auto;max-width:560px;box-shadow:0 14px 35px #0005}.habit-voucher .voucher-head{border-color:#51465f}.habit-kicker{font-size:10px;letter-spacing:2px;color:var(--cyan);font-weight:700}.habit-count{font:900 54px "Barlow Condensed",sans-serif;color:var(--cyan);line-height:1.05;margin:12px 0 3px}.habit-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}.habit-meta>div{background:#202027;border:1px solid #41404c;border-radius:7px;padding:10px}.habit-meta strong{display:block;font:700 17px "Barlow Condensed",sans-serif;margin-top:4px}.habit-status{display:inline-block;padding:5px 9px;border:1px solid #3f826c;border-radius:20px;color:#9af0c6;font-size:10px;letter-spacing:1px;margin-top:10px}.habit-voucher .voucher-tagline{border-top:1px solid #49434f;padding-top:12px}.footer{text-align:center;color:#777;font:700 11px "Barlow Condensed",sans-serif;letter-spacing:2px;margin:24px 0 8px}@media(max-width:400px){body{padding:17px 9px}.panel{padding:14px}.voucher{padding:15px}.stamps{gap:5px}}
+
+/* Club Nómade: panel modular */
+.admin-shell-head{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:7px 2px 17px}
+.admin-eyebrow{font-size:9px;letter-spacing:2.5px;color:var(--cyan);font-weight:700}
+.admin-main-title{font:800 30px "Barlow Condensed",sans-serif;letter-spacing:.5px;margin:4px 0}
+.admin-subtitle{font-size:11px;color:var(--muted);line-height:1.5}
+.admin-live{font-size:9px;color:#8fe5b7;border:1px solid #32684d;background:#14271e;padding:7px 10px;border-radius:30px;white-space:nowrap}
+.admin-nav{display:flex;gap:6px;overflow-x:auto;padding:5px 1px 13px;margin-bottom:8px;position:sticky;top:0;z-index:5;background:var(--bg);scrollbar-width:thin}
+.admin-tab{width:auto;min-width:max-content;margin:0;padding:10px 13px;background:#17171e;border:1px solid #33333e;color:#bcbcc7;border-radius:8px;font:700 12px "Space Grotesk",sans-serif;letter-spacing:0;display:flex;align-items:center;gap:7px}
+.admin-tab span{font-size:16px;color:var(--cyan)}
+.admin-tab.active{background:linear-gradient(120deg,#202a31,#211b2c);border-color:#55717a;color:#fff;box-shadow:inset 0 -2px 0 var(--cyan)}
+.admin-module{animation:moduleIn .18s ease-out}
+@keyframes moduleIn{from{opacity:.5;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+#adminPanel .panel{box-shadow:0 8px 24px #0002}
+#adminPanel .panel h2{letter-spacing:.7px}
+#adminPanel .quick button{min-height:44px}
+#adminPanel .stats{margin-top:17px}
+#adminPanel .stat{background:linear-gradient(145deg,#22222b,#18181f)}
+#adminPanel .stat-number{font-size:31px}
+#clientDetail{margin-top:4px}
+#clientDetail .panel{border-color:#45404f}
+.admin-section-note{color:var(--muted);font-size:10px;line-height:1.5;margin-top:7px}
+.public-store-item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.public-store-item:last-child{border-bottom:0}
+.public-store-name{font-size:13px;font-weight:700}
+.public-store-desc{font-size:10px;color:var(--muted);margin-top:4px;line-height:1.45}
+.public-store-price{font:800 19px "Barlow Condensed",sans-serif;color:var(--cyan);text-align:right}
+.public-store-availability{font-size:9px;color:#92e8bb;text-align:right;margin-top:3px}
+.public-store-availability.out{color:#f0a0a9}
+.stock-visibility{font-size:9px;color:var(--muted);margin-top:4px}
+.habit-voucher{background:radial-gradient(circle at 90% 0%,#6f5526 0,#342817 24%,transparent 55%),linear-gradient(145deg,#241d12,#17140f 58%,#292012);border:1px solid #b18a43;box-shadow:0 16px 38px #0007,inset 0 1px 0 #ffe4a455}
+.habit-voucher .voucher-head{border-color:#806532}
+.habit-voucher .voucher-brand{color:#fff1ce}
+.habit-voucher .voucher-brand small{color:#e4bd70}
+.habit-voucher .membership-badge{border-color:#c49a4d;background:linear-gradient(110deg,#735322,#3b2c17);color:#fff0c8;box-shadow:0 0 16px #d4a94a2b}
+.habit-voucher .habit-kicker{color:#e9c77e}
+.habit-voucher .habit-count{color:#f4d58f;text-shadow:0 2px 18px #d6a74a55}
+.habit-voucher .progress-line{background:#453822}
+.habit-voucher .progress-fill{background:linear-gradient(90deg,#9b702d,#f3d58e)}
+.habit-voucher .habit-meta>div{background:#2c2418;border-color:#6d552e}
+.habit-voucher .habit-meta strong{color:#f8e5b7}
+.habit-voucher .habit-status{border-color:#a98743;color:#f5d993;background:#5b431d}
+.habit-voucher .habit-status.state-warning{border-color:#bd7c37;color:#ffd09a;background:#503018}
+.habit-voucher .habit-status.state-grace{border-color:#bd7c37;color:#ffd09a;background:#503018}
+.habit-voucher .habit-status.state-ended{border-color:#89505a;color:#ffc4cb;background:#421e25}
+.habit-voucher .voucher-tagline{border-color:#70572f;color:#d8c49b}
+.membership-badge.vip{box-shadow:0 0 16px #a855f755}
+@media(max-width:520px){.admin-shell-head{align-items:flex-start}.admin-nav{margin-left:-4px;margin-right:-4px}.admin-tab{padding:9px 11px;font-size:11px}.admin-main-title{font-size:27px}}
+
+
+/* Cortesía Hábito: estilos integrados con la tarjeta dorada existente. */
+.habit-courtesy{margin-top:15px;padding:14px;background:#2c2418;border:1px solid #806532;border-radius:9px}
+.habit-courtesy h3{font-size:21px;color:#f3d58e;margin-bottom:4px}
+.habit-courtesy-state{display:inline-block;border:1px solid #b99555;border-radius:18px;padding:5px 9px;color:#f7da9f;font-size:10px;letter-spacing:.7px;font-weight:700;margin:7px 0}
+.habit-courtesy-state.used{color:#bcb5a7;border-color:#645b4a;background:#26221c}
+.habit-courtesy-product{display:flex;justify-content:space-between;gap:8px;border-top:1px solid #55452c;padding:10px 0;font-size:12px}
+.habit-courtesy-product strong{color:#f9e5ba}
+.habit-courtesy-product span{color:#a8ebc9;font-weight:800;white-space:nowrap}
+.habit-courtesy-admin{background:#211e1a;border:1px solid #65502b;border-radius:8px;padding:12px;margin-top:10px}
+.habit-courtesy-admin label{margin-top:9px}
+.habit-courtesy-admin .inline-check{margin-top:9px;text-transform:none;letter-spacing:0}
+.habit-courtesy-admin .inline-check input{width:auto;flex:none}
+.habit-courtesy-note{font-size:10px;color:#dac595;line-height:1.6;margin:7px 0}
+
+/* V2: mejoras discretas que respetan la identidad actual */
+.locked-offers{margin-top:13px;border-top:1px solid var(--line);padding-top:12px}
+.locked-offer{background:#202027;border:1px dashed #595263;border-radius:8px;padding:12px;margin-top:8px}
+.locked-offer strong{font-size:12px;color:#ded3f1}
+.locked-offer .badge{margin:5px 0 0}
+.public-reward-hint{font-size:11px;color:#d6bfdc;text-align:center;line-height:1.6;margin:8px 0}
+.public-service-row{background:#202027;border:1px solid var(--line);padding:12px;border-radius:7px;margin-top:8px}
+.public-service-row .row{gap:8px;align-items:flex-start}
+.public-service-price{font:800 19px "Barlow Condensed",sans-serif;color:var(--cyan);white-space:nowrap}
+.public-promo-row{background:#26202b;border:1px solid #58436d;border-radius:8px;padding:12px;margin-top:8px}
+.public-promo-row strong{color:#f0defc}
+#habitRenewPanel{border-color:#947037;background:linear-gradient(130deg,#211b15,#17151e)}
+#habitRenewPanel h2{color:#efd69b}
+#habitRenewPanel button{background:#725128;border-color:#ae894c}
+.v4-continuity{margin:10px 0;padding:11px;border:1px solid #658069;background:#17271e;border-radius:8px;color:#b6f4c6;font-size:11px;line-height:1.55}
+.v4-transition-note{font-size:11px;color:#bfb4db;margin:8px 0;line-height:1.5}
+
+/* V3 · Interfaz modular. Conservar tipografías y estética ReeNomade. */
+:root{--v3-elevated:#1b1b24;--v3-violet:#b995ef;--v3-gold:#e5c077}
+html{scroll-behavior:smooth}body{padding-top:16px}
+.v3-module-menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:12px 0 16px}
+.v3-module-entry{display:flex;align-items:center;justify-content:space-between;min-height:69px;gap:10px;text-align:left;background:linear-gradient(135deg,#1f202a,#17171e);border:1px solid #46434d;border-radius:11px;padding:12px;margin:0;font:700 14px 'Space Grotesk',sans-serif;letter-spacing:0;color:#f2f0f8;box-shadow:0 6px 19px #0003}
+.v3-module-entry small{display:block;font-size:10px;color:#a8a8b7;font-weight:500;margin-top:5px;line-height:1.4}
+.v3-module-entry .v3-mini-icon{font-size:21px;color:#a899ee;flex:none}
+.v3-module-entry:active,.v3-subnav button:active{transform:scale(.99)}
+.v3-module-heading{position:sticky;top:0;z-index:8;background:#09090de8;backdrop-filter:blur(10px);display:flex;align-items:center;gap:10px;padding:12px 0 15px;margin:2px 0 6px;border-bottom:1px solid #383742}
+.v3-module-heading button{width:auto;margin:0;min-width:88px;padding:9px 13px;border-color:#504c62;background:#26222f;font-size:13px}
+.v3-module-heading .v3-heading-label{font:800 24px 'Barlow Condensed',sans-serif;line-height:1.1;text-transform:uppercase;letter-spacing:.5px}
+.v3-module-heading .v3-heading-caption{font-size:10px;color:#a9a6b0;margin-top:3px}
+#publicCardPanel .voucher,#publicCardPanel .habit-voucher{margin-top:4px;margin-bottom:11px}
+#publicCardPanel .voucher:not(.is-vip){border-color:#555261}
+#publicCardPanel .voucher.is-vip{position:relative;overflow:hidden;border:1px solid #b484f2;background:radial-gradient(circle at 96% -18%,#5e3b8245,transparent 49%),linear-gradient(155deg,#25192f,#14121d 72%);box-shadow:0 0 0 1px #b484f32a,0 0 25px #9051d029,0 13px 35px #0008}
+#publicCardPanel .voucher.is-vip:before{content:'';pointer-events:none;position:absolute;top:0;left:13%;right:13%;height:2px;background:linear-gradient(90deg,transparent,#e0b3ff,#edcb82,transparent);opacity:.9}
+#publicCardPanel .voucher.is-vip .stamps .stamp.done{border-color:#cfb1fd;box-shadow:0 0 8px #9965dd6d}
+#publicCardPanel .voucher.is-vip .progress-fill{background:linear-gradient(90deg,#8450bb,#e3bf76)}
+#publicCardPanel .voucher.is-vip .voucher-brand small{color:#e1bdfd}
+.v3-subnav{position:sticky;top:53px;z-index:4;background:var(--bg);display:flex;gap:8px;overflow-x:auto;scrollbar-width:thin;padding:3px 1px 12px;margin:0 0 6px}
+.v3-subnav button{min-width:max-content;width:auto;margin:0;font:700 12px 'Space Grotesk',sans-serif;letter-spacing:0;border-radius:999px;padding:10px 14px;background:#1e1d26;border:1px solid #454251}
+.v3-subnav button.active{background:linear-gradient(135deg,#4f3764,#1d3b46);border-color:#a68fd2;box-shadow:inset 0 0 0 1px #a6eaf333}
+.v3-subpanel{animation:moduleIn .2s ease-out}
+.v3-section-intro{font-size:11px;color:#bdbbc6;line-height:1.6;margin:4px 0 12px}
+#publicModuleNav .v3-module-entry:hover{border-color:#ab8be6}
+#adminPanel .admin-shell-head{padding-bottom:10px}.v3-admin-back{display:block;max-width:195px;margin:2px 0 10px;padding:9px 12px;font-size:13px}
+#adminPanel .admin-nav{padding-bottom:8px;top:0}
+#adminPanel .panel{padding:15px;margin-bottom:11px}
+#adminPanel .panel label{margin-top:10px}
+.v3-danger-note{font-size:11px;color:#f2b4ba;line-height:1.6;padding:10px;border:1px solid #794b56;border-radius:7px;background:#2c1c25;margin:10px 0}
+.v3-compact-note{margin:4px 0 12px;font-size:11px;color:#c0b7ce;line-height:1.5}
+#habitList .history-item{padding:13px}
+@media(max-width:400px){.v3-module-entry{padding:10px;min-height:66px;font-size:12px}.v3-module-entry small{font-size:9px}.v3-module-heading .v3-heading-label{font-size:21px}.v3-module-heading button{padding:8px 10px;min-width:76px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.v3-subpanel,.admin-module{animation:none}}
+
 </style>
 </head>
 <body>
 <main class="container">
 <div class="logo">ReeNomade</div><div class="brand">BARBERÍA · TARTAGAL</div>
-<h1 id="mainTitle">Club Nomade</h1><p class="subtitle" id="mainSubtitle">Cada visita cuenta. El barrio primero.</p>
+<h1 id="mainTitle">Club Nomade</h1><p class="subtitle" id="mainSubtitle">Clásico y moderno, siempre a tu estilo.</p>
 
-<section id="loginPanel" class="panel">
-<h2>Ingresar</h2><p class="description">Acceso administrativo.</p>
-<form id="loginForm">
-<label for="email">Correo electrónico</label><input id="email" type="email" autocomplete="username" required>
-<label for="password">Contraseña</label><input id="password" type="password" autocomplete="current-password" required>
-<button id="loginButton">INGRESAR</button>
-</form>
-<button id="resetPasswordButton" class="secondary" type="button">RECUPERAR CONTRASEÑA</button>
-<button id="goSignupButton" class="secondary" type="button">SOLICITAR TARJETA</button>
-<p id="loginStatus" class="status">Conectando...</p>
-</section>
+<section id="loginPanel" class="panel"><h2>Ingresar</h2><p class="description">Acceso administrativo.</p><form id="loginForm"><label for="email">Correo electrónico</label><input id="email" type="email" autocomplete="username" required><label for="password">Contraseña</label><input id="password" type="password" autocomplete="current-password" required><button id="loginButton">INGRESAR</button></form><button id="resetPasswordButton" class="secondary" type="button">RECUPERAR CONTRASEÑA</button><button id="goSignupButton" class="secondary" type="button">SOLICITAR TARJETA</button><p id="loginStatus" class="status">Conectando...</p></section>
 
-<section id="signupPanel" class="panel hidden">
-<h2>Sumate al Club Nomade</h2><p class="description">Dejanos tu nombre y apellido. ReeNomade revisará tu solicitud.</p>
-<form id="signupForm"><label for="signupName">Nombre y apellido</label><input id="signupName" maxlength="70" minlength="3" required placeholder="Ej.: Juan Pérez"><button id="signupButton">SOLICITAR TARJETA</button></form>
-<p id="signupStatus" class="status"></p>
-</section>
+<section id="signupPanel" class="panel hidden"><h2>Sumate al Club Nomade</h2><p class="description">Dejanos tu nombre y apellido. ReeNomade revisará tu solicitud.</p><form id="signupForm"><label for="signupName">Nombre y apellido</label><input id="signupName" maxlength="70" minlength="3" required placeholder="Ej.: Juan Pérez"><button id="signupButton">SOLICITAR TARJETA</button></form><p id="signupStatus" class="status"></p></section>
 
 <section id="publicCardPanel" class="hidden">
 <div class="voucher">
-<div class="voucher-head"><div class="voucher-brand">ReeNomade<small>BARBERÍA</small></div><div class="voucher-type">MEMBRESÍA<strong>CLUB NOMADE</strong></div></div>
-<div class="row"><div id="publicAvatar" class="avatar-display">💈</div><span class="badge">MIEMBRO DEL CLUB</span></div>
-<div id="publicCardName" class="detail-name">Cargando...</div>
-<div class="count">NIVEL <span id="publicLevel">0</span> / 100</div>
-<div class="row"><span class="small">EXPERIENCIA</span><strong id="publicXpText">0 / 50 EXP</strong></div>
-<div class="xp-line"><div id="publicXpFill" class="xp-fill"></div></div>
-<p id="publicNextLevel" class="muted"></p>
-<div class="count">PROGRESO DE VISITAS · <span id="publicProgressText">0/5</span></div>
-<div id="publicStampContainer" class="stamps"></div><div class="progress-line"><div id="publicProgressFill" class="progress-fill"></div></div>
-<p id="publicCardStatus" class="status"></p>
-<div id="publicRewardBox" class="reward hidden"><h3>PREMIO DE FIDELIDAD</h3><p id="publicRewardText" class="description"></p></div>
+ <div class="voucher-head"><div class="voucher-brand">ReeNomade<small>BARBERÍA</small></div><div id="membershipBadge" class="membership-badge">NOMADE ESTÁNDAR</div></div>
+ <div class="row"><span class="small">MEMBRESÍA CLUB NOMADE</span><span class="small">FIDELIDAD</span></div>
+ <button id="publicProfileButton" class="secondary" style="text-align:left;background:transparent;border-color:transparent;padding:7px 0;font:800 27px 'Barlow Condensed',sans-serif;letter-spacing:0;text-transform:uppercase"><span id="publicCardName">Cargando...</span>　› <small style="font:600 10px 'Space Grotesk',sans-serif;color:#aaa">MI PERFIL</small></button>
+ <div class="count">PROGRESO DE VISITAS · <span id="publicProgressText">0/5</span></div><div id="publicStampContainer" class="stamps"></div><div class="progress-line"><div id="publicProgressFill" class="progress-fill"></div></div>
+ <p id="publicCardStatus" class="status"></p><div id="standardContinuityBanner" class="v4-continuity hidden"></div><p class="public-reward-hint">Cada visita cuenta. Completá tus sellos para desbloquear un regalo de fidelidad que ReeNomade configura desde administración.</p>
+ <div id="publicRewardBox" class="reward hidden"><h3>BENEFICIO PENDIENTE</h3><p id="publicRewardText" class="description">Completaste tus sellos. Elegí un beneficio disponible.</p><label for="publicBenefitSelect">Elegí tu beneficio</label><select id="publicBenefitSelect"></select><button id="requestBenefitButton">SOLICITAR BENEFICIO</button><p id="publicBenefitStatus" class="status"></p></div>
+ <div class="voucher-tagline">Clásico y moderno, siempre a tu estilo.</div>
+</div>
+<div id="habitPublicVoucher" class="habit-voucher hidden">
+ <div class="voucher-head"><div class="voucher-brand">ReeNomade<small>BARBERÍA</small></div><div class="membership-badge vip"><span>HÁBITO NÓMADE</span></div></div>
+ <div class="habit-kicker">MEMBRESÍA PREPAGA · PERSONAL E INTRANSFERIBLE</div>
+ <button id="habitPublicProfileButton" class="secondary" style="text-align:left;background:transparent;border-color:transparent;padding:7px 0;font:800 27px 'Barlow Condensed',sans-serif;letter-spacing:0;text-transform:uppercase"><span id="habitPublicCardName">Cliente</span>　› <small style="font:600 10px 'Space Grotesk',sans-serif;color:#aaa">MI PERFIL</small></button>
+ <div class="habit-count"><span id="habitPublicRemaining">5</span><span style="font-size:20px;color:#eee"> / 5</span></div><div class="small">CORTES BÁSICOS DISPONIBLES</div>
+ <div class="progress-line"><div id="habitPublicProgress" class="progress-fill"></div></div><span id="habitPublicState" class="habit-status">HÁBITO VIGENTE</span>
+ <div class="habit-meta"><div><span class="small">FECHA DE ACTIVACIÓN</span><strong id="habitPublicStart">—</strong></div><div><span class="small">VIGENCIA HASTA</span><strong id="habitPublicEnd">—</strong></div><div><span class="small">PERÍODO DE GRACIA HASTA</span><strong id="habitPublicGrace">—</strong></div><div><span class="small">SERVICIO INCLUIDO</span><strong>Corte básico</strong></div></div>
+ <div id="habitCourtesyPublic" class="habit-courtesy"><h3>BENEFICIO HÁBITO NÓMADE</h3><div id="habitCourtesyState" class="habit-courtesy-state">CORTESÍA DISPONIBLE</div><p id="habitCourtesyDescription" class="habit-courtesy-note">Elegí una sola consumición gratuita al realizar un servicio presencial en ReeNomade. Sujeto a stock.</p><div id="habitCourtesyProducts"></div></div>
+  <p id="habitPublicMessage" class="description" style="margin-top:14px">Tus cortes están registrados en tu membresía Hábito Nómade.</p><div class="voucher-tagline">Clásico y moderno, siempre a tu estilo.</div>
 </div>
 
-<div class="panel">
-<h2>Tu estilo</h2><p class="description">Elegí el avatar que querés mostrar en tu tarjeta.</p>
-<div id="avatarChoices" class="avatar-grid"></div><p id="avatarStatus" class="status"></p>
+<div id="publicModuleNav" class="v3-module-menu hidden" aria-label="Explorá tu membresía">
+  <button class="v3-module-entry" type="button" data-public-go="beneficios"><span>Beneficios<small>Regalos y recompensas</small></span><span class="v3-mini-icon">✦</span></button>
+  <button class="v3-module-entry" type="button" data-public-go="servicios"><span>Servicios<small>Cortes y precios</small></span><span class="v3-mini-icon">✂</span></button>
+  <button class="v3-module-entry" type="button" data-public-go="promociones"><span>Promociones<small>Novedades de ReeNomade</small></span><span class="v3-mini-icon">★</span></button>
+  <button class="v3-module-entry" type="button" data-public-go="catalogo"><span>Productos<small>Bebidas, snacks y más</small></span><span class="v3-mini-icon">▤</span></button>
+  <button class="v3-module-entry" type="button" data-public-go="perfil"><span>Mi perfil<small>EXP, nivel e historial</small></span><span class="v3-mini-icon">♙</span></button>
+  <button id="publicInviteTile" class="v3-module-entry" type="button" data-public-go="invitar"><span>Invitar<small>Compartí el Club</small></span><span class="v3-mini-icon">↗</span></button>
 </div>
-<div class="panel">
-<h2>Compartí tu nivel</h2><p class="description">Mostrá tu progreso del Club Nomade.</p>
-<button id="shareLevelButton" type="button">COMPARTIR MI NIVEL</button><p id="shareStatus" class="status"></p>
-</div>
-<div id="levelRewardPanel" class="panel hidden">
-<h2>Beneficio por nivel</h2><p class="description">Elegí un beneficio por cada nivel alcanzado. Tu solicitud quedará pendiente hasta que ReeNomade confirme la entrega.</p>
-<label for="rewardLevelSelect">Nivel a canjear</label><select id="rewardLevelSelect"></select>
-<label for="levelRewardSelect">Elegí tu beneficio</label>
-<select id="levelRewardSelect">
-<option value="Perfilado de cejas">Perfilado de cejas</option>
-<option value="Perfilado de barba">Perfilado de barba</option>
-<option value="Accesorio de stock (según disponibilidad)">Accesorio de stock (según disponibilidad)</option>
-</select>
-<button id="requestLevelRewardButton">SOLICITAR BENEFICIO</button><p id="levelRewardStatus" class="status"></p>
-</div>
+<div id="publicModuleHeader" class="v3-module-heading hidden"><button id="publicModuleBack" type="button" class="secondary">‹ VOLVER</button><div><div id="publicModuleTitle" class="v3-heading-label">Beneficios</div><div class="v3-heading-caption">REENOMADE · CLUB NÓMADE</div></div></div>
+<div id="standardBenefitsPanel" class="panel"><h2>Beneficios de tu membresía</h2><p class="description">Consultá los beneficios activos de tu membresía. La disponibilidad puede cambiar según stock o temporada.</p><div id="publicBenefitsList"></div><div id="lockedMembershipOffers" class="locked-offers"></div></div>
+<div id="habitRenewPanel" class="panel hidden"><h2>¡Gracias por ser parte de Hábito Nómade!</h2>
+<p id="habitRenewMessage" class="description">Tu membresía finalizó. Tus EXP y sellos de fidelidad se conservaron.</p>
+<button id="habitRenewRequestButton" type="button">SOLICITAR NUEVA MEMBRESÍA HÁBITO</button>
+<p id="habitRenewStatus" class="status"></p><p class="muted">La solicitud no activa una membresía ni cobra automáticamente. ReeNomade confirmará el pago y la activación desde administración.</p></div>
+<div id="publicServicesPanel" class="panel"><h2>Servicios y precios</h2><p class="description">Conocé los servicios disponibles en ReeNomade. Consultá el precio al reservar o visitar.</p><div id="publicServicesList"></div><p id="publicServicesStatus" class="status"></p></div>
+<div id="publicPromosPanel" class="panel"><h2>Promociones</h2><p class="description">Nuestras promociones vigentes. Sujetos a sus condiciones y disponibilidad.</p><div id="publicPromosList"></div><p id="publicPromosStatus" class="status"></p></div>
+<button id="refreshPublicInfo" type="button" class="secondary" style="margin:1px 0 12px">ACTUALIZAR MI TARJETA Y CATÁLOGOS</button><p id="refreshPublicStatus" class="status"></p><div id="publicStorePanel" class="panel"><div class="row"><h2>Catálogo ReeNomade</h2><span class="badge">BARBERÍA</span></div><p class="description">Productos y extras disponibles en ReeNomade. Consultá disponibilidad al momento de tu visita.</p><div id="publicStoreList"></div><p id="publicStoreStatus" class="status"></p></div>
+ <div id="standardSharePanel" class="panel">
+ <h2>INVITÁ AL TEAM NÓMADE</h2>
+ <p class="description">Compartí la invitación a Club Nómade y solicitá <strong>+5 EXP</strong> por visita disponible. Tu tarjeta personal NO se comparte.</p>
+ <div class="two"><button id="shareButton" type="button">COMPARTIR <span aria-hidden="true">↗</span></button><button id="shareWhatsappButton" class="success" type="button">WHATSAPP</button></div>
+ <p class="muted">Para publicarlo en tu estado de WhatsApp, elegí Estado desde las opciones de compartir si está disponible. Mencioná a ReeNomade y mostránoslo para validar el bonus. WhatsApp no permite comprobar automáticamente que se publicó.</p>
+ <button id="shareBonusRequestButton" class="secondary" type="button" disabled>YA COMPARTÍ · SOLICITAR +5 EXP</button>
+ <p id="shareStatus" class="status" role="status" aria-live="polite"></p>
+ <p class="muted">Los +5 EXP se acreditan <strong>solo cuando ReeNomade verifica y aprueba</strong> tu solicitud, nunca por abrir WhatsApp, copiar el mensaje o cancelar el envío.</p>
+ </div>
+<section id="publicProfilePanel" class="panel hidden"><div class="row"><h2>Mi perfil</h2><button id="closeProfileButton" class="secondary" style="width:auto;margin:0">VOLVER</button></div><div class="row"><div><div class="small">TU NIVEL</div><div class="detail-name">NIVEL <span id="profileLevel">0</span></div></div><div style="text-align:right"><div class="small">EXPERIENCIA</div><div class="detail-name"><span id="profileExp">0</span> EXP</div></div></div><div class="row"><span class="small">Progreso al próximo nivel</span><span id="profileProgressText" class="small">0/50 EXP</span></div><div class="xp-line"><div id="profileXpFill" class="xp-fill"></div></div><p id="profileNextLevel" class="muted"></p><div class="count">HISTORIAL DE VISITAS</div><div id="profileHistory" class="profile-history"></div><p id="profileHistoryStatus" class="status"></p></section>
 </section>
 
 <section id="adminPanel" class="hidden">
-<div class="panel">
-<div class="row"><h2>Inicio</h2><span class="badge">PANEL ADMIN</span></div>
-<div class="stats"><div class="stat"><span id="clientCount" class="stat-number">0</span><span class="stat-label">Clientes</span></div><div class="stat"><span id="visitCount" class="stat-number">0</span><span class="stat-label">Visitas</span></div><div class="stat"><span id="pendingCount" class="stat-number">0</span><span class="stat-label">Premios</span></div></div><p id="statsStatus" class="status"></p>
-</div>
-<div class="panel">
-<h2>Accesos rápidos</h2><div class="quick"><button id="newClientQuick">+ NUEVO CLIENTE</button><button id="searchQuick" class="secondary">BUSCAR CLIENTE</button></div>
-<button id="requestsQuick" class="secondary">SOLICITUDES DE INGRESO</button><button id="levelRequestsQuick" class="secondary">BENEFICIOS POR NIVEL</button><button id="copySignupLink" class="secondary">COPIAR ENLACE DE INSCRIPCIÓN</button><p id="signupLinkStatus" class="status"></p>
-</div>
-<div class="panel">
-<h2>Configuración de fidelidad</h2><p class="description">Los premios pendientes conservan su descripción original.</p>
-<label for="configMaxSellos">Visitas necesarias para el premio</label><input id="configMaxSellos" type="number" min="1" max="30" value="5">
-<label for="configPremioTexto">Descripción del premio</label><textarea id="configPremioTexto" maxlength="180">Corte gratis + Coca-Cola de 300 ml.</textarea>
-<button id="saveSettingsButton">GUARDAR CONFIGURACIÓN</button><p id="settingsStatus" class="status"></p>
-</div>
+ <div class="admin-shell-head"><div><div class="admin-eyebrow">REENOMADE · CLUB NÓMADE</div><h2 class="admin-main-title">Centro de gestión</h2><div class="admin-subtitle">Administrá clientes, membresías y la barbería desde un solo lugar.</div></div><span class="admin-live">● SISTEMA</span></div>
+ <nav id="adminNav" class="admin-nav" aria-label="Secciones del panel">
+  <button type="button" class="admin-tab active" data-module-target="inicio"><span>⌂</span>Inicio</button>
+  <button type="button" class="admin-tab" data-module-target="clientes"><span>♙</span>Clientes</button>
+  <button type="button" class="admin-tab" data-module-target="fidelidad"><span>✦</span>Fidelidad</button>
+  <button type="button" class="admin-tab" data-module-target="habito"><span>◈</span>Hábito</button>
+  <button type="button" class="admin-tab" data-module-target="tienda"><span>▦</span>Stock y catálogo</button>
+  <button type="button" class="admin-tab" data-module-target="solicitudes"><span>▤</span>Solicitudes</button>
+ </nav>
+<div class="panel"><div class="row"><h2>Inicio</h2><span class="badge">PANEL ADMIN</span></div><div class="stats"><div class="stat"><span id="clientCount" class="stat-number">0</span><span class="stat-label">Clientes</span></div><div class="stat"><span id="visitCount" class="stat-number">0</span><span class="stat-label">Visitas</span></div><div class="stat"><span id="pendingCount" class="stat-number">0</span><span class="stat-label">Beneficios</span></div></div><p id="statsStatus" class="status"></p></div>
+<div class="panel"><h2>Accesos rápidos</h2><div class="quick"><button id="newClientQuick">+ NUEVO CLIENTE</button><button id="searchQuick" class="secondary">BUSCAR CLIENTE</button></div><button id="requestsQuick" class="secondary">SOLICITUDES DE INGRESO</button><button id="benefitRequestsQuick" class="secondary">SOLICITUDES DE BENEFICIOS</button><button id="copySignupLink" class="secondary">COPIAR ENLACE DE INSCRIPCIÓN</button><p id="signupLinkStatus" class="status"></p></div>
+<div class="panel"><h2>Configuración de fidelidad</h2><p class="description">Las dos membresías acumulan sellos y EXP con las mismas reglas. Solo cambian sus beneficios.</p><label for="configMaxSellos">Visitas necesarias para completar una tarjeta</label><input id="configMaxSellos" type="number" min="1" max="30" value="5"><label for="configPremioTexto">Descripción general del ciclo de fidelidad</label><input id="configPremioTexto" maxlength="180" value="Elegí un beneficio disponible de tu membresía."><button id="saveSettingsButton">GUARDAR CONFIGURACIÓN</button><p id="settingsStatus" class="status"></p></div>
+<div class="panel"><h2>Beneficios de fidelidad</h2><p class="description">Esta sección forma parte de Configuración de fidelidad. Administrá aquí los beneficios Estándar y VIP. Stock -1 significa sin control de cantidad; 0 significa agotado. Podés activar beneficios de temporada cuando quieras.</p><label for="catalogMembership">Membresía</label><select id="catalogMembership"><option value="estandar">NOMADE Estándar</option><option value="vip">NOMADE VIP</option></select><label for="newBenefitName">Nombre del beneficio</label><input id="newBenefitName" maxlength="90" placeholder="Ej.: Sándwich de temporada"><label for="newBenefitStock">Stock disponible (-1 = sin límite)</label><input id="newBenefitStock" type="number" min="-1" value="-1"><label class="inline-check"><input id="newBenefitAdult" type="checkbox"> Requiere verificar mayoría de edad (18+)</label><button id="addBenefitButton">AGREGAR BENEFICIO</button><div id="catalogList"></div><p id="catalogStatus" class="status"></p><button id="saveCatalogButton" class="success">GUARDAR CATÁLOGO DE BENEFICIOS</button><p id="catalogSaveStatus" class="status"></p></div>
+
+<div class="panel" id="habitPanel"><h2>Hábito Nómade</h2><p class="description">Membresía prepaga: $30.000 · 5 cortes básicos · 30 días de vigencia + 15 días de gracia. Activación manual luego de verificar el pago.</p>
+<label for="habitClient">Cliente</label><select id="habitClient"><option value="">Seleccionar cliente…</option></select>
+<label for="habitStart">Fecha de activación</label><input id="habitStart" type="date">
+<button id="activateHabitButton">ACTIVAR HÁBITO NÓMADE</button><p id="habitStatus" class="status"></p><div id="habitList"></div><div class="visit-details"><h3>Solicitudes de renovación de Hábito</h3><p class="description">El cliente puede solicitar otra membresía al terminar la anterior. La solicitud no renueva ni cobra automáticamente.</p><div id="habitRenewRequestsList"></div><button id="refreshHabitRequests" type="button" class="secondary">ACTUALIZAR SOLICITUDES</button><p id="habitRenewRequestsStatus" class="status"></p></div>
+<p class="muted">Mientras Hábito está activo, su tarjeta reemplaza la de fidelidad. EXP, niveles y sellos anteriores se conservan. Al consumir los cinco cortes o vencer la gracia, Hábito finaliza y solo administración puede activar una nueva membresía tras verificar pago y solicitud de renovación.</p></div>
+<div class="panel" id="stockPanel"><h2>Stock ReeNomade</h2><p class="description">Inventario de bebidas, comida, snacks y otros productos.</p>
+<label for="stockName">Producto</label><input id="stockName" maxlength="80" placeholder="Ej.: Pilfrut naranja">
+<label for="stockCategory">Categoría</label><select id="stockCategory"><option>Bebidas</option><option>Comida</option><option>Snacks</option><option>Otros</option></select>
+<div class="row"><div style="flex:1"><label for="stockQty">Cantidad inicial</label><input id="stockQty" type="number" min="0" value="0"></div><div style="flex:1"><label for="stockCost">Costo unitario ($)</label><input id="stockCost" type="number" min="0" value="0"></div><div style="flex:1"><label for="stockPrice">Precio venta ($)</label><input id="stockPrice" type="number" min="0" value="0"></div></div>
+<label for="stockDescription">Descripción para el catálogo (opcional)</label><input id="stockDescription" maxlength="140" placeholder="Ej.: Bebida frutal individual">
+<label class="inline-check"><input id="stockPublicVisible" type="checkbox" checked> Mostrar este producto en el catálogo público</label>
+<label class="inline-check"><input id="stockCourtesyNew" type="checkbox"> Habilitar este producto como cortesía Hábito Nómade</label>
+<button id="addStockButton">AGREGAR PRODUCTO</button><p id="stockStatus" class="status"></p>
+<button id="publishPublicCatalog" class="secondary" type="button">SINCRONIZAR CATÁLOGOS PÚBLICOS</button>
+<p class="admin-section-note">Publica solo datos comerciales seguros de productos, servicios y promociones; nunca costos internos ni cantidades exactas. Usar después de cambiar de versión.</p><div id="stockList"></div></div>
+<div class="panel" id="servicesPanel"><h2>Servicios y precios</h2><label for="serviceNameNew">Servicio</label><input id="serviceNameNew" maxlength="80" placeholder="Ej.: Corte degradé"><label for="servicePriceNew">Precio ($)</label><input id="servicePriceNew" type="number" min="0" placeholder="7000"><label for="serviceDateNew">Aplicar desde (opcional)</label><input id="serviceDateNew" type="date"><button id="addServiceButton">GUARDAR SERVICIO</button><p id="servicesStatus" class="status"></p><div id="servicesList"></div></div>
+<div class="panel" id="promotionsPanel"><h2>Ofertas y promociones</h2><label for="promoTitle">Título</label><input id="promoTitle" maxlength="90" placeholder="Ej.: Combo de la semana"><label for="promoDescription">Descripción</label><textarea id="promoDescription" maxlength="300" rows="3" placeholder="Detalle de la promo"></textarea><div class="row"><div style="flex:1"><label for="promoStart">Desde</label><input id="promoStart" type="date"></div><div style="flex:1"><label for="promoEnd">Hasta</label><input id="promoEnd" type="date"></div></div><button id="addPromoButton">PUBLICAR PROMOCIÓN</button><p id="promotionsStatus" class="status"></p><div id="promotionsList"></div></div>
+
 <div id="requestsPanel" class="panel"><div class="row"><h2>Solicitudes de ingreso</h2><span id="requestCount" class="small">0 pendientes</span></div><div id="requestList"></div><p id="requestStatus" class="status"></p><button id="refreshRequests" class="secondary">ACTUALIZAR</button></div>
-<div id="levelRequestsPanel" class="panel"><div class="row"><h2>Beneficios por nivel</h2><span id="levelRequestCount" class="small">0 pendientes</span></div><div id="levelRequestList"></div><p id="levelRequestAdminStatus" class="status"></p><button id="refreshLevelRequests" class="secondary">ACTUALIZAR</button></div>
-<div id="newClientPanel" class="panel"><h2>Nuevo cliente</h2><form id="clientForm"><label for="clientName">Nombre y apellido</label><input id="clientName" maxlength="70" required placeholder="Ej.: Juan Pérez"><button id="saveButton">GUARDAR CLIENTE</button></form><p id="saveStatus" class="status"></p></div>
+<div id="benefitRequestsPanel" class="panel"><div class="row"><h2>Solicitudes de beneficios</h2><span id="benefitRequestCount" class="small">0 pendientes</span></div><div id="benefitRequestList"></div><p id="benefitRequestStatus" class="status"></p><button id="refreshBenefitRequests" class="secondary">ACTUALIZAR</button></div>
+<div id="shareRequestsPanel" class="panel"><div class="row"><h2>Bonos por invitación</h2><span id="shareRequestCount" class="small">0 pendientes</span></div>
+ <p class="description">Confirmá los +5 EXP únicamente cuando el cliente te muestre que compartió la invitación. No se acreditan puntos al abrir el menú o WhatsApp.</p>
+ <div id="shareRequestsList"></div><p id="shareRequestsStatus" class="status"></p>
+ <button id="refreshShareRequestsButton" type="button" class="secondary">ACTUALIZAR SOLICITUDES</button>
+ </div>
+ <div id="newClientPanel" class="panel"><h2>Nuevo cliente</h2><form id="clientForm"><label for="clientName">Nombre y apellido</label><input id="clientName" maxlength="70" required placeholder="Ej.: Juan Pérez"><button id="saveButton">GUARDAR CLIENTE</button></form><p id="saveStatus" class="status"></p></div>
 <div id="searchPanel" class="panel"><div class="row"><h2>Clientes</h2><span id="clientTotalLabel" class="small">0 registrados</span></div><label for="searchName">Buscar cliente</label><input id="searchName" type="search" placeholder="Nombre del cliente..."><div id="clientList"></div><p id="listStatus" class="status"></p></div>
-<section id="clientDetail" class="hidden">
-<div class="panel">
-<div class="row"><h2>Ficha del cliente</h2><button id="backToClients" class="secondary" style="width:auto;margin:0">VOLVER</button></div>
-<div id="detailName" class="detail-name"></div><p id="detailDate" class="muted"></p>
-<div class="row"><div class="count">NIVEL <span id="detailLevel">0</span> / 100</div><div class="count"><span id="detailTotalXp">0</span> EXP</div></div>
-<div class="row"><span class="small">Progreso al próximo nivel</span><strong id="detailXpProgress" class="small">0/50</strong></div><div class="xp-line"><div id="detailXpFill" class="xp-fill"></div></div>
-<div class="count">SELLOS · <span id="progressText">0/5</span></div><div id="stampContainer" class="stamps"></div><div class="progress-line"><div id="progressFill" class="progress-fill"></div></div><p id="cardStatus" class="status"></p>
-<button id="copyCardLink" class="secondary">COPIAR ENLACE DE TARJETA</button><p id="cardLinkStatus" class="status"></p>
-<div id="rewardBox" class="reward hidden"><h3>PREMIO DE FIDELIDAD</h3><p id="adminRewardText" class="description"></p><button id="redeemButton">CONFIRMAR ENTREGA</button></div>
-<details id="visitControls" class="visit-details"><summary>+ REGISTRAR VISITA</summary>
-<label for="serviceSelect">Servicio realizado</label>
-<select id="serviceSelect">
-<option value="Corte solo">Corte solo · +15 EXP</option>
-<option value="Corte y barba">Corte y barba · +30 EXP</option>
-<option value="Corte, barba y cejas">Corte, barba y cejas · +45 EXP</option>
-<option value="Corte y cejas">Corte y cejas · +30 EXP</option>
-<option value="Solo cejas">Solo cejas · +15 EXP</option>
-</select><p class="description">Cada visita suma un sello. Cada componente realizado suma 15 EXP.</p>
-<button id="visitButton">CONFIRMAR VISITA</button><p id="visitStatus" class="status"></p></details>
-<button id="resetCardButton" class="danger">REINICIAR TARJETA DE SELLOS</button><p id="resetCardStatus" class="status"></p>
-<button id="deleteClientButton" class="danger">ELIMINAR CLIENTE DEFINITIVAMENTE</button><p class="muted">Esta acción borra su ficha, tarjeta pública e historial relacionado.</p><p id="deleteClientStatus" class="status"></p>
-</div>
-<div class="panel"><h2>Historial de visitas</h2><div id="historyList"></div><p id="historyStatus" class="status"></p></div>
-</section>
+<section id="clientDetail" class="hidden"><div class="panel"><div class="row"><h2>Ficha del cliente</h2><button id="backToClients" class="secondary" style="width:auto;margin:0">VOLVER</button></div><div id="detailName" class="detail-name"></div><p id="detailDate" class="muted"></p><label for="membershipSelect">Tipo de membresía (asignación manual)</label><select id="membershipSelect"><option value="estandar">NOMADE Estándar</option><option value="vip">NOMADE VIP</option></select><button id="saveMembershipButton">GUARDAR MEMBRESÍA</button><p id="membershipStatus" class="status"></p><div class="row"><div class="count">NIVEL <span id="detailLevel">0</span> / 100</div><div class="count"><span id="detailTotalXp">0</span> EXP</div></div><div class="row"><span class="small">Progreso al próximo nivel</span><strong id="detailXpProgress" class="small">0/50</strong></div><div class="xp-line"><div id="detailXpFill" class="xp-fill"></div></div><div class="count">SELLOS · <span id="progressText">0/5</span></div><div id="stampContainer" class="stamps"></div><div class="progress-line"><div id="progressFill" class="progress-fill"></div></div><p id="cardStatus" class="status"></p><button id="copyCardLink" class="secondary">COPIAR ENLACE DE TARJETA</button><p id="cardLinkStatus" class="status"></p><div id="rewardBox" class="reward hidden"><h3>BENEFICIO PENDIENTE</h3><p id="adminRewardText" class="description"></p></div><details id="visitControls" class="visit-details"><summary>+ REGISTRAR VISITA</summary><label for="serviceSelect">Servicio realizado</label><select id="serviceSelect"><option value="Corte solo">Corte solo · +15 EXP</option><option value="Corte y barba">Corte y barba · +30 EXP</option><option value="Corte, barba y cejas">Corte, barba y cejas · +45 EXP</option><option value="Corte y cejas">Corte y cejas · +30 EXP</option><option value="Solo cejas">Solo cejas · +15 EXP</option><option value="Diseño solo">Diseño solo · +15 EXP</option><option value="Diseño + corte">Diseño + corte · +25 EXP</option><option value="Diseño en cejas">Diseño en cejas · +5 EXP</option></select><p class="description">Cada visita de fidelidad válida suma un sello. La EXP depende del servicio elegido (incluye diseños); el bono de compartir es +5 EXP adicional.</p><button id="visitButton">CONFIRMAR VISITA</button><p id="visitStatus" class="status"></p></details><button id="resetCardButton" class="danger">REINICIAR TARJETA DE SELLOS</button><p id="resetCardStatus" class="status"></p><div class="v3-danger-note">Eliminar cliente borra también su tarjeta, Hábito, EXP e historial relacionado. Es irreversible: se solicitará escribir ELIMINAR.</div><button id="deleteClientButton" class="danger">ELIMINAR CLIENTE Y SUS DATOS</button><p class="muted">Borrado permanente de Firestore: ficha, tarjetas, membresías Hábito, visitas, canjes, premios, solicitudes y movimientos vinculados. No restaura el stock vendido o entregado. Requiere escribir ELIMINAR.</p><p id="deleteClientStatus" class="status"></p></div><div class="panel"><h2>Historial de visitas</h2><div id="historyList"></div><p id="historyStatus" class="status"></p></div></section>
 <button id="logoutButton" class="secondary">CERRAR SESIÓN</button>
 </section>
 <div class="footer">REENOMADE BARBERÍA · TARTAGAL</div>
 </main>
-
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 import {initializeAppCheck,ReCaptchaEnterpriseProvider} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app-check.js";
 import {getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut,sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
-import {getFirestore,collection,addDoc,getDocs,query,orderBy,serverTimestamp,doc,runTransaction,where,getDoc,updateDoc,setDoc,writeBatch,deleteDoc} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-
+import {getFirestore,collection,addDoc,getDocs,query,orderBy,serverTimestamp,doc,runTransaction,where,getDoc,updateDoc,setDoc,writeBatch,deleteDoc,Timestamp} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 const firebaseConfig={apiKey:"AIzaSyC2bIdlKQ0GR0h0t89GllNM5aau46AY2Co",authDomain:"reenomade-fidelidad.firebaseapp.com",projectId:"reenomade-fidelidad",storageBucket:"reenomade-fidelidad.firebasestorage.app",messagingSenderId:"1032497285090",appId:"1:1032497285090:web:d11c4db30a43a7db5d5bbb"};
-const ADMIN_UID="K0LaJmqd3RWM8GXzwSyfKD9atwq1";
-const app=initializeApp(firebaseConfig);
+const ADMIN_UID="K0LaJmqd3RWM8GXzwSyfKD9atwq1",app=initializeApp(firebaseConfig);
 initializeAppCheck(app,{provider:new ReCaptchaEnterpriseProvider("6LdoLg0uAAAAADLBfScMh5yaZOdrolmVcOvw6eI7"),isTokenAutoRefreshEnabled:true});
-const auth=getAuth(app),db=getFirestore(app),$=id=>document.getElementById(id);
-const params=new URLSearchParams(location.search),token=params.get("tarjeta"),modoRegistro=params.get("registro")==="1",modoPublico=!!token||modoRegistro;
-const CONFIG_REF=doc(db,"configuracion","club"),DIAS_VENCIMIENTO=28,LIMITE_MS=DIAS_VENCIMIENTO*86400000;
-let clientes=[],clienteSeleccionado=null,MAX_SELLOS=5,PREMIO_TEXTO="Corte gratis + Coca-Cola de 300 ml.",tarjetaPublica=null;
-const AVATARES=[{id:"fade",nombre:"Fade",emoji:"💈"},{id:"buzz",nombre:"Buzz",emoji:"✂️"},{id:"mullet",nombre:"Mullet",emoji:"🧑‍🎤"},{id:"crop",nombre:"Textured crop",emoji:"🧑🏻‍🦱"},{id:"taper",nombre:"Taper",emoji:"🧔"}];
-const SERVICIOS={"Corte solo":15,"Corte y barba":30,"Corte, barba y cejas":45,"Corte y cejas":30,"Solo cejas":15};
-const RECOMPENSAS=["Perfilado de cejas","Perfilado de barba","Accesorio de stock (según disponibilidad)"];
+const auth=getAuth(app),db=getFirestore(app),$=id=>document.getElementById(id),params=new URLSearchParams(location.search),token=params.get("tarjeta"),modoRegistro=params.get("registro")==="1",modoPublico=!!token||modoRegistro;
+const CONFIG_REF=doc(db,"configuracion","club"),MEMBERSHIP_REF=doc(db,"configuracion","membresias"),DIAS_VENCIMIENTO=28,LIMITE_MS=DIAS_VENCIMIENTO*86400000;
+let clientes=[],clienteSeleccionado=null,MAX_SELLOS=5,PREMIO_TEXTO="Elegí un beneficio disponible de tu membresía.",tarjetaPublica=null,catalogo={estandar:[],vip:[]};
+const SERVICIOS={"Corte solo":15,"Corte y barba":30,"Corte, barba y cejas":45,"Corte y cejas":30,"Solo cejas":15,"Diseño solo":15,"Diseño + corte":25,"Diseño en cejas":5};
+const uid=()=>crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2);
 function normalizar(s){return String(s||"").trim().toLocaleLowerCase("es").normalize("NFD").replace(/[\u0300-\u036f]/g,"")}
 function fechaTexto(f){return f?f.toLocaleDateString("es-AR")+" "+f.toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit"}):"Fecha pendiente"}
-function urlBase(){return location.href.split("?")[0].split("#")[0]}
-function urlRegistro(){return urlBase()+"?registro=1"}
-function urlTarjeta(t){return urlBase()+"?tarjeta="+encodeURIComponent(t)}
+function urlBase(){return location.href.split("?")[0].split("#")[0]}function urlRegistro(){return urlBase()+"?registro=1"}function urlTarjeta(t){return urlBase()+"?tarjeta="+encodeURIComponent(t)}
 async function copiarTexto(t){if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t);const e=document.createElement("textarea");e.value=t;e.style.position="fixed";e.style.opacity="0";document.body.append(e);e.select();const ok=document.execCommand("copy");e.remove();if(!ok)throw Error("No se pudo copiar")}
-function estaVencida(c){return !!c.ultimaVisita&&Date.now()-c.ultimaVisita.toDate().getTime()>=LIMITE_MS&&(c.sellos||0)>0}
-function calcularNivel(exp){return Math.min(100,Math.floor((Number(exp)||0)/50))}
-function progresoNivel(exp){return calcularNivel(exp)>=100?50:(Number(exp)||0)%50}
-function crearDatosTarjeta(d){return {nombre:d.nombre,sellos:Math.min(MAX_SELLOS,Math.max(0,d.sellos||0)),maxSellos:MAX_SELLOS,premioPendiente:!!d.premioPendiente,premioTexto:d.premioPendiente?(d.premioTexto||PREMIO_TEXTO):PREMIO_TEXTO,activo:true,totalExp:Number(d.totalExp)||0,nivel:calcularNivel(d.totalExp),avatarId:d.avatarId||"fade",clienteId:d.clienteId||null,nivelesPendientes:Array.isArray(d.nivelesPendientes)?d.nivelesPendientes:[],actualizadoEn:serverTimestamp()}}
-function mostrarModo(){if(modoRegistro){$("loginPanel").classList.add("hidden");$("signupPanel").classList.remove("hidden");$("mainTitle").textContent="Solicitar tarjeta"}else if(token){$("loginPanel").classList.add("hidden");$("publicCardPanel").classList.remove("hidden");$("mainTitle").textContent="Tu Club Nomade"}}
+function fechaDe(v){if(!v)return null;if(v instanceof Date)return v;if(v.toDate)return v.toDate();const d=new Date(v);return Number.isNaN(d.getTime())?null:d}
+function estaVencida(c){const anterior=fechaDe(c.ultimaVisita),retorno=fechaDe(c.fidelidadRetornoEn),f=anterior&&retorno?(anterior>retorno?anterior:retorno):(anterior||retorno);return !!f&&Date.now()-f.getTime()>=LIMITE_MS&&(Number(c.sellos)||0)>0}
+function calcularNivel(exp){return Math.min(100,Math.floor((Number(exp)||0)/50))}function progresoNivel(exp){return calcularNivel(exp)>=100?50:(Number(exp)||0)%50}
+function membershipType(d){return d?.tipoMembresia==="vip"?"vip":"estandar"}
+function crearDatosTarjeta(d){return {nombre:d.nombre,sellos:Math.max(0,Number(d.sellos)||0),maxSellos:MAX_SELLOS,premioPendiente:!!d.premioPendiente,premioTexto:d.premioPendiente?(d.premioTexto||PREMIO_TEXTO):PREMIO_TEXTO,activo:true,tipoMembresia:membershipType(d),totalExp:Number(d.totalExp)||0,bonusCompartirDisponibles:Math.max(0,Number(d.bonusCompartirDisponibles)||0),bonusCompartirUsados:Math.max(0,Number(d.bonusCompartirUsados)||0),cicloPremioId:d.cicloPremioId||uid(),historialVisitas:Array.isArray(d.historialVisitas)?d.historialVisitas.slice(-40):[],clienteId:d.clienteId||null,actualizadoEn:serverTimestamp()}}
+function mostrarModo(){if(modoRegistro){$("loginPanel").classList.add("hidden");$("signupPanel").classList.remove("hidden");$("mainTitle").textContent="Solicitar tarjeta"}else if(token){$("loginPanel").classList.add("hidden");$("publicCardPanel").classList.remove("hidden");$("mainTitle").textContent="Tu Club Nomade";$("mainTitle").classList.add("hidden");$("mainSubtitle").classList.add("hidden")}}
 mostrarModo();
-
 $("goSignupButton").onclick=()=>location.href=urlRegistro();
-$("signupForm").addEventListener("submit",async e=>{e.preventDefault();const nombre=$("signupName").value.trim();if(nombre.length<3)return $("signupStatus").textContent="Escribí tu nombre y apellido."; $("signupButton").disabled=true;$("signupStatus").textContent="Enviando...";try{await addDoc(collection(db,"solicitudes"),{nombre,nombreBusqueda:normalizar(nombre),estado:"pendiente",creadoEn:serverTimestamp()});$("signupName").value="";$("signupStatus").textContent="¡Solicitud enviada! ReeNomade revisará tus datos.";$("signupButton").textContent="SOLICITUD ENVIADA"}catch(e){console.error(e);$("signupStatus").textContent="No se pudo enviar. Intentá más tarde.";$("signupButton").disabled=false}});
-async function cargarConfiguracion(){const s=await getDoc(CONFIG_REF);if(!s.exists()){await setDoc(CONFIG_REF,{maxSellos:5,premioTexto:PREMIO_TEXTO,actualizadoEn:serverTimestamp()})}else{MAX_SELLOS=Math.min(30,Math.max(1,Number(s.data().maxSellos)||5));PREMIO_TEXTO=String(s.data().premioTexto||PREMIO_TEXTO)}$("configMaxSellos").value=MAX_SELLOS;$("configPremioTexto").value=PREMIO_TEXTO}
-async function guardarConfiguracion(){const m=Number($("configMaxSellos").value),p=$("configPremioTexto").value.trim();if(!Number.isInteger(m)||m<1||m>30||p.length<3||p.length>180)return $("settingsStatus").textContent="Revisá la cantidad y la descripción del premio.";const b=$("saveSettingsButton");b.disabled=true;try{const cards=await getDocs(collection(db,"tarjetasPublicas"));let batch=writeBatch(db),n=0;for(const d of cards.docs){const u={maxSellos:m,actualizadoEn:serverTimestamp()};if(!d.data().premioPendiente)u.premioTexto=p;batch.update(d.ref,u);if(++n===450){await batch.commit();batch=writeBatch(db);n=0}}if(n)await batch.commit();await setDoc(CONFIG_REF,{maxSellos:m,premioTexto:p,actualizadoEn:serverTimestamp()});MAX_SELLOS=m;PREMIO_TEXTO=p;$("settingsStatus").textContent="Configuración guardada y tarjetas sincronizadas.";await cargarClientes()}catch(e){console.error(e);$("settingsStatus").textContent="No se pudo guardar. Revisá Firestore."}finally{b.disabled=false}}
+$("signupForm").addEventListener("submit",async e=>{e.preventDefault();const nombre=$("signupName").value.trim();if(nombre.length<3)return $("signupStatus").textContent="Escribí tu nombre y apellido.";$("signupButton").disabled=true;$("signupStatus").textContent="Enviando...";try{await addDoc(collection(db,"solicitudes"),{nombre,nombreBusqueda:normalizar(nombre),estado:"pendiente",creadoEn:serverTimestamp()});$("signupName").value="";$("signupStatus").textContent="¡Solicitud enviada! ReeNomade revisará tus datos.";$("signupButton").textContent="SOLICITUD ENVIADA"}catch(e){console.error(e);$("signupStatus").textContent="No se pudo enviar. Intentá más tarde.";$("signupButton").disabled=false}});
+async function cargarConfiguracion(){const s=await getDoc(CONFIG_REF);if(!s.exists())await setDoc(CONFIG_REF,{maxSellos:5,premioTexto:PREMIO_TEXTO,actualizadoEn:serverTimestamp()});else{MAX_SELLOS=Math.min(30,Math.max(1,Number(s.data().maxSellos)||5));PREMIO_TEXTO=String(s.data().premioTexto||PREMIO_TEXTO)}$("configMaxSellos").value=MAX_SELLOS;$("configPremioTexto").value=PREMIO_TEXTO;await cargarCatalogo()}
+function activos(type){return(catalogo[type]||[]).filter(x=>x.activo&&((x.stock===null||x.stock===undefined)||Number(x.stock)!==0))}
+async function cargarCatalogo(){
+  if(modoPublico){
+    try{const snap=await getDoc(doc(db,"beneficiosPublicosReenomade","club"));const d=snap.exists()?snap.data():{};catalogo={estandar:Array.isArray(d.estandar)?d.estandar:[],vip:Array.isArray(d.vip)?d.vip:[]}}catch(e){console.warn("Beneficios públicos no disponibles",e);catalogo={estandar:[],vip:[]}}
+    return;
+  }
+  const snap=await getDoc(MEMBERSHIP_REF);
+  if(snap.exists()){const d=snap.data();catalogo={estandar:Array.isArray(d.estandar)?d.estandar:[],vip:Array.isArray(d.vip)?d.vip:[]}}
+  else{catalogo={estandar:[],vip:[]};await guardarCatalogoEnFirestore()}
+  renderCatalogAdmin();
+}
+function beneficiosPublicosSeguros(c){const normalize=list=>(list||[]).map(x=>({id:String(x.id||""),nombre:String(x.nombre||""),activo:!!x.activo,stock:Number(x.stock)===0?0:-1,requiereMayorEdad:!!x.requiereMayorEdad}));return {estandar:normalize(c.estandar),vip:normalize(c.vip),estandarIds:normalize(c.estandar).filter(x=>x.activo&&Number(x.stock)!==0).map(x=>x.id),vipIds:normalize(c.vip).filter(x=>x.activo&&Number(x.stock)!==0).map(x=>x.id),actualizadoEn:serverTimestamp()}}
+async function guardarCatalogoEnFirestore(){const batch=writeBatch(db);batch.set(MEMBERSHIP_REF,{estandar:catalogo.estandar,vip:catalogo.vip,estandarActivos:activos("estandar").map(x=>x.id),vipActivos:activos("vip").map(x=>x.id),actualizadoEn:serverTimestamp()});batch.set(doc(db,"beneficiosPublicosReenomade","club"),beneficiosPublicosSeguros(catalogo));await batch.commit()}
+function renderCatalogAdmin(){const type=$("catalogMembership").value,box=$("catalogList");box.replaceChildren();const list=catalogo[type]||[];if(!list.length){box.textContent="Todavía no hay beneficios cargados para esta membresía.";return}list.forEach(item=>{const row=document.createElement("div");row.className="catalog-item";const info=document.createElement("div"),name=document.createElement("strong"),meta=document.createElement("div");name.textContent=item.nombre;meta.className="muted";meta.textContent=(item.activo?"Activo":"Pausado")+" · Stock: "+(item.stock===null||item.stock===undefined||Number(item.stock)<0?"sin límite":item.stock)+(item.requiereMayorEdad?" · requiere 18+":"");info.append(name,meta);const actions=document.createElement("div");actions.className="catalog-actions";const toggle=document.createElement("button");toggle.className="secondary";toggle.textContent=item.activo?"PAUSAR":"ACTIVAR";toggle.onclick=()=>{item.activo=!item.activo;renderCatalogAdmin()};const edit=document.createElement("button");edit.className="secondary";edit.textContent="EDITAR";edit.onclick=()=>{const n=prompt("Nombre del beneficio",item.nombre);if(n===null)return;if(!n.trim())return alert("El nombre no puede quedar vacío.");const st=prompt("Stock (-1 = sin límite)",String(item.stock??-1));if(st===null)return;const num=Number(st);if(!Number.isInteger(num)||num< -1)return alert("Ingresá un stock entero igual o mayor a -1.");item.nombre=n.trim();item.stock=num;renderCatalogAdmin()};const del=document.createElement("button");del.className="danger";del.textContent="×";del.onclick=()=>{if(confirm("¿Eliminar este beneficio del catálogo?")){catalogo[type]=list.filter(x=>x.id!==item.id);renderCatalogAdmin()}};actions.append(toggle,edit,del);row.append(info,actions);box.append(row)})}
+$("catalogMembership").onchange=renderCatalogAdmin;
+$("addBenefitButton").onclick=()=>{const type=$("catalogMembership").value,nombre=$("newBenefitName").value.trim(),stock=Number($("newBenefitStock").value);if(nombre.length<2||nombre.length>90||!Number.isInteger(stock)||stock< -1){$("catalogStatus").textContent="Revisá el nombre y el stock.";return}catalogo[type].push({id:uid(),nombre,activo:true,stock,requiereMayorEdad:$("newBenefitAdult").checked});$("newBenefitName").value="";$("newBenefitStock").value="-1";$("newBenefitAdult").checked=false;$("catalogStatus").textContent="Beneficio agregado. Guardá el catálogo para publicarlo.";renderCatalogAdmin()};
+$("saveCatalogButton").onclick=async()=>{const b=$("saveCatalogButton");b.disabled=true;try{await guardarCatalogoEnFirestore();$("catalogSaveStatus").textContent="Catálogo guardado. Los clientes ya pueden ver los beneficios activos.";if(tarjetaPublica)renderPublicBenefits()}catch(e){console.error(e);$("catalogSaveStatus").textContent="No se pudo guardar. Revisá las reglas de Firestore."}finally{b.disabled=false}};
+async function guardarConfiguracion(){const m=Number($("configMaxSellos").value),p=$("configPremioTexto").value.trim();if(!Number.isInteger(m)||m<1||m>30||p.length<3||p.length>180){$("settingsStatus").textContent="Revisá la cantidad de visitas y el texto.";return}const b=$("saveSettingsButton");b.disabled=true;try{const cards=await getDocs(collection(db,"tarjetasPublicas"));let batch=writeBatch(db),n=0;for(const d of cards.docs){batch.update(d.ref,{maxSellos:m,premioTexto:p,actualizadoEn:serverTimestamp()});if(++n===450){await batch.commit();batch=writeBatch(db);n=0}}if(n)await batch.commit();await setDoc(CONFIG_REF,{maxSellos:m,premioTexto:p,actualizadoEn:serverTimestamp()});MAX_SELLOS=m;PREMIO_TEXTO=p;$("settingsStatus").textContent="Configuración guardada.";await cargarClientes()}catch(e){console.error(e);$("settingsStatus").textContent="No se pudo guardar. Revisá Firestore."}finally{b.disabled=false}}
 $("saveSettingsButton").onclick=guardarConfiguracion;
 
-async function cargarTarjetaPublica(){try{if(!token)throw Error("TOKEN");const s=await getDoc(doc(db,"tarjetasPublicas",token));if(!s.exists()||s.data().activo!==true)throw Error("INACTIVA");tarjetaPublica=s.data();renderPublicCard()}catch(e){console.error(e);$("publicCardName").textContent="Tarjeta no disponible";$("publicCardStatus").textContent="No encontramos esta tarjeta. Revisá el enlace o consultá con ReeNomade."}}
-function renderPublicCard(){const d=tarjetaPublica;if(!d)return;const exp=Number(d.totalExp)||0,nivel=calcularNivel(exp),resto=progresoNivel(exp),max=Math.min(30,Math.max(1,Number(d.maxSellos)||5)),sellos=Math.min(max,Math.max(0,d.sellos||0));$("publicCardName").textContent=d.nombre||"Cliente ReeNomade";$("publicLevel").textContent=nivel;$("publicXpText").textContent=nivel>=100?"NIVEL MÁXIMO":" "+resto+" / 50 EXP";$("publicXpFill").style.width=(nivel>=100?100:resto/50*100)+"%";$("publicNextLevel").textContent=nivel>=100?"¡Alcanzaste el nivel máximo!": "Te faltan "+(50-resto)+" EXP para el nivel "+(nivel+1)+".";const a=AVATARES.find(x=>x.id===d.avatarId)||AVATARES[0];$("publicAvatar").textContent=a.emoji;$("publicProgressText").textContent=sellos+"/"+max;$("publicProgressFill").style.width=sellos/max*100+"%";const c=$("publicStampContainer");c.replaceChildren();for(let i=1;i<=max;i++){const x=document.createElement("div");x.className="stamp"+(i<=sellos?" done":"");x.textContent=i<=sellos?"✓":i;c.append(x)}$("publicRewardBox").classList.toggle("hidden",!d.premioPendiente);$("publicRewardText").textContent=d.premioTexto||PREMIO_TEXTO;$("publicCardStatus").textContent=d.premioPendiente?"Tenés un premio de fidelidad pendiente.":sellos>=max?"¡Completaste tus sellos!":"Te faltan "+(max-sellos)+" visita(s) para completar tu tarjeta.";renderAvatars();renderLevelRewardChoices()}
-function renderAvatars(){const box=$("avatarChoices");box.replaceChildren();AVATARES.forEach(a=>{const b=document.createElement("div");b.className="avatar-option"+((tarjetaPublica?.avatarId||"fade")===a.id?" selected":"");b.innerHTML='<span class="avatar-face"></span><small></small>';b.querySelector(".avatar-face").textContent=a.emoji;b.querySelector("small").textContent=a.nombre;b.onclick=()=>elegirAvatar(a.id);box.append(b)})}
-async function elegirAvatar(id){$("avatarStatus").textContent="Guardando...";try{await updateDoc(doc(db,"tarjetasPublicas",token),{avatarId:id,actualizadoEn:serverTimestamp()});tarjetaPublica.avatarId=id;renderPublicCard();$("avatarStatus").textContent="Avatar actualizado."}catch(e){console.error(e);$("avatarStatus").textContent="No se pudo actualizar. Revisá las reglas de Firestore."}}
-function renderLevelRewardChoices(){const niveles=Array.isArray(tarjetaPublica?.nivelesPendientes)?tarjetaPublica.nivelesPendientes:[];const sel=$("rewardLevelSelect");sel.replaceChildren();niveles.forEach(n=>{const o=document.createElement("option");o.value=n;o.textContent="Nivel "+n;sel.append(o)});$("levelRewardPanel").classList.toggle("hidden",niveles.length===0);if(niveles.length)$("levelRewardStatus").textContent="Tenés "+niveles.length+" beneficio(s) disponible(s) para elegir."}
-$("requestLevelRewardButton").onclick=async()=>{const nivel=Number($("rewardLevelSelect").value),recompensa=$("levelRewardSelect").value;if(!nivel||!RECOMPENSAS.includes(recompensa))return;$("requestLevelRewardButton").disabled=true;$("levelRewardStatus").textContent="Enviando solicitud...";try{const id=token+"_"+nivel;await setDoc(doc(db,"solicitudesRecompensasNivel",id),{tokenTarjeta:token,clienteId:tarjetaPublica.clienteId,clienteNombre:tarjetaPublica.nombre||"Cliente",nivel,recompensa,estado:"pendiente",creadoEn:serverTimestamp()});tarjetaPublica.nivelesPendientes=(tarjetaPublica.nivelesPendientes||[]).filter(x=>x!==nivel);renderLevelRewardChoices();$("levelRewardStatus").textContent="Solicitud enviada. ReeNomade coordinará la entrega."}catch(e){console.error(e);$("levelRewardStatus").textContent="No se pudo enviar. Si ya solicitaste este nivel, consultá con ReeNomade."}finally{$("requestLevelRewardButton").disabled=false}};
-$("shareLevelButton").onclick=async()=>{if(!tarjetaPublica)return;const n=calcularNivel(tarjetaPublica.totalExp),msg="¡Estoy en el nivel "+n+" del Club Nomade de ReeNomade! 💈 El barrio primero. "+urlTarjeta(token);try{if(navigator.share)await navigator.share({title:"Mi nivel en Club Nomade",text:msg,url:urlTarjeta(token)});else{await copiarTexto(msg);$("shareStatus").textContent="Texto y enlace copiados para compartir."}}catch(e){if(e.name!=="AbortError")$("shareStatus").textContent="No se pudo compartir desde este dispositivo."}};
+function poloSvg(){return '<svg class="pole" viewBox="0 0 40 54" aria-hidden="true"><defs><clipPath id="poleClip"><rect x="10" y="5" width="20" height="44" rx="9"/></clipPath><linearGradient id="poleGlow"><stop stop-color="#fff"/><stop offset=".5" stop-color="#c79aff"/><stop offset="1" stop-color="#20d9e8"/></linearGradient></defs><rect x="14" y="1" width="12" height="5" rx="2" fill="#d7d7df"/><rect x="14" y="48" width="12" height="5" rx="2" fill="#d7d7df"/><rect x="10" y="5" width="20" height="44" rx="9" fill="#fff" stroke="url(#poleGlow)" stroke-width="1.8"/><g clip-path="url(#poleClip)" stroke-width="7"><path d="M0 16L40 -7M0 34L40 11M0 52L40 29M0 70L40 47" stroke="#c84f69"/><path d="M0 2L40 25M0 20L40 43M0 38L40 61" stroke="#24cfe2"/></g></svg>'}
+function fechaISOHoy(){const d=new Date();return new Date(d.getFullYear(),d.getMonth(),d.getDate()).toISOString().slice(0,10)}
+function estadoVisibleHabito(h){
+ if(!h||!["activo","completado"].includes(h.estado))return "inactivo";
+ if(h.estado==="completado"||Number(h.cortesRestantes)===0)return "completado";
+ const hoy=fechaISOHoy();
+ if(h.fechaFinGracia&&hoy>h.fechaFinGracia)return "vencido";
+ if(h.fechaVencimiento&&hoy>h.fechaVencimiento)return "gracia";
+ return "vigente";
+}
+function habitoPublicoActivo(d){const h=d?.habitoNomade;return !!h&&h.estado==="activo"&&Number(h.cortesRestantes)>0&&["vigente","gracia"].includes(estadoVisibleHabito(h))}
+function renderHabitPublicCard(){const h=tarjetaPublica?.habitoNomade;if(!h)return;const estado=estadoVisibleHabito(h),restantes=Math.max(0,Math.min(5,Number(h.cortesRestantes)||0)),hoy=new Date(fechaISOHoy()+"T12:00:00"),vence=h.fechaVencimiento?new Date(h.fechaVencimiento+"T12:00:00"):null,dias=vence?Math.ceil((vence-hoy)/86400000):99,porVencer=estado==="vigente"&&dias>=0&&dias<=5;const badge=$("habitPublicState");badge.className="habit-status"+(estado==="gracia"?" state-grace":porVencer?" state-warning":restantes===0?" state-warning":"");$("habitPublicCardName").textContent=tarjetaPublica.nombre||"Cliente ReeNomade";$("habitPublicRemaining").textContent=restantes;$("habitPublicProgress").style.width=((5-restantes)/5*100)+"%";$("habitPublicStart").textContent=h.fechaInicio||"—";$("habitPublicEnd").textContent=h.fechaVencimiento||"—";$("habitPublicGrace").textContent=h.fechaFinGracia||"—";renderHabitCourtesy();badge.textContent=estado==="gracia"?"EN PERÍODO DE GRACIA":porVencer?"POR VENCER":restantes===0?"CORTES UTILIZADOS":"HÁBITO ACTIVADA";$("habitPublicMessage").textContent=estado==="gracia"?"Estás dentro del período de gracia. Podés utilizar los cortes restantes hasta "+(h.fechaFinGracia||"la fecha indicada")+".":porVencer?"Tu membresía está por vencer. Recordá utilizar tus cortes antes del "+(h.fechaVencimiento||"la fecha indicada")+".":restantes===0?"Ya utilizaste los 5 cortes incluidos. ¡Gracias por elegir Hábito Nómade!":"Tenés "+restantes+" corte(s) básico(s) disponibles. Membresía personal e intransferible; no acumulable con otros servicios."}
+async function cargarTarjetaPublica(){
+ try{if(!token)throw Error("TOKEN");const s=await getDoc(doc(db,"tarjetasPublicas",token));
+  if(!s.exists()||s.data().activo!==true)throw Error("INACTIVA");tarjetaPublica=s.data();
+  await Promise.allSettled([cargarCatalogo(),cargarCatalogoPublico(),cargarServiciosPublicos(),cargarPromocionesPublicas()]);renderPublicCard();await verificarSolicitudRenovacionHabito();
+ }catch(e){console.error(e);$("publicCardName").textContent="Tarjeta no disponible";$("publicCardStatus").textContent="No encontramos esta tarjeta. Revisá el enlace o consultá con ReeNomade."}
+}
+let productosPublicos=[];
+async function cargarCatalogoPublico(){
+ const box=$("publicStoreList");if(!box)return;box.replaceChildren();$("publicStoreStatus").textContent="";
+ try{
+  const r=await getDocs(collection(db,"catalogoPublicoReenomade"));productosPublicos=r.docs.map(d=>({id:d.id,...d.data()}));
+  const items=productosPublicos.filter(x=>x.activo!==false&&x.mostrarCatalogo!==false).sort((a,b)=>String(a.categoria||"").localeCompare(String(b.categoria||""))||String(a.nombre||"").localeCompare(String(b.nombre||"")));
+  if(!items.length){$("publicStoreStatus").textContent="No hay productos publicados por el momento.";return}
+  items.forEach(x=>{const row=node("div","public-store-item"),info=node("div",""),name=node("div","public-store-name",x.nombre||"Producto"),desc=node("div","public-store-desc",x.descripcionCatalogo||x.categoria||"Disponible en barbería"),right=node("div",""),price=node("div","public-store-price",Number(x.precio)>0?fmtMoney(x.precio):"Consultar"),available=node("div","public-store-availability"+(x.disponible?"":" out"),x.disponible?"DISPONIBLE":"AGOTADO");info.append(name,desc);right.append(price,available);row.append(info,right);box.append(row)})
+ }catch(e){console.warn("Catálogo público protegido",e);productosPublicos=[];$("publicStoreStatus").textContent="El catálogo requiere habilitar las reglas públicas seguras. Consultá con ReeNomade."}
+ if(tarjetaPublica)renderHabitCourtesy();
+}
+async function cargarServiciosPublicos(){
+ const box=$("publicServicesList");box.replaceChildren();$("publicServicesStatus").textContent="";
+ try{const q=await getDocs(collection(db,"serviciosPublicosReenomade"));
+  const rows=q.docs.map(d=>d.data()).filter(x=>x.activo!==false&&(!x.vigenciaDesde||x.vigenciaDesde<=fechaISOHoy())).sort((a,b)=>String(a.nombre||"").localeCompare(String(b.nombre||"")));
+  if(!rows.length){$("publicServicesStatus").textContent="Consultá en ReeNomade por los servicios y precios disponibles.";return}
+  rows.forEach(x=>{const el=node("div","public-service-row"),r=node("div","row");r.append(node("strong","",x.nombre||"Servicio"),node("span","public-service-price",fmtMoney(x.precio)));el.append(r);if(x.vigenciaDesde)el.append(node("p","muted","Precio vigente desde "+safeDate(x.vigenciaDesde)));box.append(el)})
+ }catch(e){console.warn(e);$("publicServicesStatus").textContent="Los servicios no se pudieron cargar. Revisá los permisos públicos de Firestore."}
+}
+async function cargarPromocionesPublicas(){
+ const box=$("publicPromosList");box.replaceChildren();$("publicPromosStatus").textContent="";
+ try{const q=await getDocs(collection(db,"promocionesPublicasReenomade")),hoy=fechaISOHoy();
+  const rows=q.docs.map(d=>d.data()).filter(x=>x.activa===true&&(!x.desde||x.desde<=hoy)&&(!x.hasta||x.hasta>=hoy));
+  if(!rows.length){$("publicPromosStatus").textContent="No hay promociones vigentes en este momento.";return}
+  rows.forEach(x=>{const el=node("div","public-promo-row");el.append(node("strong","",x.titulo||"Promoción"),node("p","description",x.descripcion||""));if(x.hasta)el.append(node("div","muted","Hasta "+safeDate(x.hasta)));box.append(el)})
+ }catch(e){console.warn(e);$("publicPromosStatus").textContent="Las promociones no se pudieron cargar. Revisá los permisos públicos de Firestore."}
+}
+function servicioPublicoSeguro(id,x){return {servicioId:id,nombre:String(x.nombre||""),precio:Number(x.precio)||0,vigenciaDesde:x.vigenciaDesde||null,activo:x.activo!==false,actualizadoEn:serverTimestamp()}}
+function promocionPublicaSegura(id,x){return {promocionId:id,titulo:String(x.titulo||""),descripcion:String(x.descripcion||""),desde:x.desde||null,hasta:x.hasta||null,activa:x.activa===true,actualizadoEn:serverTimestamp()}}
+function renderHabitCourtesy(){
+ const box=$("habitCourtesyProducts"),state=$("habitCourtesyState"),info=$("habitCourtesyDescription");if(!box||!state||!info)return;
+ box.replaceChildren();const h=tarjetaPublica?.habitoNomade;if(!h||!habitoPublicoActivo(tarjetaPublica))return;
+ const used=h.cortesiaUtilizada===true;state.textContent=used?"CORTESÍA UTILIZADA":"CORTESÍA DISPONIBLE";state.classList.toggle("used",used);
+ if(used){info.textContent="Ya recibiste tu consumición de esta membresía"+(h.cortesiaProductoNombre?": "+h.cortesiaProductoNombre:"")+". Los demás productos pueden comprarse al precio habitual.";return}
+ info.textContent="Elegí UNA sola consumición gratuita. Se entrega exclusivamente al venir a ReeNomade y realizar cualquier servicio. No consume cortes, ni suma sellos o EXP. Sujeto a stock.";
+ const items=productosPublicos.filter(x=>x.activo!==false&&x.cortesiaHabito===true&&x.disponible===true);
+ if(!items.length){box.append(node("p","habit-courtesy-note","No hay cortesías con stock publicadas en este momento."));return}
+ items.forEach(x=>{const line=node("div","habit-courtesy-product"),name=node("strong","",x.nombre||"Producto"),gratis=node("span","","GRATIS");line.append(name,gratis);box.append(line)})
+}
+function renderPublicCard(){
+ const d=tarjetaPublica;if(!d)return;
+ const habit=habitoPublicoActivo(d),h=d.habitoNomade;
+ $("habitPublicVoucher").classList.toggle("hidden",!habit);
+ $("standardBenefitsPanel").classList.toggle("hidden",habit);
+ $("standardSharePanel").classList.toggle("hidden",habit);
+ $("publicCardPanel").querySelector(".voucher").classList.toggle("hidden",habit);
+ $("habitRenewPanel").classList.toggle("hidden",!h||habit);
+ if(h&&!habit){
+  const state=estadoVisibleHabito(h),msg=state==="completado"?"¡Completaste los cinco cortes incluidos! Gracias por elegir Hábito Nómade.":"Tu membresía Hábito Nómade ha terminado.";
+  $("habitRenewMessage").textContent=msg+" Conservás todos tus niveles, EXP, sellos e historial de fidelidad. Para otra Hábito, enviá una solicitud. La reactivación requiere confirmación manual de ReeNomade.";
+  $("habitRenewRequestButton").disabled=false;
+ }
+ if(habit){renderHabitPublicCard();mostrarModuloPublico(moduloPublicoActual,false);return}
+ const type=membershipType(d),max=Math.min(30,Math.max(1,Number(d.maxSellos)||MAX_SELLOS)),sellos=Math.min(max,Math.max(0,Number(d.sellos)||0));
+ $("publicCardName").textContent=d.nombre||"Cliente ReeNomade";
+ const badge=$("membershipBadge");badge.className="membership-badge"+(type==="vip"?" vip":"");badge.innerHTML=type==="vip"?poloSvg()+"<span>NOMADE VIP</span>":"NOMADE ESTÁNDAR";$("publicCardPanel").querySelector(".voucher").classList.toggle("is-vip",type==="vip");
+ $("publicProgressText").textContent=sellos+"/"+max;$("publicProgressFill").style.width=sellos/max*100+"%";
+ const box=$("publicStampContainer");box.style.gridTemplateColumns="repeat("+Math.min(5,max)+",1fr)";box.replaceChildren();
+ for(let i=1;i<=max;i++){const x=node("div","stamp"+(i<=sellos?" done":""),i<=sellos?"✓":String(i));box.append(x)}
+ const pending=!!d.premioPendiente;$("publicRewardBox").classList.toggle("hidden",!pending);
+ $("publicCardStatus").textContent=pending?"¡Completaste tus sellos! Elegí tu regalo de fidelidad.":"Te faltan "+(max-sellos)+" visita(s) para completar tu tarjeta y desbloquear un regalo de fidelidad.";
+ const continuidad=$("standardContinuityBanner"),fechaFin=d.estandarContinuidadHasta||null;
+ continuidad.classList.toggle("hidden",!(fechaFin&&fechaISOHoy()<=fechaFin&&type==="estandar"));
+ if(fechaFin&&fechaISOHoy()<=fechaFin&&type==="estandar")continuidad.textContent="¡Gracias por completar Hábito! Ahora seguís en Nómade Standard. Tenés 15 días de continuidad destacados hasta "+fechaFin+". Tus EXP, nivel y sellos permanecen; después de esta fecha seguirás en Standard hasta que elijas otra membresía.";
+ renderPublicBenefits();renderBenefitSelect();
+ const bonus=Math.max(0,Number(d.bonusCompartirDisponibles)||0);
+ $("shareButton").disabled=bonus<1;
+ $("shareWhatsappButton").disabled=bonus<1;
+ $("shareButton").textContent=bonus?"COMPARTIR INVITACIÓN ↗":"SIN BONUS DISPONIBLE";
+ $("shareBonusRequestButton").disabled=bonus<1||!invitacionPreparada;
+ mostrarModuloPublico(moduloPublicoActual,false);
+}
+function renderPublicBenefits(){
+ const box=$("publicBenefitsList"),locked=$("lockedMembershipOffers");box.replaceChildren();locked.replaceChildren();
+ const type=membershipType(tarjetaPublica),list=activos(type);
+ if(!list.length)box.append(node("p","muted","Por ahora no hay regalos disponibles para tu membresía. ReeNomade los configura desde administración."));
+ else list.forEach(x=>{const row=node("div","benefit-option"),content=node("div",""),name=node("strong","",x.nombre),caption=node("small","",(x.stock===null||x.stock===undefined||Number(x.stock)<0?"Disponibilidad de temporada":"Sujeto a stock")+(x.requiereMayorEdad?" · Verificación 18+":""));content.append(name,document.createElement("br"),caption);row.append(content);box.append(row)});
+ if(type!=="vip"){
+  const vip=node("div","locked-offer");vip.append(node("strong","","NÓMADE VIP · BENEFICIOS NO DESBLOQUEADOS"));
+  vip.append(node("p","muted","Activá VIP desde ReeNomade para acceder a beneficios exclusivos. Tus EXP y sellos no se pierden."));
+  const opts=activos("vip");if(opts.length){vip.append(node("span","badge","EXCLUSIVO VIP"));opts.slice(0,3).forEach(x=>vip.append(node("div","muted","🔒 "+x.nombre)))}locked.append(vip);
+ }
+ const habit=node("div","locked-offer");habit.append(node("strong","","HÁBITO NÓMADE · MEMBRESÍA PREPAGA"),node("p","muted","5 cortes básicos + 1 consumición gratuita a elección (sujeta a stock). Se activa manualmente tras verificar el pago. Consultá en ReeNomade para contratarla."),node("span","badge","ACTIVACIÓN REQUERIDA"));locked.append(habit);
+}
+function renderBenefitSelect(){const sel=$("publicBenefitSelect");sel.replaceChildren();const list=activos(membershipType(tarjetaPublica));list.forEach(x=>{const o=document.createElement("option");o.value=x.id;o.textContent=x.nombre;sel.append(o)});$("requestBenefitButton").disabled=!list.length||!tarjetaPublica?.premioPendiente||!!tarjetaPublica?.solicitudBeneficioPendiente;if(tarjetaPublica?.solicitudBeneficioPendiente)$("publicBenefitStatus").textContent="Tu solicitud está pendiente de confirmación por ReeNomade."}
+$("requestBenefitButton").onclick=async()=>{const type=membershipType(tarjetaPublica),benefit=(catalogo[type]||[]).find(x=>x.id===$("publicBenefitSelect").value&&x.activo&&(x.stock===null||x.stock===undefined||Number(x.stock)!==0));if(!benefit||!tarjetaPublica?.premioPendiente)return;const id=token+"_"+(tarjetaPublica.cicloPremioId||"ciclo-inicial");$("requestBenefitButton").disabled=true;$("publicBenefitStatus").textContent="Enviando solicitud...";try{const ref=doc(db,"solicitudesBeneficios",id);await setDoc(ref,{tokenTarjeta:token,clienteId:tarjetaPublica.clienteId,clienteNombre:tarjetaPublica.nombre,tipoMembresia:type,cicloPremioId:tarjetaPublica.cicloPremioId||"ciclo-inicial",beneficioId:benefit.id,beneficioNombre:benefit.nombre,estado:"pendiente",creadoEn:serverTimestamp()});tarjetaPublica.solicitudBeneficioPendiente=true;$("publicBenefitStatus").textContent="Solicitud enviada. ReeNomade confirmará la entrega.";$("requestBenefitButton").disabled=true}catch(e){console.error(e);$("publicBenefitStatus").textContent=e.message==="YA_SOLICITADO"?"Ya existe una solicitud para este ciclo.":"No se pudo enviar. Consultá con ReeNomade.";$("requestBenefitButton").disabled=false}};
+// WhatsApp y Web Share no proporcionan una prueba de entrega/publicación verificable.
+// Por eso el cliente solo puede PEDIR el bonus. Lo acredita un administrador autenticado.
+let invitacionPreparada=false;
+function mensajeInvitacion(){return "¡Sumate al Team Nómade de ReeNomade Barbería! 💈 Solicitá tu tarjeta acá: "+urlRegistro()}
+function actualizarAccesoBonus(){const disponible=(Number(tarjetaPublica?.bonusCompartirDisponibles)||0)>0;$("shareBonusRequestButton").disabled=!disponible||!invitacionPreparada}
+$("shareButton").onclick=async()=>{
+ const status=$("shareStatus");status.textContent="Elegí dónde compartir la invitación.";
+ try{
+  if(navigator.share){
+   await navigator.share({title:"ReeNomade · Team Nómade",text:mensajeInvitacion()});
+   // El sistema operativo confirmó la entrega al destino, NO una publicación real.
+   invitacionPreparada=true;
+   status.textContent="Se abrió o completó el menú de compartir. Si efectivamente compartiste, pedí la validación de tu bonus.";
+  }else{
+   await copiarTexto(mensajeInvitacion());
+   invitacionPreparada=true;
+   status.textContent="Invitación copiada. Pegala y compartila en WhatsApp; después pedí validación.";
+  }
+ }catch(e){
+  status.textContent=e.name==="AbortError"?"Cancelaste el envío. No se solicitaron ni acreditaron EXP.":"No se pudo abrir el menú. Probá WhatsApp.";
+ }
+ actualizarAccesoBonus();
+};
+$("shareWhatsappButton").onclick=()=>{
+ const url="https://api.whatsapp.com/send?text="+encodeURIComponent(mensajeInvitacion());
+ invitacionPreparada=true;actualizarAccesoBonus();
+ const nueva=window.open(url,"_blank","noopener,noreferrer");
+ $("shareStatus").textContent="Se abrió WhatsApp con la invitación. Enviarla o publicarla es tu decisión. Volvé acá y pedí +5 EXP únicamente si ya compartiste.";
+ // Algunos navegadores bloquean ventanas emergentes; la invitación sigue disponible en Compartir.
+};
+$("shareBonusRequestButton").onclick=async()=>{
+ const d=tarjetaPublica,estado=$("shareStatus"),b=$("shareBonusRequestButton");
+ if(!d||!invitacionPreparada||habitoPublicoActivo(d))return;
+ const disponibles=Number(d.bonusCompartirDisponibles)||0,numero=(Number(d.bonusCompartirUsados)||0)+1;
+ if(disponibles<1)return;
+ b.disabled=true;estado.textContent="Enviando solicitud de validación...";
+ try{
+  const id=token+"_"+numero;
+  await setDoc(doc(db,"solicitudesBonusCompartir",id),{
+   tokenTarjeta:token,clienteId:d.clienteId,clienteNombre:d.nombre,
+   numeroBonus:numero,estado:"pendiente",creadoEn:serverTimestamp()
+  });
+  invitacionPreparada=false;
+  estado.textContent="Solicitud recibida. Mostrá tu invitación compartida en ReeNomade. Los +5 EXP se acreditarán cuando se apruebe.";
+ }catch(e){
+  console.error("Solicitud de bonus",e);
+  estado.textContent=e.code==="permission-denied"?"No se pudo enviar: hay que publicar las nuevas reglas de solicitud de bonus.":"Ya existe una solicitud para este bonus o hubo un problema. Consultá con ReeNomade.";
+ }finally{actualizarAccesoBonus()}
+};
 
-async function cargarClientes(){ $("listStatus").textContent="Cargando...";try{const r=await getDocs(query(collection(db,"clientes"),orderBy("creadoEn","desc")));clientes=r.docs.map(d=>{const x=d.data();return{id:d.id,...x,creadoEn:x.creadoEn?.toDate?.()||null}});for(const c of clientes){if(c.tokenTarjeta){try{await updateDoc(doc(db,"tarjetasPublicas",c.tokenTarjeta),{clienteId:c.id,totalExp:Number(c.totalExp)||0,nivel:calcularNivel(c.totalExp),avatarId:c.avatarId||"fade",nivelesPendientes:Array.isArray(c.nivelesPendientes)?c.nivelesPendientes:[],actualizadoEn:serverTimestamp()})}catch(migrationError){console.warn("No se pudo sincronizar datos de tarjeta",c.id,migrationError)}}}mostrarClientes();$("clientCount").textContent=clientes.length;$("clientTotalLabel").textContent=clientes.length+" registrados";$("pendingCount").textContent=clientes.filter(c=>c.premioPendiente).length;const v=await getDocs(collection(db,"visitas"));$("visitCount").textContent=v.size;if(clienteSeleccionado){const c=clientes.find(x=>x.id===clienteSeleccionado);if(c)renderizarFicha(c);else cerrarFicha()}}catch(e){console.error(e);$("listStatus").textContent="No se pudieron cargar los clientes."}}
-function mostrarClientes(){const q=normalizar($("searchName").value),box=$("clientList");box.replaceChildren();const arr=clientes.filter(c=>normalizar(c.nombre).includes(q));if(!arr.length){$("listStatus").textContent="No encontramos clientes.";return}$("listStatus").textContent="";arr.forEach(c=>{const b=document.createElement("button");b.className="client-select";const name=document.createElement("div");name.className="client-name";name.textContent=c.nombre;const date=document.createElement("div");date.className="client-date";date.textContent="Registrado: "+(c.creadoEn?.toLocaleDateString("es-AR")||"Fecha pendiente");const prog=document.createElement("div");prog.className="client-progress";prog.textContent="NIVEL "+calcularNivel(c.totalExp)+" · "+(c.premioPendiente?"PREMIO PENDIENTE":"SELLOS "+(estaVencida(c)?0:c.sellos||0)+"/"+MAX_SELLOS);b.append(name,date,prog);b.onclick=()=>abrirFicha(c.id);box.append(b)})}
-function abrirFicha(id){clienteSeleccionado=id;const c=clientes.find(x=>x.id===id);if(c){renderizarFicha(c);$("clientDetail").classList.remove("hidden");$("clientDetail").scrollIntoView({behavior:"smooth"})}}
-function cerrarFicha(){clienteSeleccionado=null;$("clientDetail").classList.add("hidden")}
+async function cargarSolicitudesBonusCompartir(){
+ const box=$("shareRequestsList"),status=$("shareRequestsStatus");box.replaceChildren();status.textContent="Cargando...";
+ try{
+  const snap=await getDocs(collection(db,"solicitudesBonusCompartir"));
+  const pendientes=snap.docs.filter(x=>x.data().estado==="pendiente");
+  $("shareRequestCount").textContent=pendientes.length+" pendientes";
+  if(!pendientes.length){status.textContent="No hay invitaciones pendientes de validar.";return}
+  pendientes.sort((a,b)=>(b.data().creadoEn?.toMillis?.()||0)-(a.data().creadoEn?.toMillis?.()||0));
+  pendientes.forEach(d=>{
+   const item=node("div","request-item"),name=node("div","request-name",d.data().clienteNombre||"Cliente"),
+   sub=node("div","request-date","Bonus +5 EXP · número "+d.data().numeroBonus),actions=node("div","request-actions"),
+   yes=node("button","success","APROBAR +5 EXP"),no=node("button","danger","RECHAZAR");
+   yes.type=no.type="button";yes.onclick=()=>resolverBonusCompartir(d.id,true);no.onclick=()=>resolverBonusCompartir(d.id,false);
+   actions.append(yes,no);item.append(name,sub,actions);box.append(item);
+  });
+  status.textContent="Verificá con el cliente su publicación o invitación antes de aprobar.";
+ }catch(e){console.error(e);status.textContent="No se pudieron cargar los bonos. Revisá las reglas de Firestore."}
+}
+async function resolverBonusCompartir(id,aprobar){
+ if(!confirm(aprobar?"¿Confirmaste personalmente que el cliente COMPARTIÓ la invitación? Esta acción acredita +5 EXP.":"¿Rechazar esta solicitud? No se acreditarán EXP."))return;
+ const ref=doc(db,"solicitudesBonusCompartir",id);
+ try{
+  if(!aprobar){await runTransaction(db,async t=>{
+   const snap=await t.get(ref);if(!snap.exists()||snap.data().estado!=="pendiente")throw Error("PROCESADA");
+   t.update(ref,{estado:"rechazado",procesadoEn:serverTimestamp()});
+  });}
+  else await runTransaction(db,async t=>{
+   const sr=await t.get(ref);if(!sr.exists()||sr.data().estado!=="pendiente")throw Error("PROCESADA");
+   const s=sr.data(),cr=doc(db,"clientes",s.clienteId),card=doc(db,"tarjetasPublicas",s.tokenTarjeta);
+   const cs=await t.get(cr),ts=await t.get(card);
+   if(!cs.exists()||!ts.exists()||ts.data().activo!==true||cs.data().tokenTarjeta!==s.tokenTarjeta||ts.data().clienteId!==s.clienteId)throw Error("CLIENTE");
+   const c=cs.data(),d=ts.data(),disponibles=Math.max(Number(c.bonusCompartirDisponibles)||0,Number(d.bonusCompartirDisponibles)||0),usados=Math.max(Number(c.bonusCompartirUsados)||0,Number(d.bonusCompartirUsados)||0);
+   if(disponibles<1||Number(s.numeroBonus)!==usados+1)throw Error("BONUS_AGOTADO");
+   if(habitoPublicoActivo(d))throw Error("HABITO_ACTIVO");
+   const exp=Math.max(Number(c.totalExp)||0,Number(d.totalExp)||0)+5;
+   t.update(cr,{totalExp:exp,nivel:calcularNivel(exp),bonusCompartirDisponibles:disponibles-1,bonusCompartirUsados:usados+1,actualizadoEn:serverTimestamp()});
+   t.update(card,{totalExp:exp,bonusCompartirDisponibles:disponibles-1,bonusCompartirUsados:usados+1,actualizadoEn:serverTimestamp()});
+   t.update(ref,{estado:"aprobado",procesadoEn:serverTimestamp()});
+  });
+  await cargarSolicitudesBonusCompartir();await cargarClientes();
+  $("shareRequestsStatus").textContent=aprobar?"+5 EXP acreditados y sincronizados con la tarjeta y la ficha.":"Solicitud rechazada. No se acreditaron EXP.";
+ }catch(e){console.error(e);$("shareRequestsStatus").textContent="No se pudo procesar. Posible duplicado o cliente sin bonus. "+(e.message||"")}
+}
+$("refreshShareRequestsButton").onclick=cargarSolicitudesBonusCompartir;
+
+async function verificarSolicitudRenovacionHabito(){
+ const h=tarjetaPublica?.habitoNomade;if(!h?.id||habitoPublicoActivo(tarjetaPublica))return;
+ try{const snap=await getDoc(doc(db,"solicitudesRenovacionHabito",h.id));
+  if(snap.exists()&&snap.data().tokenTarjeta===token){
+   $("habitRenewRequestButton").disabled=true;
+   $("habitRenewStatus").textContent=snap.data().estado==="pendiente"?"Ya enviaste la solicitud. ReeNomade verificará el pago antes de activar la nueva membresía.":"Esta solicitud ya fue procesada por ReeNomade.";
+  }
+ }catch(e){console.warn("Solicitud de renovación todavía no legible",e)}
+}
+$("habitRenewRequestButton").onclick=async()=>{
+ const h=tarjetaPublica?.habitoNomade,b=$("habitRenewRequestButton"),status=$("habitRenewStatus");
+ if(!h?.id||habitoPublicoActivo(tarjetaPublica))return;
+ if(!confirm("¿Solicitar otra membresía Hábito? No se activará hasta que ReeNomade confirme el pago manualmente."))return;
+ b.disabled=true;status.textContent="Enviando solicitud...";
+ try{await setDoc(doc(db,"solicitudesRenovacionHabito",h.id),{habitId:h.id,tokenTarjeta:token,clienteId:tarjetaPublica.clienteId,clienteNombre:tarjetaPublica.nombre,estado:"pendiente",creadoEn:serverTimestamp()});status.textContent="¡Solicitud enviada! ReeNomade verificará el pago antes de activar una nueva membresía.";b.disabled=true}
+ catch(e){console.error(e);status.textContent=e.code==="permission-denied"?"No se pudo enviar. Si ya la solicitaste, consultá en ReeNomade; si no, revisá los permisos de solicitudes.":"No se pudo enviar la solicitud.";b.disabled=false}
+};
+$("refreshPublicInfo").onclick=async()=>{const b=$("refreshPublicInfo");b.disabled=true;$("refreshPublicStatus").textContent="Actualizando...";try{await cargarTarjetaPublica();$("refreshPublicStatus").textContent="Información actualizada."}catch(e){$("refreshPublicStatus").textContent="No se pudo actualizar."}finally{b.disabled=false}};
+let moduloPublicoActual="inicio";
+const PUBLICO_SECCIONES={beneficios:["standardBenefitsPanel","habitBenefitsPanel"],servicios:["publicServicesPanel"],promociones:["publicPromosPanel"],catalogo:["publicStorePanel"],perfil:["publicProfilePanel"],invitar:["standardSharePanel"]};
+function irAlInicio(){window.scrollTo({top:0,behavior:window.matchMedia?.("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})}
+function mostrarModuloPublico(mod="inicio",subir=true){
+  if(!$("publicCardPanel"))return;
+  if(mod==="invitar"&&tarjetaPublica&&habitoPublicoActivo(tarjetaPublica))mod="inicio";
+  moduloPublicoActual=PUBLICO_SECCIONES[mod]?mod:"inicio";
+  const inicio=moduloPublicoActual==="inicio",habito=!!tarjetaPublica&&habitoPublicoActivo(tarjetaPublica);
+  $("publicModuleNav").classList.toggle("hidden",!inicio);$("publicModuleHeader").classList.toggle("hidden",inicio);
+  $("publicInviteTile").classList.toggle("hidden",habito);
+  const benefitsSection=$("publicModuleNav").querySelector('[data-public-go="beneficios"] small');
+  if(benefitsSection)benefitsSection.textContent=habito?"Tu cortesía gratis":"Regalos y recompensas";
+  const titles={beneficios:"Beneficios",servicios:"Servicios y precios",promociones:"Promociones",catalogo:"Catálogo ReeNomade",perfil:"Mi perfil",invitar:"Invitar al Club"};
+  if(!inicio)$("publicModuleTitle").textContent=titles[moduloPublicoActual];
+  $("publicCardPanel").querySelector(".voucher").classList.toggle("hidden",!inicio||habito);
+  $("habitPublicVoucher").classList.toggle("hidden",!inicio||!habito);
+  const h=tarjetaPublica?.habitoNomade;
+  $("habitRenewPanel").classList.toggle("hidden",!inicio||!h||habito);
+  Object.entries(PUBLICO_SECCIONES).forEach(([section,ids])=>ids.forEach(id=>$(id).classList.toggle("hidden",inicio||moduloPublicoActual!==section||(section==="invitar"&&habito)||(id==="standardBenefitsPanel"&&habito)||(id==="habitBenefitsPanel"&&!habito))));
+  $("refreshPublicInfo").classList.toggle("hidden",!inicio);
+  $("refreshPublicStatus").classList.toggle("hidden",!inicio);
+  if(moduloPublicoActual==="perfil")renderProfile();
+  if(subir)irAlInicio();
+}
+// Se mueve el bloque público de cortesía al módulo de Beneficios, sin cambiar Firebase.
+const v3HabitBenefitBox=document.createElement("section");v3HabitBenefitBox.id="habitBenefitsPanel";v3HabitBenefitBox.className="panel hidden";
+v3HabitBenefitBox.append($("habitCourtesyPublic"));$("standardBenefitsPanel").before(v3HabitBenefitBox);
+$("publicModuleNav").querySelectorAll("[data-public-go]").forEach(b=>b.addEventListener("click",()=>mostrarModuloPublico(b.dataset.publicGo)));
+$("publicModuleBack").onclick=()=>mostrarModuloPublico("inicio");
+const abrirPerfilPublico=()=>mostrarModuloPublico("perfil");
+$("publicProfileButton").onclick=abrirPerfilPublico;
+$("habitPublicProfileButton").onclick=abrirPerfilPublico;
+$("closeProfileButton").onclick=()=>mostrarModuloPublico("inicio");
+
+function renderProfile(){if(!tarjetaPublica)return;const exp=Number(tarjetaPublica.totalExp)||0,n=calcularNivel(exp),p=progresoNivel(exp);$("profileLevel").textContent=n;$("profileExp").textContent=exp;$("profileProgressText").textContent=n>=100?"NIVEL MÁXIMO":p+"/50 EXP";$("profileXpFill").style.width=(n>=100?100:p/50*100)+"%";$("profileNextLevel").textContent=n>=100?"¡Alcanzaste el nivel máximo!":"Te faltan "+(50-p)+" EXP para el nivel "+(n+1)+".";const box=$("profileHistory");box.replaceChildren();const rows=Array.isArray(tarjetaPublica.historialVisitas)?[...tarjetaPublica.historialVisitas].reverse():[];$("profileHistoryStatus").textContent=rows.length?rows.length+" visita(s) registradas.":"Todavía no hay visitas registradas.";rows.forEach(v=>{const el=document.createElement("div");el.className="history-chip";const date=v.fecha?new Date(v.fecha):null;el.textContent=(v.servicio||"Servicio")+" · "+(date&&!Number.isNaN(date.getTime())?fechaTexto(date):"Fecha registrada")+" · +"+(v.expGanada||0)+" EXP";box.append(el)})}
+
+async function cargarClientes(){$("listStatus").textContent="Cargando...";try{const r=await getDocs(query(collection(db,"clientes"),orderBy("creadoEn","desc")));clientes=r.docs.map(d=>({id:d.id,...d.data(),creadoEn:fechaDe(d.data().creadoEn)}));for(const c of clientes){if(!c.tokenTarjeta)continue;try{const tr=doc(db,"tarjetasPublicas",c.tokenTarjeta),ts=await getDoc(tr);if(!ts.exists())continue;const td=ts.data(),cycle=c.cicloPremioId||td.cicloPremioId||uid(),exp=Math.max(Number(c.totalExp)||0,Number(td.totalExp)||0),bonus=Math.max(Number(c.bonusCompartirUsados)||0,Number(td.bonusCompartirUsados)||0);if(!c.cicloPremioId){await updateDoc(doc(db,"clientes",c.id),{cicloPremioId:cycle,tipoMembresia:membershipType(c),actualizadoEn:serverTimestamp()});c.cicloPremioId=cycle}if(!td.cicloPremioId||!td.tipoMembresia||!Array.isArray(td.historialVisitas)){let history=Array.isArray(td.historialVisitas)?td.historialVisitas:[];if(!history.length){try{const oldVisits=await getDocs(query(collection(db,"visitas"),where("clienteId","==",c.id)));history=oldVisits.docs.map(v=>{const x=v.data();return{servicio:x.servicio||"Servicio",expGanada:Number(x.expGanada)||0,selloNumero:Number(x.selloNumero)||0,fecha:fechaDe(x.fecha)?.toISOString()||new Date().toISOString()}}).sort((a,b)=>new Date(a.fecha)-new Date(b.fecha)).slice(-40)}catch(historyError){console.warn("No se pudo migrar el historial público",c.id,historyError)}}await updateDoc(tr,{cicloPremioId:cycle,tipoMembresia:membershipType(c),historialVisitas:history,bonusCompartirDisponibles:Number(td.bonusCompartirDisponibles)||0,bonusCompartirUsados:Number(td.bonusCompartirUsados)||0,maxSellos:MAX_SELLOS,actualizadoEn:serverTimestamp()})}if(exp!==(Number(c.totalExp)||0)||bonus!==(Number(c.bonusCompartirUsados)||0)){await updateDoc(doc(db,"clientes",c.id),{totalExp:exp,nivel:calcularNivel(exp),bonusCompartirDisponibles:Number(td.bonusCompartirDisponibles)||0,bonusCompartirUsados:bonus,actualizadoEn:serverTimestamp()});c.totalExp=exp;c.nivel=calcularNivel(exp);c.bonusCompartirDisponibles=Number(td.bonusCompartirDisponibles)||0;c.bonusCompartirUsados=bonus}const tipo=membershipType(c);if(membershipType(td)!==tipo||Number(td.totalExp||0)!==exp)await updateDoc(tr,{tipoMembresia:tipo,totalExp:exp,actualizadoEn:serverTimestamp()})}catch(e){console.warn("Sincronización de tarjeta",c.id,e)}}mostrarClientes();$("clientCount").textContent=clientes.length;$("clientTotalLabel").textContent=clientes.length+" registrados";$("pendingCount").textContent=clientes.filter(c=>c.premioPendiente).length;const v=await getDocs(collection(db,"visitas"));$("visitCount").textContent=v.size}catch(e){console.error(e);$("listStatus").textContent="No se pudieron cargar los clientes."}}
+function mostrarClientes(){const q=normalizar($("searchName").value),box=$("clientList");box.replaceChildren();const arr=clientes.filter(c=>normalizar(c.nombre).includes(q));if(!arr.length){$("listStatus").textContent="No encontramos clientes.";return}$("listStatus").textContent="";arr.forEach(c=>{const b=document.createElement("button");b.className="client-select";const n=document.createElement("div");n.className="client-name";n.textContent=c.nombre;const d=document.createElement("div");d.className="client-date";d.textContent="Registrado: "+(c.creadoEn?.toLocaleDateString("es-AR")||"Fecha pendiente");const p=document.createElement("div");p.className="client-progress";p.textContent=(habitosActivosPorCliente.has(c.id)?"HÁBITO NÓMADE":membershipType(c)==="vip"?"NOMADE VIP":"ESTÁNDAR")+" · NIVEL "+calcularNivel(c.totalExp)+" · SELLOS "+(estaVencida(c)?0:c.sellos||0)+"/"+MAX_SELLOS;b.append(n,d,p);b.onclick=()=>abrirFicha(c.id);box.append(b)})}
+function abrirFicha(id){clienteSeleccionado=id;const c=clientes.find(x=>x.id===id);if(c){submodulosAdminActuales.clientes="ficha";mostrarModuloAdmin("clientes",true);renderizarFicha(c);seleccionarSubmoduloAdmin("clientes",false)}}
+function cerrarFicha(){clienteSeleccionado=null;submodulosAdminActuales.clientes="lista";if($("adminSubnav")&&moduloAdminActual==="clientes")seleccionarSubmoduloAdmin("clientes",false);else $("clientDetail").classList.add("hidden")}
 function renderXpAdmin(c){const exp=Number(c.totalExp)||0,n=calcularNivel(exp),p=progresoNivel(exp);$("detailLevel").textContent=n;$("detailTotalXp").textContent=exp;$("detailXpProgress").textContent=n>=100?"MÁXIMO":p+"/50";$("detailXpFill").style.width=(n>=100?100:p/50*100)+"%"}
-function renderizarFicha(c){$("clientDetail").classList.remove("hidden");$("detailName").textContent=c.nombre;$("detailDate").textContent="Registrado: "+(c.creadoEn?.toLocaleDateString("es-AR")||"Fecha pendiente");renderXpAdmin(c);const vencida=estaVencida(c),s=c.premioPendiente?MAX_SELLOS:(vencida?0:Math.min(c.sellos||0,MAX_SELLOS));const box=$("stampContainer");box.replaceChildren();for(let i=1;i<=MAX_SELLOS;i++){const x=document.createElement("div");x.className="stamp"+(i<=s?" done":"");x.textContent=i<=s?"✓":i;box.append(x)}$("progressText").textContent=s+"/"+MAX_SELLOS;$("progressFill").style.width=s/MAX_SELLOS*100+"%";$("cardStatus").textContent=c.premioPendiente?"Premio de fidelidad pendiente.":vencida?"Los sellos vencieron por 28 días sin visitas.":"Un sello por visita. EXP acumulada: "+(c.totalExp||0)+"."; $("adminRewardText").textContent=c.premioTexto||PREMIO_TEXTO;$("rewardBox").classList.toggle("hidden",!c.premioPendiente);$("visitControls").classList.toggle("hidden",!!c.premioPendiente);$("visitControls").open=false;$("visitStatus").textContent="";$("cardLinkStatus").textContent="";$("resetCardStatus").textContent="";$("deleteClientStatus").textContent="";$("redeemButton").disabled=false;cargarHistorial(c.id)}
-async function asegurarTarjeta(id){const ref=doc(db,"clientes",id),newRef=doc(collection(db,"tarjetasPublicas"));let result;await runTransaction(db,async t=>{const s=await t.get(ref);if(!s.exists())throw Error("NO_CLIENTE");const d=s.data();result=d.tokenTarjeta||newRef.id;const card=doc(db,"tarjetasPublicas",result),cs=await t.get(card);if(!d.tokenTarjeta)t.update(ref,{tokenTarjeta:result,actualizadoEn:serverTimestamp()});if(!cs.exists()||!d.tokenTarjeta)t.set(card,{...crearDatosTarjeta({...d,clienteId:id}),clienteId:id})});return result}
+function renderizarFicha(c){$("clientDetail").classList.remove("hidden");$("detailName").textContent=c.nombre;$("detailDate").textContent="Registrado: "+(c.creadoEn?.toLocaleDateString("es-AR")||"Fecha pendiente");$("membershipSelect").value=membershipType(c);$("membershipStatus").textContent=habitosActivosPorCliente.has(c.id)?"HÁBITO NÓMADE ACTIVO. Tus datos de fidelidad siguen guardados.":"Membresía actual: "+(membershipType(c)==="vip"?"NOMADE VIP":"NOMADE ESTÁNDAR");$("membershipSelect").disabled=habitosActivosPorCliente.has(c.id);$("saveMembershipButton").disabled=habitosActivosPorCliente.has(c.id);renderXpAdmin(c);const vencida=estaVencida(c),s=c.premioPendiente?MAX_SELLOS:(vencida?0:Math.min(c.sellos||0,MAX_SELLOS)),box=$("stampContainer");box.replaceChildren();for(let i=1;i<=MAX_SELLOS;i++){const x=document.createElement("div");x.className="stamp"+(i<=s?" done":"");x.textContent=i<=s?"✓":i;box.append(x)}$("progressText").textContent=s+"/"+MAX_SELLOS;$("progressFill").style.width=s/MAX_SELLOS*100+"%";$("cardStatus").textContent=c.premioPendiente?"El cliente completó sus sellos y puede elegir un beneficio.":vencida?"Los sellos vencieron por 28 días sin visitas.":"Un sello por visita. EXP acumulada: "+(c.totalExp||0)+".";$("adminRewardText").textContent="Esperando selección del cliente.";$("rewardBox").classList.toggle("hidden",!c.premioPendiente);$("visitControls").classList.toggle("hidden",!!c.premioPendiente);$("visitControls").open=false;["visitStatus","cardLinkStatus","resetCardStatus","deleteClientStatus"].forEach(id=>$(id).textContent="");$("redeemButton")?.remove();cargarHistorial(c.id)}
+async function asegurarTarjeta(id){const ref=doc(db,"clientes",id),newRef=doc(collection(db,"tarjetasPublicas"));let result;await runTransaction(db,async t=>{const s=await t.get(ref);if(!s.exists())throw Error("NO_CLIENTE");const d=s.data();result=d.tokenTarjeta||newRef.id;const cycle=d.cicloPremioId||uid(),card=doc(db,"tarjetasPublicas",result),cs=await t.get(card);if(!d.tokenTarjeta||!d.cicloPremioId)t.update(ref,{tokenTarjeta:result,cicloPremioId:cycle,tipoMembresia:membershipType(d),actualizadoEn:serverTimestamp()});if(!cs.exists()||!d.tokenTarjeta)t.set(card,{...crearDatosTarjeta({...d,clienteId:id,cicloPremioId:cycle}),clienteId:id,cicloPremioId:cycle})});return result}
 $("copyCardLink").onclick=async()=>{if(!clienteSeleccionado)return;try{const t=await asegurarTarjeta(clienteSeleccionado);await copiarTexto(urlTarjeta(t));$("cardLinkStatus").textContent="Enlace copiado.";await cargarClientes()}catch(e){console.error(e);$("cardLinkStatus").textContent="No se pudo generar el enlace."}}
-async function cargarHistorial(id){const box=$("historyList");box.replaceChildren();$("historyStatus").textContent="Cargando...";try{const r=await getDocs(query(collection(db,"visitas"),where("clienteId","==",id)));const rows=r.docs.map(x=>x.data()).sort((a,b)=>(b.fecha?.toMillis?.()||0)-(a.fecha?.toMillis?.()||0));$("historyStatus").textContent=rows.length+" visita(s).";if(!rows.length)$("historyStatus").textContent="Sin visitas todavía.";rows.forEach(v=>{const x=document.createElement("div");x.className="history-item";const title=document.createElement("strong");title.textContent=v.servicio||"Servicio";const date=document.createElement("div");date.className="muted";date.textContent=fechaTexto(v.fecha?.toDate?.());const extra=document.createElement("div");extra.className="muted";extra.textContent="Sello "+(v.selloNumero||"—")+" · +"+(v.expGanada||0)+" EXP";x.append(title,date,extra);if(v.reinicioPorInactividad){const badge=document.createElement("span");badge.className="badge";badge.textContent="Nuevo ciclo por inactividad";x.append(badge)}box.append(x)})}catch(e){console.error(e);$("historyStatus").textContent="No se pudo cargar el historial."}}
-async function registrarVisita(){const c=clientes.find(x=>x.id===clienteSeleccionado);if(!c)return;const servicio=$("serviceSelect").value,ganada=SERVICIOS[servicio];$("visitButton").disabled=true;$("visitStatus").textContent="Registrando visita...";try{const cr=doc(db,"clientes",c.id),vr=doc(collection(db,"visitas")),pr=doc(collection(db,"premios"));let nivelNuevo=0;await runTransaction(db,async t=>{const s=await t.get(cr);if(!s.exists())throw Error("NO_CLIENTE");const d=s.data();if(d.premioPendiente)throw Error("PREMIO_PENDIENTE");const card=d.tokenTarjeta?doc(db,"tarjetasPublicas",d.tokenTarjeta):null;if(card)await t.get(card);const vencida=!!d.ultimaVisita&&Date.now()-d.ultimaVisita.toDate().getTime()>=LIMITE_MS&&(d.sellos||0)>0;const prev=vencida?0:(d.sellos||0),nuevo=Math.min(MAX_SELLOS,prev+1),gana=nuevo>=MAX_SELLOS,expAntes=Number(d.totalExp)||0,expDespues=expAntes+ganada,nivelAntes=calcularNivel(expAntes);nivelNuevo=calcularNivel(expDespues);const pendientes=Array.isArray(d.nivelesPendientes)?[...d.nivelesPendientes]:[];for(let n=nivelAntes+1;n<=nivelNuevo;n++)pendientes.push(n);t.set(vr,{clienteId:c.id,clienteNombre:d.nombre,servicio,selloNumero:nuevo,reinicioPorInactividad:!!vencida,expGanada:ganada,fecha:serverTimestamp()});const u={sellos:nuevo,ultimaVisita:serverTimestamp(),actualizadoEn:serverTimestamp(),premioPendiente:gana,totalExp:expDespues,nivel:nivelNuevo,nivelesPendientes:pendientes};if(gana){u.premioId=pr.id;u.premioTexto=PREMIO_TEXTO;t.set(pr,{clienteId:c.id,clienteNombre:d.nombre,tipo:PREMIO_TEXTO,estado:"pendiente",creadoEn:serverTimestamp()})}else{u.premioId=null;u.premioTexto=null}t.update(cr,u);if(card)t.set(card,{...crearDatosTarjeta({...d,...u,clienteId:c.id}),clienteId:c.id,nivelesPendientes:pendientes})});$("visitStatus").textContent="Visita registrada: +1 sello y +"+ganada+" EXP. Nuevo nivel: "+nivelNuevo+"."; $("visitControls").open=false;await cargarClientes()}catch(e){console.error(e);$("visitStatus").textContent=e.message==="PREMIO_PENDIENTE"?"Primero confirmá la entrega del premio.":"No se pudo registrar la visita. Revisá Firestore."}finally{$("visitButton").disabled=false}}
+async function cargarHistorial(id){const box=$("historyList");box.replaceChildren();$("historyStatus").textContent="Cargando...";try{const r=await getDocs(query(collection(db,"visitas"),where("clienteId","==",id)));const rows=r.docs.map(x=>x.data()).sort((a,b)=>(b.fecha?.toMillis?.()||0)-(a.fecha?.toMillis?.()||0));$("historyStatus").textContent=rows.length?rows.length+" visita(s).":"Sin visitas todavía.";rows.forEach(v=>{const x=document.createElement("div");x.className="history-item";const title=document.createElement("strong");title.textContent=v.servicio||"Servicio";const date=document.createElement("div");date.className="muted";date.textContent=fechaTexto(fechaDe(v.fecha));const extra=document.createElement("div");extra.className="muted";extra.textContent=(v.tipoRegistro==="habito_nomade"?"HÁBITO · Sin sello":"Sello "+(v.selloNumero||"—"))+" · +"+(v.expGanada||0)+" EXP";x.append(title,date,extra);if(v.reinicioPorInactividad){const badge=document.createElement("span");badge.className="badge";badge.textContent="Nuevo ciclo por inactividad";x.append(badge)}box.append(x)})}catch(e){console.error(e);$("historyStatus").textContent="No se pudo cargar el historial."}}
+async function registrarVisita(){
+ const c=clientes.find(x=>x.id===clienteSeleccionado);if(!c)return;
+ const servicio=$("serviceSelect").value,ganada=SERVICIOS[servicio];if(!Number.isFinite(ganada))return;
+ $("visitButton").disabled=true;$("visitStatus").textContent="Registrando visita...";
+ try{const cr=doc(db,"clientes",c.id),vr=doc(collection(db,"visitas"));let expNuevo=0;
+  await runTransaction(db,async t=>{
+   const snap=await t.get(cr);if(!snap.exists())throw Error("NO_CLIENTE");const d=snap.data();
+   if(d.premioPendiente)throw Error("PREMIO_PENDIENTE");
+   const card=d.tokenTarjeta?doc(db,"tarjetasPublicas",d.tokenTarjeta):null,cs=card?await t.get(card):null,cd=cs?.exists()?cs.data():{};
+   if(habitoPublicoActivo(cd))throw Error("HABITO_ACTIVO");
+   const last=fechaDe(d.ultimaVisita);if(last&&Date.now()-last.getTime()<90000)throw Error("VISITA_REPETIDA");
+   const expired=estaVencida(d),prev=expired?0:Number(d.sellos)||0,next=Math.min(MAX_SELLOS,prev+1),earned=next>=MAX_SELLOS;
+   expNuevo=Math.max(Number(d.totalExp)||0,Number(cd.totalExp)||0)+ganada;
+   const bonus=Math.max(Number(d.bonusCompartirDisponibles)||0,Number(cd.bonusCompartirDisponibles)||0)+1;
+   const historial=[...(Array.isArray(cd.historialVisitas)?cd.historialVisitas:[]),{servicio,expGanada:ganada,selloNumero:next,fecha:new Date().toISOString()}].slice(-40);
+   const u={sellos:next,ultimaVisita:serverTimestamp(),actualizadoEn:serverTimestamp(),premioPendiente:earned,totalExp:expNuevo,nivel:calcularNivel(expNuevo),bonusCompartirDisponibles:bonus,bonusCompartirUsados:Math.max(Number(d.bonusCompartirUsados)||0,Number(cd.bonusCompartirUsados)||0)};
+   if(earned){u.premioId=null;u.premioTexto=PREMIO_TEXTO}
+   t.set(vr,{clienteId:c.id,clienteNombre:d.nombre,tokenTarjeta:d.tokenTarjeta||null,servicio,selloNumero:next,reinicioPorInactividad:!!expired,expGanada:ganada,fecha:serverTimestamp()});
+   t.update(cr,u);
+   if(card)t.set(card,{...crearDatosTarjeta({...d,...u,clienteId:c.id,historialVisitas:historial}),clienteId:c.id,historialVisitas:historial,cicloPremioId:cd.cicloPremioId||uid(),habitoNomade:cd.habitoNomade||null});
+  });
+  $("visitStatus").textContent="Visita registrada: +1 sello y +"+ganada+" EXP. Total: "+expNuevo+" EXP.";$("visitControls").open=false;await cargarClientes();
+ }catch(e){console.error(e);$("visitStatus").textContent=({PREMIO_PENDIENTE:"El cliente ya completó sus sellos. Primero debe elegir y recibir su beneficio.",VISITA_REPETIDA:"Ya registraste una visita hace menos de 90 segundos. Se bloqueó un posible doble clic.",HABITO_ACTIVO:"Este cliente tiene Hábito Nómade activo. Registrá el corte desde la sección Hábito, sin agregar sellos."})[e.message]||"No se pudo registrar la visita. Revisá Firestore."}
+ finally{$("visitButton").disabled=false}
+}
 $("visitButton").onclick=registrarVisita;
-async function entregarPremio(){const c=clientes.find(x=>x.id===clienteSeleccionado);if(!c?.premioId)return;if(!confirm("¿Confirmás la entrega de "+(c.premioTexto||PREMIO_TEXTO)+" a "+c.nombre+"?"))return;$("redeemButton").disabled=true;try{const cr=doc(db,"clientes",c.id),pr=doc(db,"premios",c.premioId);await runTransaction(db,async t=>{const s=await t.get(cr),p=await t.get(pr);if(!s.exists()||!p.exists()||!s.data().premioPendiente)throw Error("DATOS");const d=s.data(),card=d.tokenTarjeta?doc(db,"tarjetasPublicas",d.tokenTarjeta):null;if(card)await t.get(card);t.update(pr,{estado:"entregado",entregadoEn:serverTimestamp()});const u={sellos:0,premioPendiente:false,premioId:null,premioTexto:null,ultimaVisita:null,actualizadoEn:serverTimestamp()};t.update(cr,u);if(card)t.set(card,{...crearDatosTarjeta({...d,...u,clienteId:c.id}),clienteId:c.id,nivelesPendientes:d.nivelesPendientes||[]})});alert("Premio entregado.");await cargarClientes()}catch(e){console.error(e);$("cardStatus").textContent="No se pudo confirmar la entrega.";$("redeemButton").disabled=false}}
-$("redeemButton").onclick=entregarPremio;
-async function reiniciarTarjeta(){const c=clientes.find(x=>x.id===clienteSeleccionado);if(!c)return;if(!confirm("Se reiniciarán los sellos y se cancelará el premio pendiente. El historial y los EXP se conservarán. ¿Continuar?"))return;$("resetCardButton").disabled=true;try{const cr=doc(db,"clientes",c.id);await runTransaction(db,async t=>{const s=await t.get(cr);if(!s.exists())throw Error("NO");const d=s.data(),pr=d.premioId?doc(db,"premios",d.premioId):null,p=pr?await t.get(pr):null,card=d.tokenTarjeta?doc(db,"tarjetasPublicas",d.tokenTarjeta):null;if(card)await t.get(card);if(pr&&p?.exists()&&d.premioPendiente)t.update(pr,{estado:"cancelado",canceladoEn:serverTimestamp()});const u={sellos:0,premioPendiente:false,premioId:null,premioTexto:null,ultimaVisita:null,actualizadoEn:serverTimestamp()};t.update(cr,u);if(card)t.set(card,{...crearDatosTarjeta({...d,...u,clienteId:c.id}),clienteId:c.id,nivelesPendientes:d.nivelesPendientes||[]})});$("resetCardStatus").textContent="Sellos reiniciados. EXP e historial conservados.";await cargarClientes()}catch(e){console.error(e);$("resetCardStatus").textContent="No se pudo reiniciar."}finally{$("resetCardButton").disabled=false}}
+async function guardarMembresia(){const c=clientes.find(x=>x.id===clienteSeleccionado);if(!c)return;const type=$("membershipSelect").value;if(habitosActivosPorCliente.has(c.id)){$("membershipStatus").textContent="Primero debe terminar Hábito Nómade.";return}if(!["estandar","vip"].includes(type))return;try{await updateDoc(doc(db,"clientes",c.id),{tipoMembresia:type,actualizadoEn:serverTimestamp()});if(c.tokenTarjeta)await updateDoc(doc(db,"tarjetasPublicas",c.tokenTarjeta),{tipoMembresia:type,actualizadoEn:serverTimestamp()});c.tipoMembresia=type;$("membershipStatus").textContent="Membresía actualizada a "+(type==="vip"?"NOMADE VIP":"NOMADE ESTÁNDAR")+".";await cargarClientes()}catch(e){console.error(e);$("membershipStatus").textContent="No se pudo actualizar la membresía."}}
+$("saveMembershipButton").onclick=guardarMembresia;
+async function confirmarEntregaBeneficio(id,s){const benefit=(catalogo[s.tipoMembresia]||[]).find(x=>x.id===s.beneficioId);if(!benefit){alert("El beneficio ya no está en el catálogo. Revisá la solicitud manualmente.");return}if(benefit.requiereMayorEdad&&!confirm("Este beneficio requiere mayoría de edad. ¿Verificaste que el cliente tenga 18 años o más?"))return;if(benefit.stock!==null&&benefit.stock!==undefined&&Number(benefit.stock)===0){alert("El beneficio no tiene stock disponible. Actualizá el catálogo o contactá al cliente.");return}if(!confirm("¿Confirmás la entrega de "+benefit.nombre+" a "+s.clienteNombre+"?"))return;try{const sr=doc(db,"solicitudesBeneficios",id),cr=doc(db,"clientes",s.clienteId),pr=doc(db,"premios",id),cfg=MEMBERSHIP_REF;await runTransaction(db,async t=>{const ss=await t.get(sr),cs=await t.get(cr),ps=await t.get(cfg),prs=await t.get(pr);if(!ss.exists()||ss.data().estado!=="pendiente"||!cs.exists()||!ps.exists())throw Error("ESTADO");const request=ss.data(),client=cs.data(),all=ps.data(),list=[...(all[request.tipoMembresia]||[])],idx=list.findIndex(x=>x.id===request.beneficioId),legacyRef=client.premioId?doc(db,"premios",client.premioId):null,legacySnap=legacyRef?await t.get(legacyRef):null,nextCycle=uid(),tokenCliente=client.tokenTarjeta,card=tokenCliente?doc(db,"tarjetasPublicas",tokenCliente):null,cardSnap=card?await t.get(card):null;if(idx<0)throw Error("BENEFICIO");if(list[idx].stock!==null&&list[idx].stock!==undefined&&Number(list[idx].stock)>=0){if(Number(list[idx].stock)<1)throw Error("STOCK");list[idx]={...list[idx],stock:Number(list[idx].stock)-1};if(list[idx].stock===0)list[idx].activo=false}const updated={...all,[request.tipoMembresia]:list,[request.tipoMembresia+"Activos"]:list.filter(x=>x.activo&&(x.stock===null||x.stock===undefined||Number(x.stock)!==0)).map(x=>x.id),actualizadoEn:serverTimestamp()};t.set(cfg,updated);t.set(doc(db,"beneficiosPublicosReenomade","club"),beneficiosPublicosSeguros(updated));if(legacyRef&&legacySnap?.exists()&&legacySnap.data().estado==="pendiente")t.update(legacyRef,{estado:"cancelado",canceladoEn:serverTimestamp(),nota:"Reemplazado por el nuevo sistema de beneficios."});if(card&&cardSnap?.exists())t.update(card,{sellos:0,premioPendiente:false,premioTexto:PREMIO_TEXTO,cicloPremioId:nextCycle,maxSellos:MAX_SELLOS,actualizadoEn:serverTimestamp()});t.update(cr,{sellos:0,premioPendiente:false,premioId:null,premioTexto:null,ultimaVisita:null,cicloPremioId:nextCycle,actualizadoEn:serverTimestamp()});t.update(sr,{estado:"entregado",entregadoEn:serverTimestamp()});t.set(pr,{clienteId:request.clienteId,clienteNombre:request.clienteNombre,tipo:list[idx].nombre,estado:"entregado",tipoMembresia:request.tipoMembresia,solicitudId:id,creadoEn:request.creadoEn,entregadoEn:serverTimestamp()})});await cargarCatalogo();await cargarClientes();await cargarSolicitudesBeneficios();alert("Entrega confirmada y stock actualizado.")}catch(e){console.error(e);alert(e.message==="STOCK"?"No queda stock de ese beneficio.":"No se pudo confirmar la entrega. Revisá Firestore.")}}
+async function cargarSolicitudesBeneficios(){const box=$("benefitRequestList");box.replaceChildren();$("benefitRequestStatus").textContent="Cargando...";try{const r=await getDocs(collection(db,"solicitudesBeneficios")),rows=r.docs.map(d=>({id:d.id,...d.data()})).filter(x=>x.estado==="pendiente").sort((a,b)=>(b.creadoEn?.toMillis?.()||0)-(a.creadoEn?.toMillis?.()||0));$("benefitRequestCount").textContent=rows.length+" pendientes";if(!rows.length){$("benefitRequestStatus").textContent="No hay solicitudes pendientes.";return}rows.forEach(s=>{const row=document.createElement("div");row.className="request-item";const n=document.createElement("div");n.className="request-name";n.textContent=s.clienteNombre||"Cliente";const d=document.createElement("div");d.className="request-date";const verified=(catalogo[s.tipoMembresia]||[]).find(x=>x.id===s.beneficioId);d.textContent=(s.tipoMembresia==="vip"?"NOMADE VIP":"ESTÁNDAR")+" · "+(verified?.nombre||"Beneficio no disponible");const b=document.createElement("button");b.className="success";b.textContent="CONFIRMAR ENTREGA";b.onclick=()=>confirmarEntregaBeneficio(s.id,s);row.append(n,d,b);box.append(row)});$("benefitRequestStatus").textContent="Confirmá las entregas para descontar stock y reiniciar el ciclo de sellos."}catch(e){console.error(e);$("benefitRequestStatus").textContent="No se pudieron cargar las solicitudes."}}
+$("refreshBenefitRequests").onclick=cargarSolicitudesBeneficios;
+async function reiniciarTarjeta(){const c=clientes.find(x=>x.id===clienteSeleccionado);if(!c)return;if(!confirm("¿Reiniciar los sellos? Se conservarán EXP e historial. Las solicitudes pendientes de beneficios se cancelarán."))return;$("resetCardButton").disabled=true;try{const req=await getDocs(query(collection(db,"solicitudesBeneficios"),where("clienteId","==",c.id)));const batch=writeBatch(db);const pendientes=req.docs.filter(x=>x.data().estado==="pendiente");pendientes.forEach(x=>batch.update(x.ref,{estado:"cancelado",canceladoEn:serverTimestamp()}));if(pendientes.length)await batch.commit();const u={sellos:0,premioPendiente:false,premioId:null,premioTexto:null,ultimaVisita:null,cicloPremioId:uid(),actualizadoEn:serverTimestamp()};await updateDoc(doc(db,"clientes",c.id),u);if(c.tokenTarjeta)await updateDoc(doc(db,"tarjetasPublicas",c.tokenTarjeta),{...u,maxSellos:MAX_SELLOS});$("resetCardStatus").textContent="Sellos reiniciados. EXP e historial conservados.";await cargarClientes()}catch(e){console.error(e);$("resetCardStatus").textContent="No se pudo reiniciar."}finally{$("resetCardButton").disabled=false}}
 $("resetCardButton").onclick=reiniciarTarjeta;
-
 async function borrarEnLotes(refs){for(let i=0;i<refs.length;i+=450){const b=writeBatch(db);refs.slice(i,i+450).forEach(r=>b.delete(r));await b.commit()}}
-async function eliminarCliente(){const c=clientes.find(x=>x.id===clienteSeleccionado);if(!c)return;const ok=confirm("ELIMINACIÓN DEFINITIVA\n\nSe borrarán "+c.nombre+", su tarjeta pública, historial de visitas, premios y solicitudes vinculadas. Esta acción no se puede deshacer.\n\n¿Continuar?");if(!ok)return;$("deleteClientButton").disabled=true;$("deleteClientStatus").textContent="Buscando registros relacionados...";try{const refs=[];for(const col of ["visitas","premios","solicitudesRecompensasNivel","solicitudes"]){const r=await getDocs(query(collection(db,col),where("clienteId","==",c.id)));r.docs.forEach(d=>refs.push(d.ref))}if(c.tokenTarjeta){const card=doc(db,"tarjetasPublicas",c.tokenTarjeta);const cs=await getDoc(card);if(cs.exists())refs.push(card)}refs.push(doc(db,"clientes",c.id));await borrarEnLotes(refs);$("deleteClientStatus").textContent="Cliente y registros relacionados eliminados.";cerrarFicha();await cargarClientes()}catch(e){console.error(e);$("deleteClientStatus").textContent="La eliminación no se completó por completo. Revisá la conexión y consultá los registros antes de reintentar."}finally{$("deleteClientButton").disabled=false}}
-$("deleteClientButton").onclick=eliminarCliente;
-
-async function cargarSolicitudes(){const box=$("requestList");box.replaceChildren();$("requestStatus").textContent="Cargando...";try{const r=await getDocs(collection(db,"solicitudes"));const rows=r.docs.map(d=>({id:d.id,...d.data()})).filter(x=>x.estado==="pendiente").sort((a,b)=>(b.creadoEn?.toMillis?.()||0)-(a.creadoEn?.toMillis?.()||0));$("requestCount").textContent=rows.length+" pendientes";if(!rows.length){$("requestStatus").textContent="No hay solicitudes pendientes.";return}rows.forEach(s=>{const item=document.createElement("div");item.className="request-item";const n=document.createElement("div");n.className="request-name";n.textContent=s.nombre;const f=document.createElement("div");f.className="request-date";f.textContent=fechaTexto(s.creadoEn?.toDate?.());const a=document.createElement("div");a.className="request-actions";const yes=document.createElement("button");yes.className="success";yes.textContent="APROBAR";yes.onclick=()=>aprobarSolicitud(s.id);const no=document.createElement("button");no.className="danger";no.textContent="RECHAZAR";no.onclick=()=>rechazarSolicitud(s.id);a.append(yes,no);item.append(n,f,a);box.append(item)});$("requestStatus").textContent="Revisá y procesá las solicitudes."}catch(e){console.error(e);$("requestStatus").textContent="No se pudieron cargar las solicitudes."}}
-async function aprobarSolicitud(id){if(!confirm("¿Aprobar y crear la tarjeta?"))return;try{const sr=doc(db,"solicitudes",id),cr=doc(collection(db,"clientes")),tr=doc(collection(db,"tarjetasPublicas"));await runTransaction(db,async t=>{const s=await t.get(sr);if(!s.exists()||s.data().estado!=="pendiente")throw Error("PROCESADA");const nombre=String(s.data().nombre||"").trim();if(nombre.length<3)throw Error("NOMBRE");const datos={clienteId:cr.id,nombre,nombreBusqueda:normalizar(nombre),sellos:0,premioPendiente:false,premioId:null,premioTexto:null,ultimaVisita:null,totalExp:0,nivel:0,nivelesPendientes:[],avatarId:"fade",tokenTarjeta:tr.id,creadoEn:serverTimestamp(),actualizadoEn:serverTimestamp()};t.set(cr,datos);t.set(tr,{...crearDatosTarjeta(datos),nivelesPendientes:[]});t.update(sr,{estado:"aprobada",clienteId:cr.id,procesadaEn:serverTimestamp()})});await cargarClientes();await cargarSolicitudes();alert("Solicitud aprobada. Ya podés copiar el enlace de su ficha.")}catch(e){console.error(e);$("requestStatus").textContent="No se pudo aprobar. Puede que ya haya sido procesada."}}
+async function eliminarCliente(idForzado=null){
+ const idCliente=idForzado||clienteSeleccionado;const c=clientes.find(x=>x.id===idCliente);if(!c)return false;
+ const btn=$("deleteClientButton"),info=$("deleteClientStatus");btn.disabled=true;info.textContent="Revisando todos los datos asociados al cliente...";
+ try{
+  if(auth.currentUser?.uid!==ADMIN_UID)throw Error("NO_ADMIN");
+  const refs=new Map(),addRef=r=>refs.set(r.path,r);
+  const porCliente=["visitas","premios","solicitudesBeneficios","solicitudesRecompensasNivel","solicitudes","habitosNomade","canjesCortesiaHabito","movimientosStock","solicitudesRenovacionHabito","solicitudesBonusCompartir"];
+  // Reunir primero TODAS las coincidencias. No borrar nada hasta completar la revisión.
+  for(const name of porCliente){const q=await getDocs(query(collection(db,name),where("clienteId","==",c.id)));q.docs.forEach(d=>addRef(d.ref))}
+  // Las versiones antiguas pueden guardar un token, pero no clienteId.
+  const ownedCards=await getDocs(query(collection(db,"tarjetasPublicas"),where("clienteId","==",c.id)));ownedCards.docs.forEach(d=>addRef(d.ref));
+  const ownedTokens=new Set(ownedCards.docs.map(d=>d.id));if(c.tokenTarjeta)ownedTokens.add(c.tokenTarjeta);
+  for(const linkedToken of ownedTokens){
+   for(const name of ["visitas","premios","solicitudesBeneficios","solicitudesRecompensasNivel","solicitudesRenovacionHabito","canjesCortesiaHabito","solicitudesBonusCompartir"]){const q=await getDocs(query(collection(db,name),where("tokenTarjeta","==",linkedToken)));q.docs.forEach(d=>addRef(d.ref))}
+   const tr=doc(db,"tarjetasPublicas",linkedToken);if((await getDoc(tr)).exists())addRef(tr);
+  }
+  if(c.premioId){const oldPrize=doc(db,"premios",c.premioId);if((await getDoc(oldPrize)).exists())addRef(oldPrize)}
+  addRef(doc(db,"clientes",c.id));
+  const total=refs.size;
+  const conf=prompt("ELIMINACIÓN PERMANENTE DE FIRESTORE\n\nCliente: "+c.nombre+"\nSe eliminarán "+total+" documentos asociados (incluye membresías, canjes e historial). No se restaura stock.\n\nEscribí ELIMINAR para confirmar:");
+  if(conf!=="ELIMINAR"){info.textContent="Eliminación cancelada. No se modificaron los datos.";return false}
+  // Primero relacionados, luego tarjeta y ficha; con batches de hasta 400 operaciones.
+  const customerRef=doc(db,"clientes",c.id),cardRef=c.tokenTarjeta?doc(db,"tarjetasPublicas",c.tokenTarjeta):null;
+  const other=[...refs.values()].filter(r=>r.path!==customerRef.path&&r.path!==cardRef?.path);
+  info.textContent="Eliminando "+other.length+" registros vinculados...";
+  await borrarEnLotes(other);
+  const finalBatch=writeBatch(db);if(cardRef)finalBatch.delete(cardRef);finalBatch.delete(customerRef);await finalBatch.commit();
+  clienteSeleccionado=null;$("clientDetail").classList.add("hidden");$("searchPanel").classList.remove("hidden");
+  await cargarClientes();await loadHabits();await cargarSolicitudesBeneficios();await cargarSolicitudesBonusCompartir();
+  $("listStatus").textContent="Cliente eliminado de Firestore y de la lista activa. Se borraron "+total+" registros vinculados. Los productos/stock de otros clientes no se tocaron.";return true;
+ }catch(e){console.error(e);info.textContent="Borrado incompleto o denegado. No crees otra ficha; revisá Firebase y reintentá. Detalle: "+(e.code||e.message||"ERROR");return false}
+ finally{btn.disabled=false}
+}
+$("deleteClientButton").onclick=()=>eliminarCliente();
+async function cargarSolicitudes(){const box=$("requestList");box.replaceChildren();$("requestStatus").textContent="Cargando...";try{const r=await getDocs(collection(db,"solicitudes")),rows=r.docs.map(d=>({id:d.id,...d.data()})).filter(x=>x.estado==="pendiente").sort((a,b)=>(b.creadoEn?.toMillis?.()||0)-(a.creadoEn?.toMillis?.()||0));$("requestCount").textContent=rows.length+" pendientes";if(!rows.length){$("requestStatus").textContent="No hay solicitudes pendientes.";return}rows.forEach(s=>{const item=document.createElement("div");item.className="request-item";const n=document.createElement("div");n.className="request-name";n.textContent=s.nombre;const f=document.createElement("div");f.className="request-date";f.textContent=fechaTexto(fechaDe(s.creadoEn));const a=document.createElement("div");a.className="request-actions";const yes=document.createElement("button");yes.className="success";yes.textContent="APROBAR";yes.onclick=()=>aprobarSolicitud(s.id);const no=document.createElement("button");no.className="danger";no.textContent="RECHAZAR";no.onclick=()=>rechazarSolicitud(s.id);a.append(yes,no);item.append(n,f,a);box.append(item)});$("requestStatus").textContent="Revisá y procesá las solicitudes."}catch(e){console.error(e);$("requestStatus").textContent="No se pudieron cargar las solicitudes."}}
+async function aprobarSolicitud(id){if(!confirm("¿Aprobar y crear la tarjeta?"))return;try{const sr=doc(db,"solicitudes",id),cr=doc(collection(db,"clientes")),tr=doc(collection(db,"tarjetasPublicas")),cycle=uid();await runTransaction(db,async t=>{const s=await t.get(sr);if(!s.exists()||s.data().estado!=="pendiente")throw Error("PROCESADA");const nombre=String(s.data().nombre||"").trim(),datos={clienteId:cr.id,nombre,nombreBusqueda:normalizar(nombre),tipoMembresia:"estandar",sellos:0,premioPendiente:false,premioId:null,premioTexto:null,ultimaVisita:null,totalExp:0,nivel:0,bonusCompartirDisponibles:0,bonusCompartirUsados:0,cicloPremioId:cycle,historialVisitas:[],tokenTarjeta:tr.id,creadoEn:serverTimestamp(),actualizadoEn:serverTimestamp()};t.set(cr,datos);t.set(tr,{...crearDatosTarjeta(datos),clienteId:cr.id});t.update(sr,{estado:"aprobada",clienteId:cr.id,procesadaEn:serverTimestamp()})});await cargarClientes();await cargarSolicitudes();alert("Solicitud aprobada. Ya podés copiar el enlace de su tarjeta.")}catch(e){console.error(e);$("requestStatus").textContent="No se pudo aprobar. Puede que ya haya sido procesada."}}
 async function rechazarSolicitud(id){if(!confirm("¿Rechazar esta solicitud?"))return;try{await updateDoc(doc(db,"solicitudes",id),{estado:"rechazada",procesadaEn:serverTimestamp()});await cargarSolicitudes()}catch(e){console.error(e);$("requestStatus").textContent="No se pudo rechazar."}}
-async function cargarSolicitudesNivel(){const box=$("levelRequestList");box.replaceChildren();$("levelRequestAdminStatus").textContent="Cargando...";try{const r=await getDocs(collection(db,"solicitudesRecompensasNivel"));const rows=r.docs.map(d=>({id:d.id,...d.data()})).filter(x=>x.estado==="pendiente").sort((a,b)=>(b.creadoEn?.toMillis?.()||0)-(a.creadoEn?.toMillis?.()||0));$("levelRequestCount").textContent=rows.length+" pendientes";if(!rows.length){$("levelRequestAdminStatus").textContent="No hay beneficios pendientes.";return}rows.forEach(s=>{const item=document.createElement("div");item.className="request-item";const n=document.createElement("div");n.className="request-name";n.textContent=s.clienteNombre||"Cliente";const d=document.createElement("div");d.className="request-date";d.textContent="Nivel "+s.nivel+" · "+s.recompensa;const b=document.createElement("button");b.className="success";b.textContent="CONFIRMAR ENTREGA";b.onclick=()=>entregarRecompensaNivel(s.id,s);item.append(n,d,b);box.append(item)});$("levelRequestAdminStatus").textContent="Solicitudes pendientes de entrega."}catch(e){console.error(e);$("levelRequestAdminStatus").textContent="No se pudieron cargar los beneficios."}}
-async function entregarRecompensaNivel(id,s){if(!confirm("¿Confirmás la entrega de "+s.recompensa+" (nivel "+s.nivel+")?"))return;try{await updateDoc(doc(db,"solicitudesRecompensasNivel",id),{estado:"entregado",entregadoEn:serverTimestamp()});await cargarSolicitudesNivel()}catch(e){console.error(e);$("levelRequestAdminStatus").textContent="No se pudo confirmar la entrega."}}
-$("refreshRequests").onclick=cargarSolicitudes;$("refreshLevelRequests").onclick=cargarSolicitudesNivel;
+$("refreshRequests").onclick=cargarSolicitudes;
 $("copySignupLink").onclick=async()=>{try{await copiarTexto(urlRegistro());$("signupLinkStatus").textContent="Enlace de inscripción copiado."}catch(e){$("signupLinkStatus").textContent="No se pudo copiar."}};
 $("loginForm").addEventListener("submit",async e=>{e.preventDefault();$("loginButton").disabled=true;$("loginStatus").textContent="Verificando...";try{await signInWithEmailAndPassword(auth,$("email").value.trim(),$("password").value)}catch(e){console.error(e);$("loginStatus").textContent="Correo o contraseña incorrectos o no se pudo conectar."}finally{$("loginButton").disabled=false}});
 $("resetPasswordButton").onclick=async()=>{const email=$("email").value.trim();if(!email){$("loginStatus").textContent="Escribí tu correo primero.";return}try{await sendPasswordResetEmail(auth,email);$("loginStatus").textContent="Si el correo está registrado, recibirás instrucciones."}catch(e){console.error(e);$("loginStatus").textContent="No se pudo enviar el correo."}};
-$("clientForm").addEventListener("submit",async e=>{e.preventDefault();const nombre=$("clientName").value.trim();if(clientes.some(c=>normalizar(c.nombre)===normalizar(nombre))){$("saveStatus").textContent="Ese cliente ya está registrado.";return}$("saveButton").disabled=true;try{const cr=doc(collection(db,"clientes")),tr=doc(collection(db,"tarjetasPublicas"));const d={clienteId:cr.id,nombre,nombreBusqueda:normalizar(nombre),sellos:0,premioPendiente:false,premioId:null,premioTexto:null,ultimaVisita:null,totalExp:0,nivel:0,nivelesPendientes:[],avatarId:"fade",tokenTarjeta:tr.id,creadoEn:serverTimestamp(),actualizadoEn:serverTimestamp()};await runTransaction(db,async t=>{t.set(cr,d);t.set(tr,{...crearDatosTarjeta(d),nivelesPendientes:[]})});$("clientName").value="";$("saveStatus").textContent="Cliente y tarjeta creados.";await cargarClientes()}catch(e){console.error(e);$("saveStatus").textContent="No se pudo guardar el cliente."}finally{$("saveButton").disabled=false}});
-$("newClientQuick").onclick=()=>{$("newClientPanel").scrollIntoView({behavior:"smooth"});$("clientName").focus()};
-$("searchQuick").onclick=()=>{$("clientDetail").classList.add("hidden");$("searchPanel").scrollIntoView({behavior:"smooth"});$("searchName").focus()};
-$("requestsQuick").onclick=()=>$("requestsPanel").scrollIntoView({behavior:"smooth"});
-$("levelRequestsQuick").onclick=()=>$("levelRequestsPanel").scrollIntoView({behavior:"smooth"});
-$("searchName").oninput=mostrarClientes;
-$("backToClients").onclick=()=>{cerrarFicha();$("searchPanel").scrollIntoView({behavior:"smooth"})};
-$("logoutButton").onclick=async()=>{cerrarFicha();await signOut(auth)};
-onAuthStateChanged(auth,async user=>{if(modoPublico)return;if(user&&user.uid===ADMIN_UID){$("loginPanel").classList.add("hidden");$("adminPanel").classList.remove("hidden");try{await cargarConfiguracion();await cargarClientes();await cargarSolicitudes();await cargarSolicitudesNivel()}catch(e){console.error(e);$("settingsStatus").textContent="No se pudo cargar la configuración."}}else{$("adminPanel").classList.add("hidden");$("loginPanel").classList.remove("hidden");if(user){await signOut(auth);$("loginStatus").textContent="Cuenta no autorizada."}}});
+$("clientForm").addEventListener("submit",async e=>{e.preventDefault();const nombre=$("clientName").value.trim();if(clientes.some(c=>normalizar(c.nombre)===normalizar(nombre))){$("saveStatus").textContent="Ese cliente ya está registrado.";return}$("saveButton").disabled=true;try{const cr=doc(collection(db,"clientes")),tr=doc(collection(db,"tarjetasPublicas")),cycle=uid(),d={clienteId:cr.id,nombre,nombreBusqueda:normalizar(nombre),tipoMembresia:"estandar",sellos:0,premioPendiente:false,premioId:null,premioTexto:null,ultimaVisita:null,totalExp:0,nivel:0,bonusCompartirDisponibles:0,bonusCompartirUsados:0,cicloPremioId:cycle,historialVisitas:[],tokenTarjeta:tr.id,creadoEn:serverTimestamp(),actualizadoEn:serverTimestamp()};await runTransaction(db,async t=>{t.set(cr,d);t.set(tr,{...crearDatosTarjeta(d),clienteId:cr.id})});$("clientName").value="";$("saveStatus").textContent="Cliente Estándar y tarjeta creados.";await cargarClientes()}catch(e){console.error(e);$("saveStatus").textContent="No se pudo guardar el cliente."}finally{$("saveButton").disabled=false}});
+$("newClientQuick").onclick=()=>{cerrarFicha();submodulosAdminActuales.clientes="nuevo";mostrarModuloAdmin("clientes",true);$("clientName").focus()};
+$("searchQuick").onclick=()=>{cerrarFicha();submodulosAdminActuales.clientes="lista";mostrarModuloAdmin("clientes",true);$("searchName").focus()};
+$("requestsQuick").onclick=()=>{submodulosAdminActuales.solicitudes="ingresos";mostrarModuloAdmin("solicitudes",true)};
+$("benefitRequestsQuick").onclick=()=>{submodulosAdminActuales.solicitudes="premios";mostrarModuloAdmin("solicitudes",true)};
+$("searchName").oninput=mostrarClientes;$("backToClients").onclick=()=>{cerrarFicha();mostrarModuloAdmin("clientes",true)};$("logoutButton").onclick=async()=>{cerrarFicha();await signOut(auth)};
+
+// Módulos administrativos complementarios ReeNomade.
+const fmtMoney=n=>new Intl.NumberFormat("es-AR",{style:"currency",currency:"ARS",maximumFractionDigits:0}).format(Number(n)||0);
+const safeDate=v=>v?new Date(v+"T12:00:00").toLocaleDateString("es-AR"):"Sin fecha";
+function node(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e}
+async function loadExtraModules(){
+ const sel=$("habitClient");sel.replaceChildren(node("option","","Seleccionar cliente…"));clientes.forEach(c=>{const o=node("option","",c.nombre);o.value=c.id;sel.append(o)});
+ await Promise.all([loadStock(),loadServices(),loadPromotions()]);await loadHabits();await cargarSolicitudesRenovacionHabito();
+}
+function habitProjection(h){return{id:h.id,estado:h.estado||"activo",precio:Number(h.precio)||30000,cortesTotales:Number(h.cortesTotales)||5,cortesRestantes:Math.max(0,Number(h.cortesRestantes)||0),fechaInicio:h.fechaInicio||null,fechaVencimiento:h.fechaVencimiento||null,fechaFinGracia:h.fechaFinGracia||null,tipoServicio:h.tipoServicio||"corte básico",personal:true,cortesiaUtilizada:h.cortesiaUtilizada===true,cortesiaProductoNombre:h.cortesiaProductoNombre||null,cortesiaCanjeId:h.cortesiaCanjeId||null,actualizadoEn:new Date().toISOString()}}
+async function syncHabitPublic(h,tokenCard){
+ if(!tokenCard||!h?.id)return;
+ const snap=await getDoc(doc(db,"habitosNomade",h.id));if(!snap.exists())return;
+ const real={id:snap.id,...snap.data()};const cardRef=doc(db,"tarjetasPublicas",tokenCard),card=await getDoc(cardRef);if(!card.exists())return;
+ // Nunca volver a colocar una membresía antigua encima de la actual.
+ const projected=card.data().habitoNomade;
+ if(projected?.id&&projected.id!==h.id)return;
+ const next=habitProjection(real);
+ if(projected?.id===next.id&&projected?.estado===next.estado&&Number(projected.cortesRestantes)===next.cortesRestantes&&!!projected.cortesiaUtilizada===next.cortesiaUtilizada&&projected?.cortesiaProductoNombre===next.cortesiaProductoNombre)return;
+ await updateDoc(cardRef,{habitoNomade:next,actualizadoEn:serverTimestamp()});
+}
+let habitosActivosPorCliente=new Map();
+async function loadHabits(){
+ const box=$("habitList");box.replaceChildren();box.append(node("p","v3-compact-note","Membresías Hábito pendientes. Al finalizar, se elimina SOLO el plan Hábito; el cliente, sus sellos, EXP, nivel y tarjeta Standard se conservan."));
+ try{
+  const r=await getDocs(collection(db,"habitosNomade"));
+  const habits=r.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.activadoEn?.toMillis?.()||0)-(a.activadoEn?.toMillis?.()||0)||String(b.fechaInicio||"").localeCompare(String(a.fechaInicio||"")));
+  // Solo la membresía vigente más reciente de cada cliente aparece en su tarjeta.
+  const actuales=new Map();for(const h of habits){if(!actuales.has(h.clienteId)&&h.estado==="activo"&&Number(h.cortesRestantes)>0&&["vigente","gracia"].includes(estadoVisibleHabito(h)))actuales.set(h.clienteId,h)}habitosActivosPorCliente=actuales;mostrarClientes();
+  for(const h of actuales.values()){
+   try{const c=clientes.find(x=>x.id===h.clienteId),tokenCard=h.tokenTarjeta||c?.tokenTarjeta||await asegurarTarjeta(h.clienteId);if(!h.tokenTarjeta){await updateDoc(doc(db,"habitosNomade",h.id),{tokenTarjeta:tokenCard});h.tokenTarjeta=tokenCard}if(c)c.tokenTarjeta=tokenCard;await syncHabitPublic(h,tokenCard)}catch(e){console.warn("No se pudo sincronizar Hábito actual",h.id,e)}
+  }
+  const visibles=habits.filter(item=>["activo","completado"].includes(item.estado));
+  if(!visibles.length)box.append(node("p","muted","No hay membresías Hábito activas o pendientes de cierre."));
+  for(const h of visibles){
+   const el=node("div","history-item"),status=estadoVisibleHabito(h),statusLabel=status==="completado"?"CINCO CORTES UTILIZADOS · LISTA PARA CERRAR":status.toUpperCase();
+   el.append(node("strong","",h.clienteNombre||"Cliente"),node("div","muted",`${h.cortesRestantes??0}/5 cortes · ${statusLabel} · Activa: ${safeDate(h.fechaInicio)} · Vence: ${safeDate(h.fechaVencimiento)} · Gracia: ${safeDate(h.fechaFinGracia)}`));
+   if(h.estado==="activo"&&Number(h.cortesRestantes)>0&&status!=="vencido"){
+    const consume=node("button","success","REGISTRAR CORTE HÁBITO");consume.type="button";consume.onclick=()=>consumirCorteHabito(h.id);el.append(consume);
+   }
+   if(actuales.get(h.clienteId)?.id===h.id)renderCourtesyAdmin(h,el);
+   else if(h.cortesiaUtilizada===true)el.append(node("p","muted","Cortesía utilizada: "+(h.cortesiaProductoNombre||"Producto registrado")));
+   const btn=node("button","secondary","CERRAR SOLO HÁBITO · CONSERVAR CLIENTE");btn.type="button";
+   btn.onclick=async()=>{btn.disabled=true;try{if(!await cerrarHabitoConservarCliente(h.id))return;$("habitStatus").textContent="Hábito cerrada: el cliente sigue en Standard y conserva EXP, nivel, sellos y tarjeta.";await loadHabits();await cargarClientes()}catch(e){console.error(e);$("habitStatus").textContent="No se pudo cerrar Hábito: "+(e.message||"revisá Firestore")}finally{btn.disabled=false}};
+   el.append(btn);box.append(el);
+  }
+  const antiguas=habits.filter(h=>h.estado==="finalizada");
+  if(antiguas.length){
+   const details=node("details","visit-details"),summary=node("summary","","Membresías finalizadas de versiones anteriores ("+antiguas.length+")");details.append(summary);
+   details.append(node("p","v3-compact-note","Podés borrar SOLO cada membresía anterior sin eliminar la ficha, EXP, historial ni tarjeta del cliente."));
+   antiguas.forEach(h=>{
+    const item=node("div","history-item");item.append(node("strong","",h.clienteNombre||"Cliente anterior"));
+    const b=node("button","secondary","LIMPIAR MEMBRESÍA FINALIZADA");b.type="button";
+    b.onclick=async()=>{b.disabled=true;try{if(await cerrarHabitoConservarCliente(h.id)){await loadHabits();await cargarClientes()}}catch(e){console.error(e);$("habitStatus").textContent="No se pudo limpiar la membresía: "+e.message}finally{b.disabled=false}};
+    item.append(b);details.append(item)
+   });box.append(details);
+  }
+ }catch(e){console.error(e);$("habitStatus").textContent="No se pudo leer Hábito Nómade. Revisá las reglas de Firestore."}
+}
+async function cargarSolicitudesRenovacionHabito(){
+ const box=$("habitRenewRequestsList");box.replaceChildren();$("habitRenewRequestsStatus").textContent="";
+ try{const result=await getDocs(collection(db,"solicitudesRenovacionHabito"));const rows=result.docs.filter(d=>d.data().estado==="pendiente");
+  if(!rows.length){$("habitRenewRequestsStatus").textContent="No hay solicitudes pendientes de renovación.";return}
+  rows.forEach(s=>{const d=s.data(),card=node("div","request-item");card.append(node("strong","",d.clienteNombre||"Cliente"),node("p","muted","Solicita otra Hábito. Verificá pago antes de activar."));
+   const b=node("button","secondary","SELECCIONAR PARA ACTIVAR");b.type="button";b.onclick=()=>{$("habitClient").value=d.clienteId;mostrarModuloAdmin("habito",true);$("habitStatus").textContent="Solicitud seleccionada. Verificá el pago y presioná ACTIVAR HÁBITO NÓMADE."};card.append(b);box.append(card)});
+  $("habitRenewRequestsStatus").textContent=rows.length+" solicitudes pendientes.";
+ }catch(e){console.error(e);$("habitRenewRequestsStatus").textContent="No se pudieron cargar las solicitudes. Revisá las reglas de Firestore."}
+}
+$("refreshHabitRequests").onclick=cargarSolicitudesRenovacionHabito;
+function renderCourtesyAdmin(h,el){
+ const container=node("div","habit-courtesy-admin");container.append(node("h3","","CORTESÍA HÁBITO NÓMADE"));
+ if(h.cortesiaUtilizada===true){container.append(node("p","habit-courtesy-note","CORTESÍA UTILIZADA · "+(h.cortesiaProductoNombre||"Producto entregado")+". Solo un canje por membresía."));el.append(container);return}
+ const available=(stockItems||[]).filter(x=>x.activo!==false&&x.mostrarCatalogo!==false&&x.cortesiaHabito===true&&Number.isInteger(Number(x.cantidad))&&Number(x.cantidad)>0);
+ container.append(node("p","habit-courtesy-note","CORTESÍA DISPONIBLE · Seleccioná un producto y confirmá que la persona vino y recibió un servicio."));
+ if(!available.length){container.append(node("p","muted","No hay productos habilitados con stock. Activá cortesías en Stock y catálogo."));el.append(container);return}
+ const sel=node("select",""),service=node("input","");service.type="text";service.maxLength=100;service.placeholder="Ej.: Corte básico, degradé, barba, cejas...";
+ const initial=node("option","","Elegí el producto gratuito");initial.value="";sel.append(initial);
+ available.forEach(x=>{const op=node("option","",x.nombre+" · "+fmtMoney(x.precio)+" (precio normal)");op.value=x.id;sel.append(op)});
+ const checkLabel=node("label","inline-check"),check=document.createElement("input");check.type="checkbox";checkLabel.append(check,document.createTextNode(" Confirmo que el cliente está presente y realizó un servicio"));
+ const btn=node("button","success","CONFIRMAR ENTREGA GRATUITA");btn.type="button";const state=node("p","status","");
+ btn.onclick=async()=>{
+  if(!sel.value){state.textContent="Seleccioná un producto disponible.";return}
+  if(service.value.trim().length<3||!check.checked){state.textContent="Indicá el servicio realizado y confirmá la presencia del cliente.";return}
+  const chosen=available.find(x=>x.id===sel.value);
+  if(!confirm("¿Entregaste "+chosen.nombre+" a "+(h.clienteNombre||"este cliente")+" por el servicio "+service.value.trim()+"? Solo podrá canjear UNA cortesía en esta membresía."))return;
+  btn.disabled=true;state.textContent="Registrando entrega y descontando stock...";
+  try{await canjearCortesiaHabito(h.id,sel.value,service.value.trim());$("habitStatus").textContent="Cortesía entregada. Se descontó una unidad del inventario y quedó registrado el canje único.";await loadStock();await loadHabits()}
+  catch(e){console.error(e);state.textContent=({DUPLICADO:"Esta membresía ya usó su cortesía.",SIN_STOCK:"El producto se agotó; no se descontó nada.",NO_HABILITADO:"El producto ya no está habilitado como cortesía.",NO_DISPONIBLE:"La membresía está finalizada o vencida.",SIN_TARJETA:"No se pudo validar la tarjeta de esta membresía."})[e.message]||"No se pudo completar la entrega; no reintentes sin comprobar el historial."}
+  finally{btn.disabled=false}
+ };
+ container.append(node("label","","Producto elegido"),sel,node("label","","Servicio realizado presencialmente"),service,checkLabel,btn,state);el.append(container);
+}
+async function canjearCortesiaHabito(habitId,productoId,servicio){
+ if(auth.currentUser?.uid!==ADMIN_UID)throw Error("NO_ADMIN");
+ const hRef=doc(db,"habitosNomade",habitId),stockRef=doc(db,"stockReenomade",productoId),canjeRef=doc(db,"canjesCortesiaHabito",habitId),moveRef=doc(db,"movimientosStock","cortesia_habito_"+habitId),publicRef=doc(db,"catalogoPublicoReenomade",productoId);
+ await runTransaction(db,async t=>{
+  const [hs,ss,rs]=await Promise.all([t.get(hRef),t.get(stockRef),t.get(canjeRef)]);
+  if(!hs.exists()||hs.data().estado!=="activo"||Number(hs.data().cortesRestantes)<1||!["vigente","gracia"].includes(estadoVisibleHabito(hs.data())))throw Error("NO_DISPONIBLE");
+  if(rs.exists()||hs.data().cortesiaUtilizada===true)throw Error("DUPLICADO");
+  if(!ss.exists()||ss.data().activo===false||ss.data().mostrarCatalogo===false||ss.data().cortesiaHabito!==true)throw Error("NO_HABILITADO");
+  const product=ss.data(),stock=Number(product.cantidad);
+  if(!Number.isInteger(stock)||stock<1)throw Error("SIN_STOCK");
+  const h=hs.data(),cardToken=h.tokenTarjeta||clientes.find(c=>c.id===h.clienteId)?.tokenTarjeta;
+  if(!cardToken)throw Error("SIN_TARJETA");
+  const cardRef=doc(db,"tarjetasPublicas",cardToken),cardSnap=await t.get(cardRef),moveSnap=await t.get(moveRef);
+  if(!cardSnap.exists()||cardSnap.data().clienteId!==h.clienteId||cardSnap.data().habitoNomade?.id!==habitId)throw Error("SIN_TARJETA");
+  if(moveSnap.exists())throw Error("DUPLICADO");
+  const rest=stock-1,updatedH={...h,id:habitId,cortesiaUtilizada:true,cortesiaProductoNombre:product.nombre,cortesiaProductoId:productoId,cortesiaCanjeId:habitId};
+  t.update(stockRef,{cantidad:rest,actualizadoEn:serverTimestamp()});
+  t.set(publicRef,productoPublicoSeguro(productoId,{...product,cantidad:rest}));
+  t.update(hRef,{cortesiaUtilizada:true,cortesiaProductoNombre:product.nombre,cortesiaProductoId:productoId,cortesiaCanjeId:habitId,cortesiaCanjeEn:serverTimestamp()});
+  t.update(cardRef,{habitoNomade:habitProjection(updatedH),actualizadoEn:serverTimestamp()});
+  t.set(canjeRef,{habitId,clienteId:h.clienteId,clienteNombre:h.clienteNombre||"",tokenTarjeta:cardToken,productoId,productoNombre:product.nombre,precioNormal:Number(product.precio)||0,servicioRealizado:servicio,administradorUid:auth.currentUser.uid,fecha:serverTimestamp(),tipo:"cortesia_habito"});
+  t.set(moveRef,{productoId,productoNombre:product.nombre,tipo:"cortesia_habito",cantidad:-1,habitId,clienteId:h.clienteId,canjeId:habitId,fecha:serverTimestamp()});
+ });
+}
+function fecha15DiasDesdeHoy(){const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+15);return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-")}
+function constanciaHabitoCerrado(h,estado="completado"){
+ return {id:h.id,estado,cortesRestantes:0,fechaVencimiento:h.fechaVencimiento||null,fechaFinGracia:h.fechaFinGracia||null,finalizadoEn:new Date().toISOString()};
+}
+async function cerrarHabitoConservarCliente(habitId){
+ if(auth.currentUser?.uid!==ADMIN_UID)throw Error("NO_ADMIN");
+ const ref=doc(db,"habitosNomade",habitId),prev=await getDoc(ref);
+ if(!prev.exists())throw Error("Esta membresía ya no existe.");
+ const before={id:habitId,...prev.data()};
+ const activo=before.estado==="activo"&&Number(before.cortesRestantes)>0&&["vigente","gracia"].includes(estadoVisibleHabito(before));
+ if(activo&&!confirm("Esta Hábito aún tiene cortes disponibles. ¿Finalizar el plan igualmente y regresar a Standard, conservando EXP y sellos?"))return false;
+ if(!activo&&!confirm("¿Eliminar SOLO esta membresía Hábito finalizada y conservar la ficha del cliente, su tarjeta, EXP, niveles y sellos?"))return false;
+ const clientRef=doc(db,"clientes",before.clienteId),cardRef=doc(db,"tarjetasPublicas",before.tokenTarjeta||clientes.find(c=>c.id===before.clienteId)?.tokenTarjeta||"no-card");
+ await runTransaction(db,async t=>{
+  const [hs,cs,ps]=await Promise.all([t.get(ref),t.get(clientRef),t.get(cardRef)]);
+  if(!hs.exists())throw Error("HABITO_CERRADA");
+  const h={id:habitId,...hs.data()},current=ps.exists()&&ps.data().habitoNomade?.id===habitId;
+  // Nunca modificar los datos de una membresía más reciente.
+  if(cs.exists()&&current){
+   t.update(clientRef,{tipoMembresia:"estandar",ultimoHabitoFinalizadoId:habitId,estandarContinuidadHasta:fecha15DiasDesdeHoy(),fidelidadRetornoEn:serverTimestamp(),actualizadoEn:serverTimestamp()});
+   t.update(cardRef,{tipoMembresia:"estandar",habitoNomade:constanciaHabitoCerrado(h,Number(h.cortesRestantes)===0?"completado":"finalizada"),estandarContinuidadHasta:fecha15DiasDesdeHoy(),actualizadoEn:serverTimestamp()});
+  }
+  t.delete(ref);
+ });
+ return true;
+}
+async function consumirCorteHabito(habitId){
+ const ref=doc(db,"habitosNomade",habitId);
+ try{
+  const snap=await getDoc(ref);if(!snap.exists())throw Error("NO_EXISTE");
+  const h={id:snap.id,...snap.data()},status=estadoVisibleHabito(h);
+  if(h.estado!=="activo"||status==="vencido"||Number(h.cortesRestantes)<1)throw Error("NO_DISPONIBLE");
+  if(Number(h.cortesRestantes)===1&&!h.cortesiaUtilizada){
+   if(!confirm("Es el QUINTO y último corte. Esta membresía aún tiene una cortesía sin usar. ¿Querés finalizar Hábito igualmente, dejando esa cortesía sin canjear? Si corresponde, entregá primero la cortesía."))return;
+  }
+  if(!confirm(Number(h.cortesRestantes)===1?"¿Confirmás el quinto corte (+15 EXP) y el CIERRE AUTOMÁTICO de Hábito? La ficha del cliente pasará a Standard y mantendrá toda su EXP, nivel, sellos e historial.":"¿Registrar un corte básico, descontar 1 corte y acreditar +15 EXP?"))return;
+  const clienteRef=doc(db,"clientes",h.clienteId),tokenCard=h.tokenTarjeta||clientes.find(x=>x.id===h.clienteId)?.tokenTarjeta;
+  if(!tokenCard)throw Error("SIN_TARJETA");
+  const cardRef=doc(db,"tarjetasPublicas",tokenCard);let nuevoExp=0,restantes=0;
+  await runTransaction(db,async t=>{
+   const [hs,cs,ps]=await Promise.all([t.get(ref),t.get(clienteRef),t.get(cardRef)]);
+   if(!hs.exists()||!cs.exists()||!ps.exists())throw Error("REGISTRO");
+   const hd=hs.data(),cd=cs.data(),pd=ps.data(),estado=estadoVisibleHabito(hd);
+   if(pd.habitoNomade?.id!==habitId)throw Error("HABITO_DESACTUALIZADO");
+   if(hd.estado!=="activo"||estado==="vencido"||Number(hd.cortesRestantes)<1)throw Error("NO_DISPONIBLE");
+   const usadosAntes=Math.max(0,(Number(hd.cortesTotales)||5)-(Number(hd.cortesRestantes)||0)),consumoNumero=usadosAntes+1;
+   const visitaRef=doc(db,"visitas","habito_"+habitId+"_"+consumoNumero),visitaSnap=await t.get(visitaRef);
+   if(visitaSnap.exists())throw Error("DUPLICADO");
+   const next=Math.max(0,Number(hd.cortesRestantes)-1),terminada=next===0,expAntes=Math.max(Number(cd.totalExp)||0,Number(pd.totalExp)||0);
+   nuevoExp=expAntes+15;restantes=next;
+   const historial=[...(Array.isArray(pd.historialVisitas)?pd.historialVisitas:[]),{servicio:"Hábito Nómade · Corte básico",expGanada:15,selloNumero:null,fecha:new Date().toISOString(),tipo:"habito_nomade"}].slice(-40);
+   if(terminada){
+    // Eliminación solo del plan. La visita permanece como auditoría e historial; la solicitud
+    // de renovación toma el ID conservado en el marcador público y en la ficha del cliente.
+    t.delete(ref);
+    t.update(clienteRef,{totalExp:nuevoExp,nivel:calcularNivel(nuevoExp),tipoMembresia:"estandar",ultimoHabitoFinalizadoId:habitId,estandarContinuidadHasta:fecha15DiasDesdeHoy(),fidelidadRetornoEn:serverTimestamp(),actualizadoEn:serverTimestamp()});
+    t.update(cardRef,{totalExp:nuevoExp,nivel:calcularNivel(nuevoExp),tipoMembresia:"estandar",estandarContinuidadHasta:fecha15DiasDesdeHoy(),historialVisitas:historial,habitoNomade:constanciaHabitoCerrado({...hd,id:habitId}),actualizadoEn:serverTimestamp()});
+   }else{
+    t.update(ref,{cortesRestantes:next,ultimoCorteEn:serverTimestamp(),estado:"activo",consumosRegistrados:consumoNumero,tokenTarjeta:tokenCard});
+    t.update(clienteRef,{totalExp:nuevoExp,nivel:calcularNivel(nuevoExp),actualizadoEn:serverTimestamp()});
+    t.update(cardRef,{totalExp:nuevoExp,nivel:calcularNivel(nuevoExp),historialVisitas:historial,habitoNomade:habitProjection({...hd,id:habitId,cortesRestantes:next,estado:"activo"}),actualizadoEn:serverTimestamp()});
+   }
+   t.set(visitaRef,{clienteId:h.clienteId,clienteNombre:hd.clienteNombre||cd.nombre,tokenTarjeta:tokenCard,servicio:"Hábito Nómade · Corte básico",tipoRegistro:"habito_nomade",habitId,consumoNumero,selloNumero:null,expGanada:15,fecha:serverTimestamp()});
+  });
+  const c=clientes.find(x=>x.id===h.clienteId);
+  if(c){c.totalExp=nuevoExp;c.nivel=calcularNivel(nuevoExp);if(restantes===0)c.tipoMembresia="estandar"}
+  $("habitStatus").textContent=restantes===0?"¡QUINTO CORTE CONFIRMADO! Hábito eliminada; cliente conserva tarjeta Standard por 15 días de continuidad y sigue registrado, con "+nuevoExp+" EXP, nivel, sellos e historial intactos. Nueva Hábito solo por solicitud y aprobación manual.":"Corte registrado. Quedan "+restantes+" corte(s) y el cliente sumó +15 EXP. Total: "+nuevoExp+" EXP. No se agregó sello.";
+  await loadHabits();await cargarClientes();
+ }catch(e){console.error(e);$("habitStatus").textContent=e.message==="NO_DISPONIBLE"?"Esta membresía no tiene cortes disponibles o ya venció.":e.message==="DUPLICADO"?"Este consumo ya fue registrado y no se volvió a descontar ni acreditar EXP.":"No se pudo registrar el corte. Revisá Firestore."}
+}
+async function activateHabit(){
+ const id=$("habitClient").value,c=clientes.find(x=>x.id===id),raw=$("habitStart").value,b=$("activateHabitButton");
+ if(!c)return $("habitStatus").textContent="Seleccioná un cliente.";
+ if(!raw)return $("habitStatus").textContent="Indicá fecha de activación.";
+ b.disabled=true;
+ try{
+  if(auth.currentUser?.uid!==ADMIN_UID)throw Error("NO_ADMIN");
+  const old=await getDocs(query(collection(db,"habitosNomade"),where("clienteId","==",id)));
+  const prev=old.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.activadoEn?.toMillis?.()||0)-(a.activadoEn?.toMillis?.()||0)||String(b.fechaInicio||"").localeCompare(String(a.fechaInicio||"")))[0]||null;
+  if(old.docs.some(d=>d.data().estado==="activo"&&Number(d.data().cortesRestantes)>0&&["vigente","gracia"].includes(estadoVisibleHabito(d.data()))))throw Error("HABITO_ACTIVO");
+  // Renovar requiere solicitud pública previa; primera activación no la necesita.
+  const anteriorId=c.ultimoHabitoFinalizadoId||prev?.id||null;
+   const requestRef=anteriorId?doc(db,"solicitudesRenovacionHabito",anteriorId):null;
+  if(requestRef){const rs=await getDoc(requestRef);if(!rs.exists()||rs.data().estado!=="pendiente"||rs.data().clienteId!==id)throw Error("SOLICITUD_REQUERIDA");if(!confirm("¿Confirmaste el PAGO de la nueva Hábito Nómade de "+c.nombre+"?"))return}
+  else if(!confirm("¿Confirmaste el PAGO y querés activar la primera Hábito Nómade de "+c.nombre+"?"))return;
+  const tokenCard=await asegurarTarjeta(id),start=new Date(raw+"T12:00:00"),end=new Date(start);end.setDate(end.getDate()+30);
+  const grace=new Date(end);grace.setDate(grace.getDate()+15);
+  const habitRef=doc(collection(db,"habitosNomade"));
+  const h={id:habitRef.id,clienteId:id,clienteNombre:c.nombre,tokenTarjeta:tokenCard,precio:30000,cortesTotales:5,cortesRestantes:5,fechaInicio:raw,fechaVencimiento:end.toISOString().slice(0,10),fechaFinGracia:grace.toISOString().slice(0,10),estado:"activo",tipoServicio:"corte básico",personal:true,renovacionAutomatica:false,cortesiaUtilizada:false,activadoEn:serverTimestamp()};
+  await runTransaction(db,async t=>{
+   const clientRef=doc(db,"clientes",id),cardRef=doc(db,"tarjetasPublicas",tokenCard);
+   const cs=await t.get(clientRef),ps=await t.get(cardRef),req=requestRef?await t.get(requestRef):null;
+   if(!cs.exists()||!ps.exists())throw Error("SIN_CLIENTE");
+   if(habitoPublicoActivo(ps.data()))throw Error("HABITO_ACTIVO");
+   if(requestRef&&(!req?.exists()||req.data().estado!=="pendiente"))throw Error("SOLICITUD_REQUERIDA");
+   t.set(habitRef,h);t.update(cardRef,{habitoNomade:habitProjection(h),actualizadoEn:serverTimestamp()});
+   if(requestRef)t.update(requestRef,{estado:"aprobada",aprobadoEn:serverTimestamp(),membresiaNuevaId:habitRef.id});
+  });
+  $("habitStatus").textContent="Hábito Nómade activado MANUALMENTE. Se conservan sellos, EXP, niveles e historial. Incluye cinco cortes y una cortesía.";
+  await loadHabits();await cargarClientes();await cargarSolicitudesRenovacionHabito();
+ }catch(e){console.error(e);$("habitStatus").textContent=({HABITO_ACTIVO:"Este cliente ya tiene Hábito activa; no se permite duplicar.",SOLICITUD_REQUERIDA:"Para una nueva Hábito, el cliente debe solicitarla desde su tarjeta y vos confirmar el pago antes de activar."})[e.message]||"No se pudo activar. Revisá Firestore."}
+ finally{b.disabled=false}
+}
+let stockItems=[];
+function productoPublicoSeguro(id,x){return {productoId:id,nombre:String(x.nombre||"Producto"),categoria:String(x.categoria||"Otros"),descripcionCatalogo:String(x.descripcionCatalogo||""),precio:Number(x.precio)||0,activo:x.activo!==false,mostrarCatalogo:x.mostrarCatalogo!==false,cortesiaHabito:x.cortesiaHabito===true,disponible:Number(x.cantidad)>0,actualizadoEn:serverTimestamp()}}
+function actualizarIndiceProducto(t,id,p){
+ const ref=doc(db,"catalogoPublicoReenomade",id);
+ if(p.activo!==false&&p.mostrarCatalogo!==false)t.set(ref,productoPublicoSeguro(id,p));
+ else t.delete(ref);
+}
+async function publicarCatalogosPublicos(){const button=$("publishPublicCatalog");button.disabled=true;$("stockStatus").textContent="Sincronizando versiones públicas seguras...";try{
+ const all=await getDocs(collection(db,"stockReenomade")),existing=await getDocs(collection(db,"catalogoPublicoReenomade")),existingIds=new Set(all.docs.map(x=>x.id));let tasks=[];
+ all.docs.filter(d=>d.data().activo!==false&&d.data().mostrarCatalogo!==false).forEach(d=>tasks.push({ref:doc(db,"catalogoPublicoReenomade",d.id),data:productoPublicoSeguro(d.id,d.data()),kind:"set"}));
+ existing.docs.filter(d=>!existingIds.has(d.id)||all.docs.find(x=>x.id===d.id&&(x.data().activo===false||(x.data().mostrarCatalogo===false)))).forEach(d=>tasks.push({ref:d.ref,kind:"delete"}));
+ tasks.push({ref:doc(db,"beneficiosPublicosReenomade","club"),data:beneficiosPublicosSeguros(catalogo),kind:"set"});
+ const [services,promos,pubservices,pubpromos]=await Promise.all([
+  getDocs(collection(db,"serviciosReenomade")),getDocs(collection(db,"promocionesReenomade")),
+  getDocs(collection(db,"serviciosPublicosReenomade")),getDocs(collection(db,"promocionesPublicasReenomade"))]);
+ const serviceIds=new Set(services.docs.filter(d=>d.data().activo!==false).map(d=>d.id));
+ const promoIds=new Set(promos.docs.filter(d=>d.data().activa===true).map(d=>d.id));
+ services.docs.filter(d=>d.data().activo!==false).forEach(d=>tasks.push({ref:doc(db,"serviciosPublicosReenomade",d.id),data:servicioPublicoSeguro(d.id,d.data()),kind:"set"}));
+ promos.docs.filter(d=>d.data().activa===true).forEach(d=>tasks.push({ref:doc(db,"promocionesPublicasReenomade",d.id),data:promocionPublicaSegura(d.id,d.data()),kind:"set"}));
+ pubservices.docs.filter(d=>!serviceIds.has(d.id)).forEach(d=>tasks.push({ref:d.ref,kind:"delete"}));
+ pubpromos.docs.filter(d=>!promoIds.has(d.id)).forEach(d=>tasks.push({ref:d.ref,kind:"delete"}));
+ for(let i=0;i<tasks.length;i+=250){const batch=writeBatch(db);tasks.slice(i,i+250).forEach(a=>a.kind==="set"?batch.set(a.ref,a.data):batch.delete(a.ref));await batch.commit()}
+ $("stockStatus").textContent="Catálogos públicos sincronizados sin costos ni cantidades internas. Falta aprobar las reglas públicas propuestas para que se visualicen.";
+ }catch(e){console.error(e);$("stockStatus").textContent="No se pudo sincronizar. Revisá Firebase y volvé a intentar."}finally{button.disabled=false}}
+$("publishPublicCatalog").onclick=publicarCatalogosPublicos;
+async function loadStock(){
+ const box=$("stockList");box.replaceChildren();
+ try{const r=await getDocs(collection(db,"stockReenomade"));stockItems=r.docs.map(d=>({id:d.id,...d.data()}));
+  r.docs.forEach(d=>{const x=d.data(),el=node("div","history-item");
+   el.append(node("strong","",x.nombre||"Producto"),node("div","muted",`${x.categoria||"Otros"} · Stock: ${x.cantidad??0} · Costo: ${fmtMoney(x.costo)} · Venta: ${fmtMoney(x.precio)}`),node("div","stock-visibility",x.mostrarCatalogo===false?"Oculto del catálogo público":"Visible en catálogo público"));
+   const courtesy=node("button","secondary",x.cortesiaHabito===true?"CORTESÍA HÁBITO: ACTIVADA · PAUSAR":"HABILITAR CORTESÍA HÁBITO");courtesy.type="button";
+   courtesy.onclick=async()=>{courtesy.disabled=true;try{const val=x.cortesiaHabito!==true,next={...x,cortesiaHabito:val};const batch=writeBatch(db);batch.update(d.ref,{cortesiaHabito:val,actualizadoEn:serverTimestamp()});actualizarIndiceProducto(batch,d.id,next);await batch.commit();await loadStock();await loadHabits()}catch(e){console.error(e);$("stockStatus").textContent="No se pudo cambiar la cortesía."}finally{courtesy.disabled=false}};
+   const actions=node("div","two");
+   const plus=node("button","secondary","+1 UNIDAD");plus.type="button";plus.onclick=async()=>{plus.disabled=true;try{const sr=d.ref,pub=doc(db,"catalogoPublicoReenomade",d.id),movement=doc(collection(db,"movimientosStock"));await runTransaction(db,async t=>{const snap=await t.get(sr);if(!snap.exists())throw Error("SIN_PRODUCTO");const p=snap.data(),n=Number(p.cantidad);if(!Number.isInteger(n)||n<0)throw Error("STOCK_INVALIDO");t.update(sr,{cantidad:n+1,actualizadoEn:serverTimestamp()});actualizarIndiceProducto(t,d.id,{...p,cantidad:n+1});t.set(movement,{productoId:d.id,productoNombre:p.nombre,tipo:"ingreso",cantidad:1,fecha:serverTimestamp()})});await loadStock();await loadHabits()}catch(e){console.error(e);$("stockStatus").textContent="No se pudo sumar stock."}finally{plus.disabled=false}};
+   const vis=node("button","secondary",x.mostrarCatalogo===false?"MOSTRAR":"OCULTAR");vis.type="button";vis.onclick=async()=>{vis.disabled=true;try{const batch=writeBatch(db),next={...x,mostrarCatalogo:x.mostrarCatalogo===false};batch.update(d.ref,{mostrarCatalogo:next.mostrarCatalogo,actualizadoEn:serverTimestamp()});actualizarIndiceProducto(batch,d.id,next);await batch.commit();await loadStock()}catch(e){console.error(e);$("stockStatus").textContent="No se pudo cambiar la visibilidad."}finally{vis.disabled=false}};
+   const edit=node("button","secondary","EDITAR");edit.type="button";edit.onclick=async()=>{const nombre=prompt("Nombre del producto",x.nombre||"");if(nombre===null)return;if(!nombre.trim())return alert("El nombre no puede quedar vacío.");const precio=prompt("Precio de venta (0 = consultar)",String(x.precio??0));if(precio===null)return;const nPrecio=Number(precio);if(!Number.isFinite(nPrecio)||nPrecio<0)return alert("Ingresá un precio válido.");const descripcion=prompt("Descripción pública",x.descripcionCatalogo||"");if(descripcion===null)return;try{const next={...x,nombre:nombre.trim(),precio:nPrecio,descripcionCatalogo:descripcion.trim()};const batch=writeBatch(db);batch.update(d.ref,{nombre:next.nombre,precio:nPrecio,descripcionCatalogo:next.descripcionCatalogo,actualizadoEn:serverTimestamp()});actualizarIndiceProducto(batch,d.id,next);await batch.commit();await loadStock();await loadHabits()}catch(e){console.error(e);$("stockStatus").textContent="No se pudo editar el producto."}};
+   const del=node("button","danger","ELIMINAR");del.type="button";del.onclick=async()=>{if(!confirm("¿Eliminar este producto del inventario? Los canjes históricos se conservarán."))return;try{const batch=writeBatch(db);batch.delete(d.ref);batch.delete(doc(db,"catalogoPublicoReenomade",d.id));await batch.commit();await loadStock();await loadHabits()}catch(e){console.error(e);$("stockStatus").textContent="No se pudo eliminar el producto."}};
+   actions.append(plus,edit,vis,del);el.append(courtesy,actions);box.append(el);
+  });
+ }catch(e){console.error(e);$("stockStatus").textContent="No se pudo cargar el inventario. Revisá las reglas de Firestore."}
+}
+async function addStock(){
+ const nombre=$("stockName").value.trim(),cantidad=Number($("stockQty").value),costo=Number($("stockCost").value),precio=Number($("stockPrice").value),b=$("addStockButton");
+ if(!nombre||!Number.isInteger(cantidad)||cantidad<0||![costo,precio].every(n=>Number.isFinite(n)&&n>=0)){$("stockStatus").textContent="Completá datos válidos. La cantidad debe ser un número entero.";return}
+ b.disabled=true;try{const ref=doc(collection(db,"stockReenomade")),item={nombre,categoria:$("stockCategory").value,cantidad,costo,precio,descripcionCatalogo:$("stockDescription").value.trim(),mostrarCatalogo:$("stockPublicVisible").checked,cortesiaHabito:$("stockCourtesyNew").checked,activo:true,creadoEn:serverTimestamp(),actualizadoEn:serverTimestamp()};const batch=writeBatch(db);batch.set(ref,item);actualizarIndiceProducto(batch,ref.id,item);if(cantidad>0)batch.set(doc(collection(db,"movimientosStock")),{productoId:ref.id,productoNombre:nombre,tipo:"stock inicial",cantidad,fecha:serverTimestamp()});await batch.commit();$("stockName").value="";$("stockDescription").value="";$("stockPublicVisible").checked=true;$("stockCourtesyNew").checked=false;$("stockStatus").textContent="Producto agregado; catálogo público seguro actualizado.";await loadStock();await loadHabits()}catch(e){console.error(e);$("stockStatus").textContent="No se pudo guardar el producto. Revisá las reglas de Firestore."}finally{b.disabled=false}
+}
+async function loadServices(){
+ const box=$("servicesList");box.replaceChildren();
+ try{const r=await getDocs(collection(db,"serviciosReenomade"));r.docs.forEach(d=>{
+  const x=d.data(),el=node("div","history-item");el.append(node("strong","",x.nombre||"Servicio"),node("div","muted",`${fmtMoney(x.precio)} · ${x.vigenciaDesde?"Desde "+safeDate(x.vigenciaDesde):"Precio vigente"}`));
+  const del=node("button","danger","ELIMINAR");del.type="button";del.onclick=async()=>{if(!confirm("¿Eliminar este servicio del catálogo público y privado? El historial de visitas no cambia."))return;const batch=writeBatch(db);batch.delete(d.ref);batch.delete(doc(db,"serviciosPublicosReenomade",d.id));await batch.commit();await loadServices()};el.append(del);box.append(el)
+ })}catch(e){console.error(e);$("servicesStatus").textContent="No se pudo cargar el catálogo de servicios."}
+}
+async function addService(){
+ const nombre=$("serviceNameNew").value.trim(),precio=Number($("servicePriceNew").value),vigenciaDesde=$("serviceDateNew").value||null;
+ if(!nombre||!Number.isFinite(precio)||precio<0){$("servicesStatus").textContent="Ingresá un servicio y un precio válido.";return}
+ try{const ref=doc(collection(db,"serviciosReenomade")),data={nombre,precio,vigenciaDesde,activo:true,creadoEn:serverTimestamp()},batch=writeBatch(db);
+  batch.set(ref,data);batch.set(doc(db,"serviciosPublicosReenomade",ref.id),servicioPublicoSeguro(ref.id,data));await batch.commit();
+  $("serviceNameNew").value="";$("servicePriceNew").value="";$("servicesStatus").textContent="Servicio guardado y publicado. Los precios históricos permanecen sin cambios.";await loadServices();
+ }catch(e){console.error(e);$("servicesStatus").textContent="No se pudo guardar/publicar el servicio. Revisá reglas públicas."}
+}
+async function loadPromotions(){
+ const box=$("promotionsList");box.replaceChildren();
+ try{const r=await getDocs(collection(db,"promocionesReenomade"));r.docs.forEach(d=>{
+  const x=d.data(),el=node("div","history-item");el.append(node("strong","",x.titulo||"Promoción"),node("div","",x.descripcion||""),node("div","muted",`${safeDate(x.desde)} al ${safeDate(x.hasta)} · ${x.activa?"Activa":"Pausada"}`));
+  const toggle=node("button","secondary",x.activa?"PAUSAR":"ACTIVAR");toggle.type="button";toggle.onclick=async()=>{const batch=writeBatch(db),next={...x,activa:!x.activa};batch.update(d.ref,{activa:next.activa});if(next.activa)batch.set(doc(db,"promocionesPublicasReenomade",d.id),promocionPublicaSegura(d.id,next));else batch.delete(doc(db,"promocionesPublicasReenomade",d.id));await batch.commit();await loadPromotions()};
+  const del=node("button","danger","ELIMINAR");del.type="button";del.onclick=async()=>{if(!confirm("¿Eliminar esta promoción?"))return;const batch=writeBatch(db);batch.delete(d.ref);batch.delete(doc(db,"promocionesPublicasReenomade",d.id));await batch.commit();await loadPromotions()};el.append(toggle,del);box.append(el)
+ })}catch(e){console.error(e);$("promotionsStatus").textContent="No se pudieron cargar las promociones."}
+}
+async function addPromotion(){
+ const titulo=$("promoTitle").value.trim(),descripcion=$("promoDescription").value.trim(),desde=$("promoStart").value||null,hasta=$("promoEnd").value||null;
+ if(!titulo||!descripcion||(desde&&hasta&&hasta<desde)){$("promotionsStatus").textContent="Completá título, descripción y fechas válidas.";return}
+ try{const ref=doc(collection(db,"promocionesReenomade")),data={titulo,descripcion,desde,hasta,activa:true,creadoEn:serverTimestamp()},batch=writeBatch(db);
+  batch.set(ref,data);batch.set(doc(db,"promocionesPublicasReenomade",ref.id),promocionPublicaSegura(ref.id,data));await batch.commit();
+  $("promoTitle").value="";$("promoDescription").value="";$("promotionsStatus").textContent="Promoción guardada y publicada en las tarjetas.";await loadPromotions();
+ }catch(e){console.error(e);$("promotionsStatus").textContent="No se pudo guardar/publicar la promoción."}
+}
+$("activateHabitButton").addEventListener("click",activateHabit);$("addStockButton").addEventListener("click",addStock);$("addServiceButton").addEventListener("click",addService);$("addPromoButton").addEventListener("click",addPromotion);
+
+// Navegación interna por módulos: no abre pestañas del navegador.
+const SUBSECCIONES_ADMIN={
+ clientes:[{id:"lista",title:"Lista de clientes",target:"searchPanel"},{id:"nuevo",title:"Nuevo cliente",target:"newClientPanel"},{id:"ficha",title:"Ficha",target:"clientDetail"}],
+ fidelidad:[{id:"config",title:"Configuración",target:"configMaxSellos"},{id:"beneficios",title:"Beneficios",target:"catalogMembership"}],
+ tienda:[{id:"stock",title:"Stock",target:"stockPanel"},{id:"servicios",title:"Servicios",target:"servicesPanel"},{id:"promociones",title:"Promociones",target:"promotionsPanel"}],
+ solicitudes:[{id:"ingresos",title:"Ingresos",target:"requestsPanel"},{id:"premios",title:"Premios",target:"benefitRequestsPanel"},{id:"invitaciones",title:"Invitaciones +5 EXP",target:"shareRequestsPanel"}]
+};
+let moduloAdminActual="inicio",submodulosAdminActuales={clientes:"lista",fidelidad:"config",tienda:"stock",solicitudes:"ingresos"};
+function seleccionarSubmoduloAdmin(nombre,subir=true){
+ const options=SUBSECCIONES_ADMIN[nombre];if(!options)return;
+ const actual=options.find(x=>x.id===submodulosAdminActuales[nombre])||options[0];submodulosAdminActuales[nombre]=actual.id;
+ const nav=$("adminSubnav");nav.replaceChildren();nav.classList.remove("hidden");
+ options.filter(x=>x.id!=="ficha"||clienteSeleccionado).forEach(x=>{
+  const b=node("button",submodulosAdminActuales[nombre]===x.id?"active":"",x.title);
+  b.type="button";b.setAttribute("aria-current",x.id===actual.id?"page":"false");b.onclick=()=>{if(nombre==="clientes"&&x.id!=="ficha")clienteSeleccionado=null;submodulosAdminActuales[nombre]=x.id;seleccionarSubmoduloAdmin(nombre,true)};nav.append(b)
+ });
+ options.forEach(x=>{const el=$(x.target)?.closest(".panel")||$(x.target);if(el)el.classList.toggle("hidden",x.id!==actual.id)});
+ if(subir)irAlInicio();
+}
+function prepararModulosAdmin(){
+ const children=[...$("adminPanel").children].filter(el=>!["adminSubnav","adminModuleBack"].includes(el.id));
+ if(children[2])children[2].dataset.module="inicio";
+ if(children[3])children[3].dataset.module="inicio";
+ children.forEach(el=>{
+  if(el.querySelector?.("#configMaxSellos")||el.querySelector?.("#catalogMembership"))el.dataset.module="fidelidad";
+  if(["habitPanel"].includes(el.id))el.dataset.module="habito";
+  if(["stockPanel","servicesPanel","promotionsPanel"].includes(el.id))el.dataset.module="tienda";
+  if(["requestsPanel","benefitRequestsPanel","shareRequestsPanel"].includes(el.id))el.dataset.module="solicitudes";
+  if(["newClientPanel","searchPanel","clientDetail"].includes(el.id))el.dataset.module="clientes";
+  if(el.dataset.module)el.classList.add("admin-module");
+ });
+ if(!$("adminSubnav")){const nav=node("nav","v3-subnav hidden");nav.id="adminSubnav";nav.setAttribute("aria-label","Opciones del módulo");$("adminNav").after(nav)}
+ if(!$("adminModuleBack")){const back=node("button","secondary v3-admin-back hidden","‹ VOLVER A INICIO");back.id="adminModuleBack";back.type="button";back.onclick=()=>mostrarModuloAdmin("inicio",true);$("adminNav").after(back)}
+ document.querySelectorAll("#adminNav [data-module-target]").forEach(b=>b.addEventListener("click",()=>{if(b.dataset.moduleTarget==="clientes"){clienteSeleccionado=null;submodulosAdminActuales.clientes="lista"}mostrarModuloAdmin(b.dataset.moduleTarget,true)}));
+ mostrarModuloAdmin("inicio",false);
+}
+function mostrarModuloAdmin(mod,subir=false){
+ moduloAdminActual=mod;
+ if($("adminModuleBack"))$("adminModuleBack").classList.toggle("hidden",mod==="inicio");
+ document.querySelectorAll("#adminPanel .admin-module").forEach(el=>el.classList.toggle("hidden",el.dataset.module!==mod));
+ document.querySelectorAll("#adminNav [data-module-target]").forEach(b=>b.classList.toggle("active",b.dataset.moduleTarget===mod));
+ if(SUBSECCIONES_ADMIN[mod])seleccionarSubmoduloAdmin(mod,false);
+ else if($("adminSubnav"))$("adminSubnav").classList.add("hidden");
+ if(subir)irAlInicio();
+}
+
+onAuthStateChanged(auth,async user=>{if(modoPublico)return;if(user&&user.uid===ADMIN_UID){$("loginPanel").classList.add("hidden");$("adminPanel").classList.remove("hidden");prepararModulosAdmin();try{await cargarConfiguracion();await cargarClientes();await cargarSolicitudes();await cargarSolicitudesBeneficios();await cargarSolicitudesBonusCompartir();await loadExtraModules()}catch(e){console.error(e);$("settingsStatus").textContent="No se pudo cargar la configuración."}}else{$("adminPanel").classList.add("hidden");$("loginPanel").classList.remove("hidden");if(user){await signOut(auth);$("loginStatus").textContent="Cuenta no autorizada."}}});
 if(token)cargarTarjetaPublica();
 </script>
 </body>
