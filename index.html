@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#09090d">
+<!-- ReeNomade V6 · instalable como PWA. Los datos siguen en Firebase. -->
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="./icons/icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="ReeNomade">
+
 <title>ReeNomade | Club Nomade</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -144,12 +152,31 @@ html{scroll-behavior:smooth}body{padding-top:16px}
 .v6-xp-row label{flex:1;margin:0!important;font-size:12px}
 .v6-xp-row input{width:105px;flex:0 0 105px;margin:0}
 @media(max-width:470px){.v6-settings-grid,.v6-edit-box .v6-field-grid{grid-template-columns:1fr}}
+
+/* PWA: acceso discreto; no modifica formularios ni módulos de ReeNomade */
+.pwa-install{display:flex;align-items:center;gap:11px;flex-wrap:wrap;padding:12px 13px;margin:0 0 14px;border-radius:12px;border:1px solid #514568;background:linear-gradient(115deg,#201b2a,#141820)}
+.pwa-install img{width:42px;height:42px;flex:none;border-radius:10px}
+.pwa-install .pwa-install-copy{flex:1 1 150px;min-width:0}
+.pwa-install .pwa-install-copy strong{display:block;font-size:12px;color:#f5e9fe}
+.pwa-install .pwa-install-copy span{display:block;font-size:10px;color:#aea9b8;line-height:1.4;margin-top:4px}
+.pwa-install .pwa-install-button{width:auto;min-width:115px;min-height:38px;margin:0;font:800 13px 'Barlow Condensed',sans-serif;letter-spacing:.5px;padding:8px 12px;background:#573878;border-color:#8460a1}
+.pwa-install .pwa-install-help{font-size:11px;line-height:1.55;color:#e0cda6;flex-basis:100%;margin:0;padding:3px 0 0}
+@media(max-width:410px){.pwa-install{gap:8px}.pwa-install .pwa-install-copy{flex-basis:calc(100% - 58px)}.pwa-install .pwa-install-button{width:100%}}
 </style>
 </head>
 <body>
 <main class="container">
 <div class="logo">ReeNomade</div><div class="brand">BARBERÍA · TARTAGAL</div>
 <h1 id="mainTitle">Club Nomade</h1><p class="subtitle" id="mainSubtitle">Clásico y moderno, siempre a tu estilo.</p>
+
+
+<!-- Instalar ReeNomade: se muestra solo cuando no está instalada y no está abierto el panel de admin -->
+<section id="pwaInstallPanel" class="pwa-install hidden" aria-label="Instalar ReeNomade en tu dispositivo">
+  <img src="./icons/icon-192.png" alt="Ícono de ReeNomade" width="42" height="42" loading="lazy">
+  <div class="pwa-install-copy"><strong>ReeNomade en tu celular</strong><span>Agregala a la pantalla principal, sin Google Play.</span></div>
+  <button id="pwaInstallButton" type="button" class="pwa-install-button">CÓMO INSTALAR</button>
+  <p id="pwaInstallHelp" class="pwa-install-help hidden" role="status"></p>
+</section>
 
 <section id="loginPanel" class="panel"><h2>Ingresar</h2><p class="description">Acceso administrativo.</p><form id="loginForm"><label for="email">Correo electrónico</label><input id="email" type="email" autocomplete="username" required><label for="password">Contraseña</label><input id="password" type="password" autocomplete="current-password" required><button id="loginButton">INGRESAR</button></form><button id="resetPasswordButton" class="secondary" type="button">RECUPERAR CONTRASEÑA</button><button id="goSignupButton" class="secondary" type="button">SOLICITAR TARJETA</button><p id="loginStatus" class="status">Conectando...</p></section>
 
@@ -325,6 +352,74 @@ html{scroll-behavior:smooth}body{padding-top:16px}
 </section>
 <div class="footer">REENOMADE BARBERÍA · TARTAGAL</div>
 </main>
+
+<script>
+/* ReeNomade · Instalación PWA: independiente del módulo Firebase y sus datos. */
+(() => {
+  const panel = document.getElementById('pwaInstallPanel');
+  const button = document.getElementById('pwaInstallButton');
+  const help = document.getElementById('pwaInstallHelp');
+  const adminPanel = document.getElementById('adminPanel');
+  const isStandalone = () => window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  const isIOS = /iPad|iPhone|iPod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  let deferredInstall = null;
+
+  // Una tarjeta personalizada siempre aparece primero; el módulo de instalación va debajo.
+  if (new URLSearchParams(location.search).has('tarjeta')) {
+    const modules = document.getElementById('publicModuleNav');
+    if (modules) modules.insertAdjacentElement('beforebegin', panel);
+  }
+
+  function syncPanel() {
+    if (isStandalone() || !adminPanel.classList.contains('hidden')) {
+      panel.classList.add('hidden');
+      return;
+    }
+    panel.classList.remove('hidden');
+    button.textContent = deferredInstall ? 'INSTALAR APP' : 'CÓMO INSTALAR';
+  }
+  new MutationObserver(syncPanel).observe(adminPanel, {attributes:true, attributeFilter:['class']});
+  window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    deferredInstall = event;
+    syncPanel();
+  });
+  window.addEventListener('appinstalled', () => {
+    deferredInstall = null;
+    help.classList.add('hidden');
+    syncPanel();
+  });
+  button.addEventListener('click', async () => {
+    if (deferredInstall) {
+      const event = deferredInstall;
+      deferredInstall = null;
+      await event.prompt();
+      const choice = await event.userChoice;
+      help.classList.remove('hidden');
+      help.textContent = choice.outcome === 'accepted' ? 'Se aceptó la instalación. Buscá ReeNomade entre tus aplicaciones.' : 'No se instaló. Podés hacerlo más tarde desde el menú de tu navegador.';
+      syncPanel();
+      return;
+    }
+    help.classList.remove('hidden');
+    if (isIOS) {
+      help.textContent = 'En Safari: tocá Compartir (cuadrado con flecha) → Agregar a pantalla de inicio → Agregar.';
+    } else if (/Android/i.test(navigator.userAgent)) {
+      help.textContent = 'En Chrome: tocá los tres puntos (⋮) → Instalar aplicación o Agregar a pantalla principal. Si no aparece, abrí esta página directamente en Chrome.';
+    } else {
+      help.textContent = 'En Chrome o Edge, buscá Instalar en el menú del navegador o junto a la barra de direcciones.';
+    }
+  });
+  syncPanel();
+  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./service-worker.js', {scope:'./'}).catch((error) => {
+        console.warn('No se pudo registrar el service worker de ReeNomade:', error);
+      });
+    });
+  }
+})();
+</script>
+
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 import {initializeAppCheck,ReCaptchaEnterpriseProvider} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app-check.js";

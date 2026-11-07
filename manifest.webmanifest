@@ -1,0 +1,32 @@
+{
+  "name": "ReeNomade · Club Nómade",
+  "short_name": "ReeNomade",
+  "description": "Tarjetas de fidelidad, membresías, beneficios y servicios de ReeNomade Barbería.",
+  "lang": "es-AR",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#09090d",
+  "theme_color": "#09090d",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-maskable-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ]
+}
